@@ -49,14 +49,9 @@
 10. Open the Metamask extension and connect to `http://127.0.0.1:8545` to load local accounts.
 11. **Now you are ready to use the EtherBinary DAPP!**
 
-## Getting Started:
+## Testnet:
 
-1. Clone the repository.
-
+You can also interact with the Smart Contract already deployed to **Rinkeby** test network @:
 ```code
-    git clone https://github.com/morpheums/EtherBinary.git
-```
-2. Navigate to the source code location.
-```code 
-    cd EtherBinary
+    0xd7cf14b3526042c09d09b5750350f02832631b76
 ```
