@@ -1,0 +1,3418 @@
+{
+  "contractName": "GameI",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "assetPair",
+          "type": "string"
+        },
+        {
+          "indexed": true,
+          "name": "matchId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "startTime",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "initialPrice",
+          "type": "uint256"
+        }
+      ],
+      "name": "LogMatchStarted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "assetPair",
+          "type": "string"
+        },
+        {
+          "indexed": true,
+          "name": "matchId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "totalPool",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "LogBettingPeriodEnd",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "assetPair",
+          "type": "string"
+        },
+        {
+          "indexed": true,
+          "name": "matchId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "name": "player",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "ticketsBought",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "playerTotalTickets",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "option",
+          "type": "bool"
+        },
+        {
+          "indexed": false,
+          "name": "optionTotalTickets",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "LogTicketBought",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "assetPair",
+          "type": "string"
+        },
+        {
+          "indexed": true,
+          "name": "matchId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "startTime",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "endTime",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "initialPrice",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "endPrice",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "earningsByTicket",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "winnerOption",
+          "type": "bool"
+        }
+      ],
+      "name": "LogMatchFinished",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "assetPair",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "name": "matchId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "name": "player",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "LogEarningsWithdrawn",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_assetPair",
+          "type": "string"
+        },
+        {
+          "name": "_assetPairAlias",
+          "type": "string"
+        },
+        {
+          "name": "_description",
+          "type": "string"
+        }
+      ],
+      "name": "setAssetPairInformation",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_betsDurationMinutes",
+          "type": "uint8"
+        },
+        {
+          "name": "_getResultsMinutes",
+          "type": "uint8"
+        },
+        {
+          "name": "_maxTicketsPerPlayer",
+          "type": "uint8"
+        },
+        {
+          "name": "_ticketPrice",
+          "type": "uint256"
+        },
+        {
+          "name": "_houseEdge",
+          "type": "uint256"
+        },
+        {
+          "name": "_oraclizeGasLimit",
+          "type": "uint32"
+        }
+      ],
+      "name": "setGameVariablesAndStart",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getGameInfo",
+      "outputs": [
+        {
+          "name": "_assetPair",
+          "type": "string"
+        },
+        {
+          "name": "_assetPairAlias",
+          "type": "string"
+        },
+        {
+          "name": "_description",
+          "type": "string"
+        },
+        {
+          "name": "_ticketPrice",
+          "type": "uint256"
+        },
+        {
+          "name": "_currentMatchId",
+          "type": "uint256"
+        },
+        {
+          "name": "_maxTicketsPerPlayer",
+          "type": "uint8"
+        },
+        {
+          "name": "_betsDurationMinutes",
+          "type": "uint8"
+        },
+        {
+          "name": "_getResultsMinutes",
+          "type": "uint8"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "option",
+          "type": "bool"
+        }
+      ],
+      "name": "buyTickets",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "withdrawEarnings",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "destructContract",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.4.22;\r\n\r\n/** @title Interface that establishes the functions that a Game contract must implement. */\r\ninterface GameI {\r\n\r\n    /** \r\n    * @dev Event emitted when a new match has started.\r\n    * @param assetPair The assetPair of the game.\r\n    * @param matchId Id of the started match.\r\n    * @param startTime The time in which the game started.\r\n    * @param initialPrice The inital price of the asset.\r\n    */\r\n    event LogMatchStarted(string assetPair, uint indexed matchId, uint startTime, uint initialPrice);\r\n\r\n    /** \r\n    * @dev Event emitted when a match betting period has finished.\r\n    * @param assetPair The assetPair of the game.\r\n    * @param matchId Id of the match.\r\n    * @param totalPool Match total pool.\r\n    * @param timestamp The time in which the event occured.\r\n    */\r\n    event LogBettingPeriodEnd(string assetPair, uint indexed matchId, uint totalPool, uint timestamp);\r\n\r\n    /** \r\n    * @dev Event emitted when a ticket has been bought.\r\n    * @param assetPair The assetPair of the game.\r\n    * @param matchId Id of the match.\r\n    * @param player The player who bought the ticket.\r\n    * @param ticketsBought The amount of tickets bought in this transaction.\r\n    * @param playerTotalTickets Total amount of tickets for this match.\r\n    * @param option Option the player bet to.\r\n    * @param optionTotalTickets Total pool of the option the player bet to.\r\n    * @param timestamp The time in which the event occured.\r\n    */\r\n    event LogTicketBought(\r\n        string assetPair, \r\n        uint indexed matchId, \r\n        address indexed player, \r\n        uint ticketsBought,\r\n        uint playerTotalTickets, \r\n        bool option, \r\n        uint optionTotalTickets,\r\n        uint timestamp\r\n    );\r\n\r\n   /** \r\n    * @dev Event emitted when a match has finished.\r\n    * @param assetPair The assetPair of the game.\r\n    * @param matchId Id of the match that has finished.\r\n    * @param startTime The start time of the match.\r\n    * @param endTime The end time of the match.\r\n    * @param initialPrice Initial price of the asset.\r\n    * @param endPrice End price of the asset.\r\n    * @param earningsByTicket Amount of ether won by ticket.\r\n    * @param winnerOption Option that winned the match.\r\n    */\r\n    event LogMatchFinished(\r\n        string assetPair, \r\n        uint indexed matchId, \r\n        uint startTime, \r\n        uint endTime, \r\n        uint initialPrice, \r\n        uint endPrice, \r\n        uint earningsByTicket, \r\n        bool winnerOption\r\n    );\r\n\r\n    /** \r\n    * @dev Event emitted when user withdraw earnings.\r\n    * @param assetPair The assetPair of the game.\r\n    * @param matchId Id of the associated match.\r\n    * @param player The player who withdraw earnings.\r\n    * @param amount The amount withdrawn.\r\n    * @param timestamp The time in which the event occured.\r\n    */\r\n    event LogEarningsWithdrawn(string assetPair, uint matchId, address indexed player, uint amount, uint timestamp);\r\n    \r\n    /** \r\n    * @dev Sets the information of the asset pair and sets the oraclize endpoint.\r\n    * @param _assetPair The assetPair of the game.\r\n    * @param _assetPairAlias Alias of the assetPair used for display.\r\n    * @param _description The description of the game used for display.\r\n    */\r\n    function setAssetPairInformation(string _assetPair, string _assetPairAlias, string _description) external;\r\n\r\n    /** \r\n    * @dev Set game variables and start game.\r\n    * @param _betsDurationMinutes Specifies the time in minutes of the duration of the betting period.\r\n    * @param _getResultsMinutes Specifies the time in minutes to get the match result after the betting period.\r\n    * @param _maxTicketsPerPlayer Max number of tickets that a player can buy.\r\n    * @param _ticketPrice The price of a single ticket.\r\n    * @param _houseEdge House profit per ticket. \r\n    * @param _oraclizeGasLimit Gas amount to be used by the Oracle calls.\r\n    */\r\n    function setGameVariablesAndStart(\r\n        uint8 _betsDurationMinutes, \r\n        uint8 _getResultsMinutes,\r\n        uint8 _maxTicketsPerPlayer,\r\n        uint _ticketPrice, \r\n        uint _houseEdge,\r\n        uint32 _oraclizeGasLimit\r\n    ) external;\r\n\r\n    /** \r\n    * @dev Returns the game relevant information. \r\n    * @return _assetPair The assetPair of the game.\r\n    * @return _assetPairAlias  Alias of the assetPair used for display.\r\n    * @return _description The description of the game used for display.\r\n    * @return _ticketPrice The price of a single ticket.\r\n    * @return _currentMatchId Id of the current running match. \r\n    * @return _maxTicketsPerPlayer Max number of tickets that a player can buy.\r\n    * @return _betsDurationMinutes Specifies the time in minutes of the duration of the betting period.\r\n    * @return _getResultsMinutes  Specifies the time in minutes to get the match result after the betting period.\r\n    */\r\n    function getGameInfo() external view returns (\r\n        string  _assetPair, \r\n        string  _assetPairAlias, \r\n        string  _description, \r\n        uint  _ticketPrice, \r\n        uint  _currentMatchId,\r\n        uint8  _maxTicketsPerPlayer,\r\n        uint8 _betsDurationMinutes,\r\n        uint8 _getResultsMinutes\r\n    );\r\n\r\n    /** \r\n    * @dev Payable function to buy tickets.\r\n    * @param option Option to bet to.\r\n    */\r\n    function buyTickets(bool option) external payable;\r\n\r\n    // @dev Function called by a player to withdraw all pending withdrawals.\r\n    function withdrawEarnings() external;\r\n\r\n    // @dev  Allows the owner to destruct the contrat in case of an emergency.\r\n    function destructContract() external;\r\n}",
+  "sourcePath": "C:\\Data\\Junior\\Consensys Academy\\Final Project\\EtherBinary\\contracts\\interfaces\\GameI.sol",
+  "ast": {
+    "absolutePath": "/C/Data/Junior/Consensys Academy/Final Project/EtherBinary/contracts/interfaces/GameI.sol",
+    "exportedSymbols": {
+      "GameI": [
+        1843
+      ]
+    },
+    "id": 1844,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1720,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".22"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:5"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title Interface that establishes the functions that a Game contract must implement. ",
+        "fullyImplemented": false,
+        "id": 1843,
+        "linearizedBaseContracts": [
+          1843
+        ],
+        "name": "GameI",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": "@dev Event emitted when a new match has started.\r\n@param assetPair The assetPair of the game.\r\n@param matchId Id of the started match.\r\n@param startTime The time in which the game started.\r\n@param initialPrice The inital price of the asset.\r",
+            "id": 1730,
+            "name": "LogMatchStarted",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1729,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1722,
+                  "indexed": false,
+                  "name": "assetPair",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1730,
+                  "src": "458:16:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1721,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "458:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1724,
+                  "indexed": true,
+                  "name": "matchId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1730,
+                  "src": "476:20:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1723,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "476:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1726,
+                  "indexed": false,
+                  "name": "startTime",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1730,
+                  "src": "498:14:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1725,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "498:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1728,
+                  "indexed": false,
+                  "name": "initialPrice",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1730,
+                  "src": "514:17:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1727,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "514:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "457:75:5"
+            },
+            "src": "436:97:5"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev Event emitted when a match betting period has finished.\r\n@param assetPair The assetPair of the game.\r\n@param matchId Id of the match.\r\n@param totalPool Match total pool.\r\n@param timestamp The time in which the event occured.\r",
+            "id": 1740,
+            "name": "LogBettingPeriodEnd",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1739,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1732,
+                  "indexed": false,
+                  "name": "assetPair",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1740,
+                  "src": "846:16:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1731,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "846:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1734,
+                  "indexed": true,
+                  "name": "matchId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1740,
+                  "src": "864:20:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1733,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "864:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1736,
+                  "indexed": false,
+                  "name": "totalPool",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1740,
+                  "src": "886:14:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1735,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "886:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1738,
+                  "indexed": false,
+                  "name": "timestamp",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1740,
+                  "src": "902:14:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1737,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "902:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "845:72:5"
+            },
+            "src": "820:98:5"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev Event emitted when a ticket has been bought.\r\n@param assetPair The assetPair of the game.\r\n@param matchId Id of the match.\r\n@param player The player who bought the ticket.\r\n@param ticketsBought The amount of tickets bought in this transaction.\r\n@param playerTotalTickets Total amount of tickets for this match.\r\n@param option Option the player bet to.\r\n@param optionTotalTickets Total pool of the option the player bet to.\r\n@param timestamp The time in which the event occured.\r",
+            "id": 1758,
+            "name": "LogTicketBought",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1757,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1742,
+                  "indexed": false,
+                  "name": "assetPair",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1758,
+                  "src": "1514:16:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1741,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1514:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1744,
+                  "indexed": true,
+                  "name": "matchId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1758,
+                  "src": "1542:20:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1743,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1542:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1746,
+                  "indexed": true,
+                  "name": "player",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1758,
+                  "src": "1574:22:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1745,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1574:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1748,
+                  "indexed": false,
+                  "name": "ticketsBought",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1758,
+                  "src": "1608:18:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1747,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1608:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1750,
+                  "indexed": false,
+                  "name": "playerTotalTickets",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1758,
+                  "src": "1637:23:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1749,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1637:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1752,
+                  "indexed": false,
+                  "name": "option",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1758,
+                  "src": "1672:11:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1751,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1672:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1754,
+                  "indexed": false,
+                  "name": "optionTotalTickets",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1758,
+                  "src": "1695:23:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1753,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1695:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1756,
+                  "indexed": false,
+                  "name": "timestamp",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1758,
+                  "src": "1729:14:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1755,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1729:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1503:247:5"
+            },
+            "src": "1482:269:5"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev Event emitted when a match has finished.\r\n@param assetPair The assetPair of the game.\r\n@param matchId Id of the match that has finished.\r\n@param startTime The start time of the match.\r\n@param endTime The end time of the match.\r\n@param initialPrice Initial price of the asset.\r\n@param endPrice End price of the asset.\r\n@param earningsByTicket Amount of ether won by ticket.\r\n@param winnerOption Option that winned the match.\r",
+            "id": 1776,
+            "name": "LogMatchFinished",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1775,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1760,
+                  "indexed": false,
+                  "name": "assetPair",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1776,
+                  "src": "2293:16:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1759,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2293:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1762,
+                  "indexed": true,
+                  "name": "matchId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1776,
+                  "src": "2321:20:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1761,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2321:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1764,
+                  "indexed": false,
+                  "name": "startTime",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1776,
+                  "src": "2353:14:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1763,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2353:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1766,
+                  "indexed": false,
+                  "name": "endTime",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1776,
+                  "src": "2379:12:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1765,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2379:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1768,
+                  "indexed": false,
+                  "name": "initialPrice",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1776,
+                  "src": "2403:17:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1767,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2403:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1770,
+                  "indexed": false,
+                  "name": "endPrice",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1776,
+                  "src": "2432:13:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1769,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2432:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1772,
+                  "indexed": false,
+                  "name": "earningsByTicket",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1776,
+                  "src": "2457:21:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1771,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2457:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1774,
+                  "indexed": false,
+                  "name": "winnerOption",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1776,
+                  "src": "2490:17:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1773,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2490:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2282:232:5"
+            },
+            "src": "2260:255:5"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev Event emitted when user withdraw earnings.\r\n@param assetPair The assetPair of the game.\r\n@param matchId Id of the associated match.\r\n@param player The player who withdraw earnings.\r\n@param amount The amount withdrawn.\r\n@param timestamp The time in which the event occured.\r",
+            "id": 1788,
+            "name": "LogEarningsWithdrawn",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1787,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1778,
+                  "indexed": false,
+                  "name": "assetPair",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1788,
+                  "src": "2883:16:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1777,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2883:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1780,
+                  "indexed": false,
+                  "name": "matchId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1788,
+                  "src": "2901:12:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1779,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2901:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1782,
+                  "indexed": true,
+                  "name": "player",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1788,
+                  "src": "2915:22:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1781,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2915:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1784,
+                  "indexed": false,
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1788,
+                  "src": "2939:11:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1783,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2939:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1786,
+                  "indexed": false,
+                  "name": "timestamp",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1788,
+                  "src": "2952:14:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1785,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2952:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2882:85:5"
+            },
+            "src": "2856:112:5"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Sets the information of the asset pair and sets the oraclize endpoint.\r\n@param _assetPair The assetPair of the game.\r\n@param _assetPairAlias Alias of the assetPair used for display.\r\n@param _description The description of the game used for display.\r",
+            "id": 1797,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setAssetPairInformation",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1795,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1790,
+                  "name": "_assetPair",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1797,
+                  "src": "3310:17:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1789,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3310:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1792,
+                  "name": "_assetPairAlias",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1797,
+                  "src": "3329:22:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1791,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3329:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1794,
+                  "name": "_description",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1797,
+                  "src": "3353:19:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1793,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3353:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3309:64:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1796,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3382:0:5"
+            },
+            "scope": 1843,
+            "src": "3277:106:5",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Set game variables and start game.\r\n@param _betsDurationMinutes Specifies the time in minutes of the duration of the betting period.\r\n@param _getResultsMinutes Specifies the time in minutes to get the match result after the betting period.\r\n@param _maxTicketsPerPlayer Max number of tickets that a player can buy.\r\n@param _ticketPrice The price of a single ticket.\r\n@param _houseEdge House profit per ticket. \r\n@param _oraclizeGasLimit Gas amount to be used by the Oracle calls.\r",
+            "id": 1812,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setGameVariablesAndStart",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1810,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1799,
+                  "name": "_betsDurationMinutes",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1812,
+                  "src": "3980:26:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 1798,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3980:5:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1801,
+                  "name": "_getResultsMinutes",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1812,
+                  "src": "4018:24:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 1800,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4018:5:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1803,
+                  "name": "_maxTicketsPerPlayer",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1812,
+                  "src": "4053:26:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 1802,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4053:5:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1805,
+                  "name": "_ticketPrice",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1812,
+                  "src": "4090:17:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1804,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4090:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1807,
+                  "name": "_houseEdge",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1812,
+                  "src": "4119:15:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1806,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4119:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1809,
+                  "name": "_oraclizeGasLimit",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1812,
+                  "src": "4145:24:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 1808,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4145:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3969:207:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1811,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4185:0:5"
+            },
+            "scope": 1843,
+            "src": "3936:250:5",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Returns the game relevant information. \r\n@return _assetPair The assetPair of the game.\r\n@return _assetPairAlias  Alias of the assetPair used for display.\r\n@return _description The description of the game used for display.\r\n@return _ticketPrice The price of a single ticket.\r\n@return _currentMatchId Id of the current running match. \r\n@return _maxTicketsPerPlayer Max number of tickets that a player can buy.\r\n@return _betsDurationMinutes Specifies the time in minutes of the duration of the betting period.\r\n@return _getResultsMinutes  Specifies the time in minutes to get the match result after the betting period.\r",
+            "id": 1831,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getGameInfo",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1813,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4908:2:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1830,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1815,
+                  "name": "_assetPair",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1831,
+                  "src": "4944:18:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1814,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4944:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1817,
+                  "name": "_assetPairAlias",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1831,
+                  "src": "4974:23:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1816,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4974:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1819,
+                  "name": "_description",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1831,
+                  "src": "5009:20:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1818,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5009:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1821,
+                  "name": "_ticketPrice",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1831,
+                  "src": "5041:18:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1820,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5041:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1823,
+                  "name": "_currentMatchId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1831,
+                  "src": "5071:21:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1822,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5071:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1825,
+                  "name": "_maxTicketsPerPlayer",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1831,
+                  "src": "5103:27:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 1824,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5103:5:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1827,
+                  "name": "_betsDurationMinutes",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1831,
+                  "src": "5141:26:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 1826,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5141:5:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1829,
+                  "name": "_getResultsMinutes",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1831,
+                  "src": "5178:24:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 1828,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5178:5:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4933:276:5"
+            },
+            "scope": 1843,
+            "src": "4888:322:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Payable function to buy tickets.\r\n@param option Option to bet to.\r",
+            "id": 1836,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "buyTickets",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1834,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1833,
+                  "name": "option",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1836,
+                  "src": "5340:11:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1832,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5340:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5339:13:5"
+            },
+            "payable": true,
+            "returnParameters": {
+              "id": 1835,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5369:0:5"
+            },
+            "scope": 1843,
+            "src": "5320:50:5",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 1839,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "withdrawEarnings",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1837,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5481:2:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1838,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5492:0:5"
+            },
+            "scope": 1843,
+            "src": "5456:37:5",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 1842,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "destructContract",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1840,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5606:2:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1841,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5617:0:5"
+            },
+            "scope": 1843,
+            "src": "5581:37:5",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1844,
+        "src": "121:5500:5"
+      }
+    ],
+    "src": "0:5621:5"
+  },
+  "legacyAST": {
+    "absolutePath": "/C/Data/Junior/Consensys Academy/Final Project/EtherBinary/contracts/interfaces/GameI.sol",
+    "exportedSymbols": {
+      "GameI": [
+        1843
+      ]
+    },
+    "id": 1844,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1720,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".22"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:5"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title Interface that establishes the functions that a Game contract must implement. ",
+        "fullyImplemented": false,
+        "id": 1843,
+        "linearizedBaseContracts": [
+          1843
+        ],
+        "name": "GameI",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": "@dev Event emitted when a new match has started.\r\n@param assetPair The assetPair of the game.\r\n@param matchId Id of the started match.\r\n@param startTime The time in which the game started.\r\n@param initialPrice The inital price of the asset.\r",
+            "id": 1730,
+            "name": "LogMatchStarted",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1729,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1722,
+                  "indexed": false,
+                  "name": "assetPair",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1730,
+                  "src": "458:16:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1721,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "458:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1724,
+                  "indexed": true,
+                  "name": "matchId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1730,
+                  "src": "476:20:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1723,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "476:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1726,
+                  "indexed": false,
+                  "name": "startTime",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1730,
+                  "src": "498:14:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1725,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "498:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1728,
+                  "indexed": false,
+                  "name": "initialPrice",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1730,
+                  "src": "514:17:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1727,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "514:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "457:75:5"
+            },
+            "src": "436:97:5"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev Event emitted when a match betting period has finished.\r\n@param assetPair The assetPair of the game.\r\n@param matchId Id of the match.\r\n@param totalPool Match total pool.\r\n@param timestamp The time in which the event occured.\r",
+            "id": 1740,
+            "name": "LogBettingPeriodEnd",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1739,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1732,
+                  "indexed": false,
+                  "name": "assetPair",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1740,
+                  "src": "846:16:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1731,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "846:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1734,
+                  "indexed": true,
+                  "name": "matchId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1740,
+                  "src": "864:20:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1733,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "864:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1736,
+                  "indexed": false,
+                  "name": "totalPool",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1740,
+                  "src": "886:14:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1735,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "886:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1738,
+                  "indexed": false,
+                  "name": "timestamp",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1740,
+                  "src": "902:14:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1737,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "902:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "845:72:5"
+            },
+            "src": "820:98:5"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev Event emitted when a ticket has been bought.\r\n@param assetPair The assetPair of the game.\r\n@param matchId Id of the match.\r\n@param player The player who bought the ticket.\r\n@param ticketsBought The amount of tickets bought in this transaction.\r\n@param playerTotalTickets Total amount of tickets for this match.\r\n@param option Option the player bet to.\r\n@param optionTotalTickets Total pool of the option the player bet to.\r\n@param timestamp The time in which the event occured.\r",
+            "id": 1758,
+            "name": "LogTicketBought",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1757,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1742,
+                  "indexed": false,
+                  "name": "assetPair",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1758,
+                  "src": "1514:16:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1741,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1514:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1744,
+                  "indexed": true,
+                  "name": "matchId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1758,
+                  "src": "1542:20:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1743,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1542:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1746,
+                  "indexed": true,
+                  "name": "player",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1758,
+                  "src": "1574:22:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1745,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1574:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1748,
+                  "indexed": false,
+                  "name": "ticketsBought",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1758,
+                  "src": "1608:18:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1747,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1608:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1750,
+                  "indexed": false,
+                  "name": "playerTotalTickets",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1758,
+                  "src": "1637:23:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1749,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1637:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1752,
+                  "indexed": false,
+                  "name": "option",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1758,
+                  "src": "1672:11:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1751,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1672:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1754,
+                  "indexed": false,
+                  "name": "optionTotalTickets",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1758,
+                  "src": "1695:23:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1753,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1695:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1756,
+                  "indexed": false,
+                  "name": "timestamp",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1758,
+                  "src": "1729:14:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1755,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1729:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1503:247:5"
+            },
+            "src": "1482:269:5"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev Event emitted when a match has finished.\r\n@param assetPair The assetPair of the game.\r\n@param matchId Id of the match that has finished.\r\n@param startTime The start time of the match.\r\n@param endTime The end time of the match.\r\n@param initialPrice Initial price of the asset.\r\n@param endPrice End price of the asset.\r\n@param earningsByTicket Amount of ether won by ticket.\r\n@param winnerOption Option that winned the match.\r",
+            "id": 1776,
+            "name": "LogMatchFinished",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1775,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1760,
+                  "indexed": false,
+                  "name": "assetPair",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1776,
+                  "src": "2293:16:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1759,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2293:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1762,
+                  "indexed": true,
+                  "name": "matchId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1776,
+                  "src": "2321:20:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1761,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2321:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1764,
+                  "indexed": false,
+                  "name": "startTime",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1776,
+                  "src": "2353:14:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1763,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2353:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1766,
+                  "indexed": false,
+                  "name": "endTime",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1776,
+                  "src": "2379:12:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1765,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2379:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1768,
+                  "indexed": false,
+                  "name": "initialPrice",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1776,
+                  "src": "2403:17:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1767,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2403:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1770,
+                  "indexed": false,
+                  "name": "endPrice",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1776,
+                  "src": "2432:13:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1769,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2432:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1772,
+                  "indexed": false,
+                  "name": "earningsByTicket",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1776,
+                  "src": "2457:21:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1771,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2457:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1774,
+                  "indexed": false,
+                  "name": "winnerOption",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1776,
+                  "src": "2490:17:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1773,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2490:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2282:232:5"
+            },
+            "src": "2260:255:5"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@dev Event emitted when user withdraw earnings.\r\n@param assetPair The assetPair of the game.\r\n@param matchId Id of the associated match.\r\n@param player The player who withdraw earnings.\r\n@param amount The amount withdrawn.\r\n@param timestamp The time in which the event occured.\r",
+            "id": 1788,
+            "name": "LogEarningsWithdrawn",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1787,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1778,
+                  "indexed": false,
+                  "name": "assetPair",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1788,
+                  "src": "2883:16:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1777,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2883:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1780,
+                  "indexed": false,
+                  "name": "matchId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1788,
+                  "src": "2901:12:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1779,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2901:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1782,
+                  "indexed": true,
+                  "name": "player",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1788,
+                  "src": "2915:22:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1781,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2915:7:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1784,
+                  "indexed": false,
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1788,
+                  "src": "2939:11:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1783,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2939:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1786,
+                  "indexed": false,
+                  "name": "timestamp",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1788,
+                  "src": "2952:14:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1785,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2952:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2882:85:5"
+            },
+            "src": "2856:112:5"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Sets the information of the asset pair and sets the oraclize endpoint.\r\n@param _assetPair The assetPair of the game.\r\n@param _assetPairAlias Alias of the assetPair used for display.\r\n@param _description The description of the game used for display.\r",
+            "id": 1797,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setAssetPairInformation",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1795,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1790,
+                  "name": "_assetPair",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1797,
+                  "src": "3310:17:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1789,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3310:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1792,
+                  "name": "_assetPairAlias",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1797,
+                  "src": "3329:22:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1791,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3329:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1794,
+                  "name": "_description",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1797,
+                  "src": "3353:19:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1793,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3353:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3309:64:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1796,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3382:0:5"
+            },
+            "scope": 1843,
+            "src": "3277:106:5",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Set game variables and start game.\r\n@param _betsDurationMinutes Specifies the time in minutes of the duration of the betting period.\r\n@param _getResultsMinutes Specifies the time in minutes to get the match result after the betting period.\r\n@param _maxTicketsPerPlayer Max number of tickets that a player can buy.\r\n@param _ticketPrice The price of a single ticket.\r\n@param _houseEdge House profit per ticket. \r\n@param _oraclizeGasLimit Gas amount to be used by the Oracle calls.\r",
+            "id": 1812,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setGameVariablesAndStart",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1810,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1799,
+                  "name": "_betsDurationMinutes",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1812,
+                  "src": "3980:26:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 1798,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3980:5:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1801,
+                  "name": "_getResultsMinutes",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1812,
+                  "src": "4018:24:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 1800,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4018:5:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1803,
+                  "name": "_maxTicketsPerPlayer",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1812,
+                  "src": "4053:26:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 1802,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4053:5:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1805,
+                  "name": "_ticketPrice",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1812,
+                  "src": "4090:17:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1804,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4090:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1807,
+                  "name": "_houseEdge",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1812,
+                  "src": "4119:15:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1806,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4119:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1809,
+                  "name": "_oraclizeGasLimit",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1812,
+                  "src": "4145:24:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 1808,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4145:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3969:207:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1811,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4185:0:5"
+            },
+            "scope": 1843,
+            "src": "3936:250:5",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Returns the game relevant information. \r\n@return _assetPair The assetPair of the game.\r\n@return _assetPairAlias  Alias of the assetPair used for display.\r\n@return _description The description of the game used for display.\r\n@return _ticketPrice The price of a single ticket.\r\n@return _currentMatchId Id of the current running match. \r\n@return _maxTicketsPerPlayer Max number of tickets that a player can buy.\r\n@return _betsDurationMinutes Specifies the time in minutes of the duration of the betting period.\r\n@return _getResultsMinutes  Specifies the time in minutes to get the match result after the betting period.\r",
+            "id": 1831,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getGameInfo",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1813,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4908:2:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1830,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1815,
+                  "name": "_assetPair",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1831,
+                  "src": "4944:18:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1814,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4944:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1817,
+                  "name": "_assetPairAlias",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1831,
+                  "src": "4974:23:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1816,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4974:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1819,
+                  "name": "_description",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1831,
+                  "src": "5009:20:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1818,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5009:6:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1821,
+                  "name": "_ticketPrice",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1831,
+                  "src": "5041:18:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1820,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5041:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1823,
+                  "name": "_currentMatchId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1831,
+                  "src": "5071:21:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1822,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5071:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1825,
+                  "name": "_maxTicketsPerPlayer",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1831,
+                  "src": "5103:27:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 1824,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5103:5:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1827,
+                  "name": "_betsDurationMinutes",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1831,
+                  "src": "5141:26:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 1826,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5141:5:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1829,
+                  "name": "_getResultsMinutes",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1831,
+                  "src": "5178:24:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 1828,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5178:5:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4933:276:5"
+            },
+            "scope": 1843,
+            "src": "4888:322:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Payable function to buy tickets.\r\n@param option Option to bet to.\r",
+            "id": 1836,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "buyTickets",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1834,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1833,
+                  "name": "option",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1836,
+                  "src": "5340:11:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1832,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5340:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5339:13:5"
+            },
+            "payable": true,
+            "returnParameters": {
+              "id": 1835,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5369:0:5"
+            },
+            "scope": 1843,
+            "src": "5320:50:5",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 1839,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "withdrawEarnings",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1837,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5481:2:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1838,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5492:0:5"
+            },
+            "scope": 1843,
+            "src": "5456:37:5",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 1842,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "destructContract",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1840,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5606:2:5"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1841,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5617:0:5"
+            },
+            "scope": 1843,
+            "src": "5581:37:5",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1844,
+        "src": "121:5500:5"
+      }
+    ],
+    "src": "0:5621:5"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2018-08-28T04:16:34.176Z"
+}

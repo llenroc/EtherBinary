@@ -1,0 +1,34 @@
+{
+    "Games": [
+        {
+            "AssetPair": "XXBTZUSD",
+            "AssetPairAlias": "BTC/USD",
+            "Description": "Bitcoin"
+        },
+        {
+            "AssetPair": "XETHZUSD",
+            "AssetPairAlias": "ETH/USD",
+            "Description": "Ethereum"
+        },
+        {
+            "AssetPair": "XXRPZUSD",
+            "AssetPairAlias": "XRP/USD",
+            "Description": "Ripple"
+        },
+        {
+            "AssetPair": "BCHUSD",
+            "AssetPairAlias": "BCH/USD",
+            "Description": "Bitcoin Cash"
+        },
+        {
+            "AssetPair": "EOSUSD",
+            "AssetPairAlias": "EOS/USD",
+            "Description": "EOS"
+        },
+        {
+            "AssetPair": "XXLMZUSD",
+            "AssetPairAlias": "XLM/USD",
+            "Description": "Stellar"
+        }
+    ]
+}

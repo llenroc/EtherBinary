@@ -1,0 +1,217 @@
+<div class="container-fluid body-content">
+    <div class="row align-items-center justify-content-center align-middle mt-5" *ngIf="!hasMetaMask()">
+        <div class="row align-items-center justify-content-center mb-4" style="width: 100%;">
+            <a href="https://metamask.io/">
+                <img  src="assets/images/download-metamask.png">
+            </a>
+        </div>
+        <h4>MetaMask is not installed, please install to continue!</h4>
+    </div>
+    <div class="row align-items-center justify-content-center align-middle mt-5" *ngIf="isMetaMaskLocked()">
+        <div class="row align-items-center justify-content-center mb-4" style="width: 100%;">
+            <img  src="assets/images/Warning-blue.png" style="width: 180px;">
+        </div>
+        <h4>Seems like your MetaMask is locked, please unlock and reload the page to continue!</h4>
+    </div>
+    <div class="row" *ngIf="hasMetaMask() && !isMetaMaskLocked()">
+        <div class="col col-12">
+            <div class="row align-items-center justify-content-center align-middle mt-3 w-100 mb-3">
+                <h4>Current Games</h4>
+            </div>
+            <div class="row">
+                <div class="col col-4" *ngFor="let game of currentGamesList;">
+                    <div *ngIf="isLoadingMatches(game)" class="card-deck mb-3" >
+                        <div class="card mb-3 box-shadow">
+                            <div class="card-header" style="background-color: #3D4A59; color: white;">
+                                <h4 class="my-0 font-weight-normal text-center">
+                                    <strong> Loading...
+                                    </strong>
+                                </h4>
+                            </div>
+                            <div class="card-body  text-center">
+                                <img src="assets/images/Loading.gif">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-deck mb-3"  *ngFor="let match of game.Matches |  matchesFilter: {Id : game.CurrentMatchId}">
+                        <div class="card mb-3 box-shadow">
+                            <div class="card-header" style="background-color: #3D4A59; color: white;">
+                                <h4 class="my-0 font-weight-normal text-center">
+                                    <strong>{{game.AssetPairAlias}}</strong>
+                                </h4>
+
+                                <div class="row align-items-center justify-content-center align-middle mt-3 mb-3" 
+                                        style="margin-bottom: 0px !important; margin-top: 10px !important;">
+                                    <a href="javascript:void(0);" (click)="toggleModal(modals.myHistory, game);" class="btn btn-xs btn-success pull-left mr-3" style="font-size: 12px;">
+                                        <i class="fa fa-user-circle" ></i>
+                                        My Results
+                                    </a>
+                                    
+                                    <a href="javascript:void(0);" (click)="toggleModal(modals.historic, game);"  class="btn btn-xs btn-primary pull-right" style="font-size: 12px;">
+                                        <i class="fa fa-history" ></i>
+                                        Historic
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title pricing-card-title text-center mb-3" >
+                                    <small>Initial price: </small>
+                                    <strong>{{match.InitialPrice | currency }}</strong>
+                                    <small class="text-muted">USD</small>
+                                </h4>
+                                <h6 class="card-title pricing-card-title text-center" >
+                                    <strong style="color: green;" *ngIf="match.AcceptingBets">Acepting Bets</strong>
+                                    <strong style="color: red;" *ngIf="!match.AcceptingBets">No Acepting Bets</strong>
+                                    <br>
+                                    <small class="text-muted"  *ngIf="!match.AcceptingBets"> 
+                                        Waiting for final results...
+                                        <i class="fa fa-spinner fa-spin"></i>
+                                    </small>
+                                    <small class="text-muted" *ngIf="match.AcceptingBets"></small>
+                                </h6>
+                                <ul class="list-unstyled mt-3">
+                                    <li>
+                                        <strong>Match Id: </strong> {{game.CurrentMatchId}}
+                                    </li>
+                                    <li>
+                                        <strong>Ticket Price: </strong> {{game.TicketPrice}}
+                                        <small class="text-muted"> ETH</small>
+                                    </li>
+                                    <li>
+                                        <strong>My Tickets: </strong> {{match.PlayerTotalTickets}} / {{game.MaxTicketsPerPlayer}}
+                                    </li>
+                                    <li>
+                                        <div style="max-width: 100%; flex: 0 0 100%;">
+                                            <div class="progress" style="border: solid 1px gray;margin-top: 14px;">
+                                                <div class="progress-bar" role="progressbar" 
+                                                    [style.width.%]="(match.HigherTickets / (match.TotalTickets == 0 ? 1 : match.TotalTickets)) * 100" 
+                                                    style="background-color: #28a745;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                                    {{ (match.HigherTickets / (match.TotalTickets == 0 ? 1 : match.TotalTickets)) | percent }}
+                                                </div>
+                                                <div class="progress-bar" role="progressbar" 
+                                                    [style.width.%]="(match.LowerTickets / (match.TotalTickets == 0 ? 1 : match.TotalTickets)) * 100" 
+                                                    style="background-color: #dc3545;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                                    {{ (match.LowerTickets / (match.TotalTickets == 0 ? 1 : match.TotalTickets)) | percent }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <div class="btn-group btn-group-toggle mb-3 w-100" ngbRadioGroup name="radioBasic" [(ngModel)]="match.PlayerOption">
+                                    <label ngbButtonLabel class="btn-outline-success w-50">
+                                        <input ngbButton type="radio" [value]="true" [disabled]="(!match.AcceptingBets || match.PlayerTotalTickets > 0) && !match.PlayerOption"> Higher
+                                    </label>
+                                    <label ngbButtonLabel class="btn-outline-danger w-50">
+                                        <input ngbButton type="radio" [value]="false" [disabled]="(!match.AcceptingBets || match.PlayerTotalTickets > 0) && match.PlayerOption"> Lower
+                                    </label>
+                                </div>
+                                
+                                <div class="input-group" >
+                                    <input class="form-control" type="number" value="1" min="1" [max]="game.MaxTicketsPerPlayer - match.PlayerTotalTickets" 
+                                    [disabled]="!match.AcceptingBets || (game.MaxTicketsPerPlayer == match.PlayerTotalTickets)" placeholder="Tickets to buy" [(ngModel)]="game.TicketsToBuy">
+                                    <div class="input-group-append">
+                                        <a href="javascript:void(0);" (click)="buyTicket(game)" class="btn btn-primary" 
+                                            [class.disabled]="!match.AcceptingBets || (game.MaxTicketsPerPlayer == match.PlayerTotalTickets) || (game.TicketsToBuy < 1)">
+                                            <i class="fa" [ngClass]="{'fa-spinner fa-spin': game.BuyingTicket,'fa-check': !game.BuyingTicket}"></i>
+                                            {{!game.BuyingTicket ? 'Buy Ticket(s)': 'Working...'}}
+                                        </a>
+                                    </div>
+                                </div>
+                                <ngb-alert *ngIf="game.ErrorMessage" type="danger" (close)="game.ErrorMessage = null">{{ game.ErrorMessage }}</ngb-alert>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+    
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+    <div class="modal-dialog  modal-dialog-centered" style="max-width: 900px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 *ngIf="modals.currentModal == 'myHistory'" class="modal-title">My Results (Last 10) - <strong>{{ modalGame.AssetPairAlias }} </strong></h4>
+                <h4 *ngIf="modals.currentModal == 'historic'" class="modal-title">Historic (Last 10) - <strong>{{ modalGame.AssetPairAlias }} </strong></h4>
+                <button type="button" class="close" aria-label="Close" (click)="toggleModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row align-items-center justify-content-center align-middle mt-3 w-100 mb-3">
+                    <table class="table table-bordered  table-sm" style="width: 50%;font-size: 12px;">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th class="text-center" scope="col">All Time Earnings</th>
+                                <th class="text-center" scope="col">Available Earnings</th>
+                                <th class="text-center" scope="col"> Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th style="vertical-align: middle;" class="text-center" scope="row"> {{ modalGame.PlayerTotalEarnings | number : '1.2-2'}} </th>
+                                <th style="vertical-align: middle;" class="text-center" scope="row"> {{ modalGame.PlayerPendingEarnings | number : '1.2-2'}} </th>
+                                <th class="text-center" scope="row"> 
+                                    <button [disabled]="modalGame.PlayerPendingEarnings <= 0" type="button" 
+                                    class="btn btn-success btn-sm" (click)="withdrawEarnings(modalGame)">Withdraw</button>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <table class="table table-hover table-sm ">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="text-center" scope="col">#</th>
+                            <th class="text-center" scope="col">Inital Price</th>
+                            <th class="text-center" scope="col">Final Price</th>
+                            <th class="text-center" scope="col">Final Result</th>
+                            <th *ngIf="modals.currentModal == 'myHistory'" class="text-center" scope="col">My Tickets</th>
+                            <th *ngIf="modals.currentModal == 'myHistory'" class="text-center" scope="col">My Result</th>
+                            <th *ngIf="modals.currentModal == 'myHistory'" class="text-center" scope="col">Withdrawn</th>
+
+                            <th *ngIf="modals.currentModal == 'historic'" class="text-center" scope="col">Start Time</th>
+                            <th *ngIf="modals.currentModal == 'historic'" class="text-center" scope="col">End Time</th>
+                            <th *ngIf="modals.currentModal == 'historic'" class="text-center" scope="col">Total Tickets</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let match of modalGame.Matches | slice:0:10 |  matchesPlayerFilter | orderBy: 'Id' : true">
+                            <th class="text-center" scope="row"> {{match.Id}} </th>
+                            <td class="text-center"> 
+                                {{ match.InitialPrice | currency}} 
+                                <small class="text-muted">USD</small>
+                            </td>
+                            <td class="text-center"> 
+                                {{ match.FinalPrice | currency}} 
+                                <small class="text-muted">USD</small>
+                            </td>
+                            <td class="text-center"> 
+                                <span *ngIf="match.WinnerOption" class="badge badge-pill badge-success">Higher</span>
+                                <span *ngIf="!match.WinnerOption" class="badge badge-pill badge-danger">Lower</span>    
+                            </td>
+                            <td *ngIf="modals.currentModal == 'myHistory'" class="text-center"> {{ match.PlayerTotalTickets }}</td>
+                            <td *ngIf="modals.currentModal == 'myHistory'" class="text-center"> 
+                                <span *ngIf="match.PlayerOption === match.WinnerOption" class="badge badge-pill badge-success">Won  -  {{ match.PlayerEarnings | number : '1.2-2'}} ETH </span>
+                                <span *ngIf="match.PlayerOption !== match.WinnerOption" class="badge badge-pill badge-danger">Lost  -  {{ (match.PlayerTotalTickets * modalGame.TicketPrice) | number : '1.1-1'}} ETH</span>    
+                            </td>
+                            <td *ngIf="modals.currentModal == 'myHistory'" class="text-center"> 
+                                    <span *ngIf="match.EarningsWithdrawn" class="badge badge-pill badge-success">Yes</span>
+                                    <span *ngIf="!match.EarningsWithdrawn" class="badge badge-pill badge-danger">No</span>    
+                                </td>
+
+                            <td *ngIf="modals.currentModal == 'historic'" class="text-center"> {{ match.StartTime  * 1000 | date:'short'}}</td>
+                            <td *ngIf="modals.currentModal == 'historic'" class="text-center"> {{ match.EndTime  * 1000 | date:'short' }}</td>
+                            <td *ngIf="modals.currentModal == 'historic'" class="text-center"> {{ match.TotalTickets }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="toggleModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

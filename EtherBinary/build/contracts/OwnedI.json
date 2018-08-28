@@ -1,0 +1,566 @@
+{
+  "contractName": "OwnedI",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "LogOwnerSet",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "setOwner",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getOwner",
+      "outputs": [
+        {
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.4.22;\r\n\r\n/** @title Interface that establishes the functions that a Owned contract must implement. */\r\ninterface OwnedI {\r\n    /**\r\n     * @dev Event emitted when a new owner has been set.\r\n     * @param previousOwner The previous owner, who happened to effect the change.\r\n     * @param newOwner The new, and current, owner the contract.\r\n     */\r\n    event LogOwnerSet(address indexed previousOwner, address indexed newOwner);\r\n\r\n    /** @dev Sets a new owner for this contract.\r\n     * @param newOwner The new owner of the contract\r\n     * @return success Whether the action was successful.\r\n     */\r\n    function setOwner(address newOwner) external returns(bool success);\r\n\r\n    /**\r\n     * @return owner The owner of this contract.\r\n     */\r\n    function getOwner() external view returns(address owner);\r\n}",
+  "sourcePath": "C:\\Data\\Junior\\Consensys Academy\\Final Project\\EtherBinary\\contracts\\interfaces\\OwnedI.sol",
+  "ast": {
+    "absolutePath": "/C/Data/Junior/Consensys Academy/Final Project/EtherBinary/contracts/interfaces/OwnedI.sol",
+    "exportedSymbols": {
+      "OwnedI": [
+        1864
+      ]
+    },
+    "id": 1865,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1845,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".22"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:6"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title Interface that establishes the functions that a Owned contract must implement. ",
+        "fullyImplemented": false,
+        "id": 1864,
+        "linearizedBaseContracts": [
+          1864
+        ],
+        "name": "OwnedI",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": "@dev Event emitted when a new owner has been set.\r\n@param previousOwner The previous owner, who happened to effect the change.\r\n@param newOwner The new, and current, owner the contract.\r",
+            "id": 1851,
+            "name": "LogOwnerSet",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1850,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1847,
+                  "indexed": true,
+                  "name": "previousOwner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1851,
+                  "src": "390:29:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1846,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "390:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1849,
+                  "indexed": true,
+                  "name": "newOwner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1851,
+                  "src": "421:24:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1848,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "421:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "389:57:6"
+            },
+            "src": "372:75:6"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Sets a new owner for this contract.\r\n@param newOwner The new owner of the contract\r\n@return success Whether the action was successful.\r",
+            "id": 1858,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setOwner",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1854,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1853,
+                  "name": "newOwner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1858,
+                  "src": "645:16:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1852,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "645:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "644:18:6"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1857,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1856,
+                  "name": "success",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1858,
+                  "src": "680:12:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1855,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "680:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "679:14:6"
+            },
+            "scope": 1864,
+            "src": "627:67:6",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@return owner The owner of this contract.\r",
+            "id": 1863,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getOwner",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1859,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "787:2:6"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1862,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1861,
+                  "name": "owner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1863,
+                  "src": "812:13:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1860,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "812:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "811:15:6"
+            },
+            "scope": 1864,
+            "src": "770:57:6",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1865,
+        "src": "122:708:6"
+      }
+    ],
+    "src": "0:830:6"
+  },
+  "legacyAST": {
+    "absolutePath": "/C/Data/Junior/Consensys Academy/Final Project/EtherBinary/contracts/interfaces/OwnedI.sol",
+    "exportedSymbols": {
+      "OwnedI": [
+        1864
+      ]
+    },
+    "id": 1865,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1845,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".22"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:6"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title Interface that establishes the functions that a Owned contract must implement. ",
+        "fullyImplemented": false,
+        "id": 1864,
+        "linearizedBaseContracts": [
+          1864
+        ],
+        "name": "OwnedI",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": "@dev Event emitted when a new owner has been set.\r\n@param previousOwner The previous owner, who happened to effect the change.\r\n@param newOwner The new, and current, owner the contract.\r",
+            "id": 1851,
+            "name": "LogOwnerSet",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1850,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1847,
+                  "indexed": true,
+                  "name": "previousOwner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1851,
+                  "src": "390:29:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1846,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "390:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1849,
+                  "indexed": true,
+                  "name": "newOwner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1851,
+                  "src": "421:24:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1848,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "421:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "389:57:6"
+            },
+            "src": "372:75:6"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Sets a new owner for this contract.\r\n@param newOwner The new owner of the contract\r\n@return success Whether the action was successful.\r",
+            "id": 1858,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setOwner",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1854,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1853,
+                  "name": "newOwner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1858,
+                  "src": "645:16:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1852,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "645:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "644:18:6"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1857,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1856,
+                  "name": "success",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1858,
+                  "src": "680:12:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1855,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "680:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "679:14:6"
+            },
+            "scope": 1864,
+            "src": "627:67:6",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@return owner The owner of this contract.\r",
+            "id": 1863,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getOwner",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1859,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "787:2:6"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1862,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1861,
+                  "name": "owner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1863,
+                  "src": "812:13:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1860,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "812:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "811:15:6"
+            },
+            "scope": 1864,
+            "src": "770:57:6",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1865,
+        "src": "122:708:6"
+      }
+    ],
+    "src": "0:830:6"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2018-08-28T04:16:34.261Z"
+}

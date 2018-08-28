@@ -1,0 +1,1220 @@
+{
+  "contractName": "GameFactoryI",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "assetPair",
+          "type": "string"
+        },
+        {
+          "name": "assetPairAlias",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ],
+      "name": "createNewGame",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "destructContract",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newBetsDurationMinutes",
+          "type": "uint8"
+        }
+      ],
+      "name": "setBetsDurationMinutes",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newGetResultsMinutes",
+          "type": "uint8"
+        }
+      ],
+      "name": "setGetResultsMinutes",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newMaxTicketsPerPlayer",
+          "type": "uint8"
+        }
+      ],
+      "name": "setMaxTicketsPerPlayer",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newTicketPrice",
+          "type": "uint256"
+        }
+      ],
+      "name": "setTicketPrice",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newHouseEdge",
+          "type": "uint256"
+        }
+      ],
+      "name": "setHouseEdge",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOraclizeGasLimit",
+          "type": "uint32"
+        }
+      ],
+      "name": "setOraclizeGas",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.4.22;\r\n\r\n/** @title Interface that establishes the functions that a Game Factory contract must implement. */\r\ninterface GameFactoryI {\r\n\r\n    /** \r\n    * @dev Function used to create a new game based on the provided parameters.\r\n    * @param assetPair The assetPair of the game.\r\n    * @param assetPairAlias Alias of the assetPair used for display.\r\n    * @param description The description of the game to be desplayed.\r\n    * @return The address of the deployed game.\r\n    */\r\n    function createNewGame(string assetPair, string assetPairAlias, string description) external payable returns (address);\r\n\r\n    // @dev  Allows the owner to destruct the contrat in case of an emergency.\r\n    function destructContract() external;\r\n\r\n    /** \r\n    * @dev Sets bets duration minutes.\r\n    * @param newBetsDurationMinutes  Specifies the time in minutes of the duration of the betting period.\r\n    */\r\n    function setBetsDurationMinutes(uint8 newBetsDurationMinutes) external;\r\n\r\n    /** \r\n    * @dev Sets results duration minutes.\r\n    * @param newGetResultsMinutes Specifies the time in minutes to get the match result after the betting period.\r\n    */\r\n    function setGetResultsMinutes(uint8 newGetResultsMinutes) external;\r\n\r\n   /** \r\n    * @dev Sets bets max tickets per player.\r\n    * @param newMaxTicketsPerPlayer Max number of tickets that a player can buy.\r\n    */\r\n    function setMaxTicketsPerPlayer(uint8 newMaxTicketsPerPlayer) external;\r\n\r\n   /** \r\n    * @dev Sets tickets price.\r\n    * @param newTicketPrice The price of a single ticket.\r\n    */\r\n    function setTicketPrice(uint newTicketPrice) external;\r\n\r\n   /** \r\n    * @dev Sets house edge.\r\n    * @param newHouseEdge House profit per ticket. \r\n    */\r\n    function setHouseEdge(uint newHouseEdge) external;\r\n\r\n   /** \r\n    * @dev Sets gas limit for Oraclize calls.\r\n    * @param newOraclizeGasLimit Gas amount to be used by the Oracle calls.\r\n    */\r\n    function setOraclizeGas(uint32 newOraclizeGasLimit) external;\r\n}",
+  "sourcePath": "C:\\Data\\Junior\\Consensys Academy\\Final Project\\EtherBinary\\contracts\\interfaces\\GameFactoryI.sol",
+  "ast": {
+    "absolutePath": "/C/Data/Junior/Consensys Academy/Final Project/EtherBinary/contracts/interfaces/GameFactoryI.sol",
+    "exportedSymbols": {
+      "GameFactoryI": [
+        1718
+      ]
+    },
+    "id": 1719,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1673,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".22"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:4"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title Interface that establishes the functions that a Game Factory contract must implement. ",
+        "fullyImplemented": false,
+        "id": 1718,
+        "linearizedBaseContracts": [
+          1718
+        ],
+        "name": "GameFactoryI",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@dev Function used to create a new game based on the provided parameters.\r\n@param assetPair The assetPair of the game.\r\n@param assetPairAlias Alias of the assetPair used for display.\r\n@param description The description of the game to be desplayed.\r\n@return The address of the deployed game.\r",
+            "id": 1684,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "createNewGame",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1680,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1675,
+                  "name": "assetPair",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1684,
+                  "src": "524:16:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1674,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "524:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1677,
+                  "name": "assetPairAlias",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1684,
+                  "src": "542:21:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1676,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "542:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1679,
+                  "name": "description",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1684,
+                  "src": "565:18:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1678,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "565:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "523:61:4"
+            },
+            "payable": true,
+            "returnParameters": {
+              "id": 1683,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1682,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1684,
+                  "src": "611:7:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1681,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "611:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "610:9:4"
+            },
+            "scope": 1718,
+            "src": "501:119:4",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 1687,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "destructContract",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1685,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "733:2:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1686,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "744:0:4"
+            },
+            "scope": 1718,
+            "src": "708:37:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Sets bets duration minutes.\r\n@param newBetsDurationMinutes  Specifies the time in minutes of the duration of the betting period.\r",
+            "id": 1692,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setBetsDurationMinutes",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1690,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1689,
+                  "name": "newBetsDurationMinutes",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1692,
+                  "src": "950:28:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 1688,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "950:5:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "949:30:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1691,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "988:0:4"
+            },
+            "scope": 1718,
+            "src": "918:71:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Sets results duration minutes.\r\n@param newGetResultsMinutes Specifies the time in minutes to get the match result after the betting period.\r",
+            "id": 1697,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setGetResultsMinutes",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1695,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1694,
+                  "name": "newGetResultsMinutes",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1697,
+                  "src": "1203:26:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 1693,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1203:5:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1202:28:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1696,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1239:0:4"
+            },
+            "scope": 1718,
+            "src": "1173:67:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Sets bets max tickets per player.\r\n@param newMaxTicketsPerPlayer Max number of tickets that a player can buy.\r",
+            "id": 1702,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setMaxTicketsPerPlayer",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1700,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1699,
+                  "name": "newMaxTicketsPerPlayer",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1702,
+                  "src": "1425:28:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 1698,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1425:5:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1424:30:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1701,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1463:0:4"
+            },
+            "scope": 1718,
+            "src": "1393:71:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Sets tickets price.\r\n@param newTicketPrice The price of a single ticket.\r",
+            "id": 1707,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setTicketPrice",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1705,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1704,
+                  "name": "newTicketPrice",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1707,
+                  "src": "1604:19:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1703,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1604:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1603:21:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1706,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1633:0:4"
+            },
+            "scope": 1718,
+            "src": "1580:54:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Sets house edge.\r\n@param newHouseEdge House profit per ticket. \r",
+            "id": 1712,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setHouseEdge",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1710,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1709,
+                  "name": "newHouseEdge",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1712,
+                  "src": "1763:17:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1708,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1763:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1762:19:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1711,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1790:0:4"
+            },
+            "scope": 1718,
+            "src": "1741:50:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Sets gas limit for Oraclize calls.\r\n@param newOraclizeGasLimit Gas amount to be used by the Oracle calls.\r",
+            "id": 1717,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setOraclizeGas",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1715,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1714,
+                  "name": "newOraclizeGasLimit",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1717,
+                  "src": "1964:26:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 1713,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1964:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1963:28:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1716,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2000:0:4"
+            },
+            "scope": 1718,
+            "src": "1940:61:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1719,
+        "src": "129:1875:4"
+      }
+    ],
+    "src": "0:2004:4"
+  },
+  "legacyAST": {
+    "absolutePath": "/C/Data/Junior/Consensys Academy/Final Project/EtherBinary/contracts/interfaces/GameFactoryI.sol",
+    "exportedSymbols": {
+      "GameFactoryI": [
+        1718
+      ]
+    },
+    "id": 1719,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1673,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".22"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:4"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title Interface that establishes the functions that a Game Factory contract must implement. ",
+        "fullyImplemented": false,
+        "id": 1718,
+        "linearizedBaseContracts": [
+          1718
+        ],
+        "name": "GameFactoryI",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@dev Function used to create a new game based on the provided parameters.\r\n@param assetPair The assetPair of the game.\r\n@param assetPairAlias Alias of the assetPair used for display.\r\n@param description The description of the game to be desplayed.\r\n@return The address of the deployed game.\r",
+            "id": 1684,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "createNewGame",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1680,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1675,
+                  "name": "assetPair",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1684,
+                  "src": "524:16:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1674,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "524:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1677,
+                  "name": "assetPairAlias",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1684,
+                  "src": "542:21:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1676,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "542:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1679,
+                  "name": "description",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1684,
+                  "src": "565:18:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 1678,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "565:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "523:61:4"
+            },
+            "payable": true,
+            "returnParameters": {
+              "id": 1683,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1682,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1684,
+                  "src": "611:7:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1681,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "611:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "610:9:4"
+            },
+            "scope": 1718,
+            "src": "501:119:4",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 1687,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "destructContract",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1685,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "733:2:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1686,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "744:0:4"
+            },
+            "scope": 1718,
+            "src": "708:37:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Sets bets duration minutes.\r\n@param newBetsDurationMinutes  Specifies the time in minutes of the duration of the betting period.\r",
+            "id": 1692,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setBetsDurationMinutes",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1690,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1689,
+                  "name": "newBetsDurationMinutes",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1692,
+                  "src": "950:28:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 1688,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "950:5:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "949:30:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1691,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "988:0:4"
+            },
+            "scope": 1718,
+            "src": "918:71:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Sets results duration minutes.\r\n@param newGetResultsMinutes Specifies the time in minutes to get the match result after the betting period.\r",
+            "id": 1697,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setGetResultsMinutes",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1695,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1694,
+                  "name": "newGetResultsMinutes",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1697,
+                  "src": "1203:26:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 1693,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1203:5:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1202:28:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1696,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1239:0:4"
+            },
+            "scope": 1718,
+            "src": "1173:67:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Sets bets max tickets per player.\r\n@param newMaxTicketsPerPlayer Max number of tickets that a player can buy.\r",
+            "id": 1702,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setMaxTicketsPerPlayer",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1700,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1699,
+                  "name": "newMaxTicketsPerPlayer",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1702,
+                  "src": "1425:28:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 1698,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1425:5:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1424:30:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1701,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1463:0:4"
+            },
+            "scope": 1718,
+            "src": "1393:71:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Sets tickets price.\r\n@param newTicketPrice The price of a single ticket.\r",
+            "id": 1707,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setTicketPrice",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1705,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1704,
+                  "name": "newTicketPrice",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1707,
+                  "src": "1604:19:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1703,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1604:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1603:21:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1706,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1633:0:4"
+            },
+            "scope": 1718,
+            "src": "1580:54:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Sets house edge.\r\n@param newHouseEdge House profit per ticket. \r",
+            "id": 1712,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setHouseEdge",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1710,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1709,
+                  "name": "newHouseEdge",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1712,
+                  "src": "1763:17:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1708,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1763:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1762:19:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1711,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1790:0:4"
+            },
+            "scope": 1718,
+            "src": "1741:50:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Sets gas limit for Oraclize calls.\r\n@param newOraclizeGasLimit Gas amount to be used by the Oracle calls.\r",
+            "id": 1717,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setOraclizeGas",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1715,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1714,
+                  "name": "newOraclizeGasLimit",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1717,
+                  "src": "1964:26:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 1713,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1964:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1963:28:4"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1716,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2000:0:4"
+            },
+            "scope": 1718,
+            "src": "1940:61:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1719,
+        "src": "129:1875:4"
+      }
+    ],
+    "src": "0:2004:4"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2018-08-28T04:16:34.174Z"
+}

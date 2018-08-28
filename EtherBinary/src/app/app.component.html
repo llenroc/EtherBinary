@@ -1,0 +1,14 @@
+<header>
+    <div class="pull-left ml-4">
+        <img style="float: left; width: 40px; margin-top: 3px;" src="assets/images/EtherBinary.png">
+        <h4 style="float: right; color: white; line-height: 44px; margin-left: 15px;">EtherBinary</h4>
+    </div>
+    
+    <div class="pull-right mr-3" style="color: white; margin-top: 4px;">
+        <span style="display: block; font-size: 14px;" *ngIf="!isLoadingAccount">Wallet: {{currentAccount}}</span>
+        <span style="display: block; font-size: 14px;" *ngIf="!isLoadingAccount">Balance: {{addressBalance}}</span>
+        <span style="display: block; font-size: 14px;" *ngIf="isLoadingAccount">Loading your account...</span>
+    </div>
+</header>
+<app-home></app-home>
+<footer></footer>

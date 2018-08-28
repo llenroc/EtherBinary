@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700");
+
+html {
+    height: 100%;
+  }
+  html body {
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif !important;
+  }
+  html body .container-fluid.body-content {
+    position: absolute;
+    top: 50px;
+    bottom: 30px;
+    right: 0;
+    left: 0;
+    overflow-y: auto;
+  }
+  header {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      background-color: #3D4A59;
+      height: 50px;
+  }
+  footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #3D4A59;
+      height: 30px;
+  }

@@ -1,0 +1,4204 @@
+{
+  "contractName": "GameManager",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "oldGameFactories",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "currentGameFactory",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "setOwner",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newState",
+          "type": "bool"
+        }
+      ],
+      "name": "setPaused",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getOwner",
+      "outputs": [
+        {
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "isPaused",
+      "outputs": [
+        {
+          "name": "isIndeed",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "gameFactoryAddress",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newPausedState",
+          "type": "bool"
+        }
+      ],
+      "name": "LogPausedSet",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "LogOwnerSet",
+      "type": "event"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getDeployedAssetsCount",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "index",
+          "type": "uint8"
+        }
+      ],
+      "name": "getDeployedAssetContractAt",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "assetPair",
+          "type": "string"
+        },
+        {
+          "name": "assetPairAlias",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ],
+      "name": "createNewGame",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newGameFactoryAddress",
+          "type": "address"
+        }
+      ],
+      "name": "setGameFactory",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b50604051602080610d2283398101604052516000805460a060020a60ff0219600160a060020a031991821633171690915560018054600160a060020a0390931692909116919091179055610cb9806100696000396000f3006080604052600436106100a35763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166305a6131e81146100a85780630d545681146100dc5780630f0bcba01461018857806313af40351461019d57806316c38b3c146101d25780632f329d47146101ec578063893d20e8146102b4578063b187bd26146102c9578063e0427461146102de578063ea4fcec114610305575b600080fd5b3480156100b457600080fd5b506100c0600435610328565b60408051600160a060020a039092168252519081900360200190f35b3480156100e857600080fd5b506100f760ff60043516610350565b604051808060200183600160a060020a0316600160a060020a03168152602001828103825284818151815260200191508051906020019080838360005b8381101561014c578181015183820152602001610134565b50505050905090810190601f1680156101795780820380516001836020036101000a031916815260200191505b50935050505060405180910390f35b34801561019457600080fd5b506100c0610496565b3480156101a957600080fd5b506101be600160a060020a03600435166104a5565b604080519115158252519081900360200190f35b3480156101de57600080fd5b506101be600435151561054d565b6040805160206004803580820135601f81018490048402850184019095528484526100c094369492936024939284019190819084018382808284375050604080516020601f89358b018035918201839004830284018301909452808352979a99988101979196509182019450925082915084018382808284375050604080516020601f89358b018035918201839004830284018301909452808352979a9998810197919650918201945092508291508401838280828437509497506106089650505050505050565b3480156102c057600080fd5b506100c0610a83565b3480156102d557600080fd5b506101be610a93565b3480156102ea57600080fd5b506102f3610aa3565b60408051918252519081900360200190f35b34801561031157600080fd5b50610326600160a060020a0360043516610aa9565b005b600280548290811061033657fe5b600091825260209091200154600160a060020a0316905081565b6060600060038360ff1681548110151561036657fe5b90600052602060002001600460038560ff1681548110151561038457fe5b9060005260206000200160405180828054600181600116156101000203166002900480156103e95780601f106103c75761010080835404028352918201916103e9565b820191906000526020600020905b8154815290600101906020018083116103d5575b50509283525050604080516020928190038301812054845460026101006001831615026000190190911604601f8101859004850283018501909352828252600160a060020a031692909184918301828280156104865780601f1061045b57610100808354040283529160200191610486565b820191906000526020600020905b81548152906001019060200180831161046957829003601f168201915b5050505050915091509150915091565b600154600160a060020a031681565b60008054600160a060020a031633146104bd57600080fd5b600054600160a060020a03838116911614156104d857600080fd5b600160a060020a03821615156104ed57600080fd5b6000805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0384811691821780845560405192939116917fa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb9190a3506001919050565b60008054600160a060020a0316331461056557600080fd5b60005460ff60a060020a90910416151582151514156105a8576040805160e560020a62461bcd028152602060048201526000602482015290519081900360640190fd5b6000805474ff0000000000000000000000000000000000000000191660a060020a841515908102919091178255604051909133917fae0f86d9801b0bd39a2ce25d9fd1f202f2fd22e80150be4a99adb0275a635d6c9190a3506001919050565b60008054600160a060020a0316331461062057600080fd5b60005460a060020a900460ff161561065c576040805160e560020a62461bcd028152602060048201526000602482015290519081900360640190fd5b6000600160a060020a03166004856040518082805190602001908083835b602083106106995780518252601f19909201916020918201910161067a565b51815160209384036101000a6000190180199092169116179052920194855250604051938490030190922054600160a060020a03169290921491506107e29050576005846040518082805190602001908083835b6020831061070c5780518252601f1990920191602091820191016106ed565b51815160209384036101000a600019018019909216911617905292019485525060405193849003810184208851909460049450899350918291908401908083835b6020831061076c5780518252601f19909201916020918201910161074d565b51815160001960209485036101000a01908116901991909116179052920194855250604051938490038101909320548454600181018655600095865293909420909201805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0390941693909317909255506108299050565b60038054600181018083556000929092528551610826917fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b01906020880190610bf5565b50505b6001546040517f2f329d47000000000000000000000000000000000000000000000000000000008152606060048201908152865160648301528651600160a060020a0390931692632f329d479234928992899289929182916024810191604482019160840190602089019080838360005b838110156108b257818101518382015260200161089a565b50505050905090810190601f1680156108df5780820380516001836020036101000a031916815260200191505b50848103835286518152865160209182019188019080838360005b838110156109125781810151838201526020016108fa565b50505050905090810190601f16801561093f5780820380516001836020036101000a031916815260200191505b50848103825285518152855160209182019187019080838360005b8381101561097257818101518382015260200161095a565b50505050905090810190601f16801561099f5780820380516001836020036101000a031916815260200191505b5096505050505050506020604051808303818588803b1580156109c157600080fd5b505af11580156109d5573d6000803e3d6000fd5b50505050506040513d60208110156109ec57600080fd5b505160405185516004918791819060208401908083835b60208310610a225780518252601f199092019160209182019101610a03565b51815160209384036101000a60001901801990921691161790529201948552506040519384900301909220805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0394909416939093179092555090949350505050565b600054600160a060020a03165b90565b60005460a060020a900460ff1690565b60035490565b600054600160a060020a03163314610ac057600080fd5b60005460a060020a900460ff161515610afd576040805160e560020a62461bcd028152602060048201526000602482015290519081900360640190fd5b600154600160a060020a0382811691161415610b89576040805160e560020a62461bcd02815260206004820152602481018290527f4e65772067616d6520666163746f72792061646472657373206d75737420626560448201527f20646966666572656e74207468616e2063757272656e7420616464726573732e606482015290519081900360840190fd5b600180546002805480840182556000919091527f405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ace018054600160a060020a0392831673ffffffffffffffffffffffffffffffffffffffff19918216179091558254169216919091179055565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f10610c3657805160ff1916838001178555610c63565b82800160010185558215610c63579182015b82811115610c63578251825591602001919060010190610c48565b50610c6f929150610c73565b5090565b610a9091905b80821115610c6f5760008155600101610c795600a165627a7a72305820a9a62ce397067bbb4a48f5cb767f3b165b54f3f562507060ab223bd7e580cf300029",
+  "deployedBytecode": "0x6080604052600436106100a35763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166305a6131e81146100a85780630d545681146100dc5780630f0bcba01461018857806313af40351461019d57806316c38b3c146101d25780632f329d47146101ec578063893d20e8146102b4578063b187bd26146102c9578063e0427461146102de578063ea4fcec114610305575b600080fd5b3480156100b457600080fd5b506100c0600435610328565b60408051600160a060020a039092168252519081900360200190f35b3480156100e857600080fd5b506100f760ff60043516610350565b604051808060200183600160a060020a0316600160a060020a03168152602001828103825284818151815260200191508051906020019080838360005b8381101561014c578181015183820152602001610134565b50505050905090810190601f1680156101795780820380516001836020036101000a031916815260200191505b50935050505060405180910390f35b34801561019457600080fd5b506100c0610496565b3480156101a957600080fd5b506101be600160a060020a03600435166104a5565b604080519115158252519081900360200190f35b3480156101de57600080fd5b506101be600435151561054d565b6040805160206004803580820135601f81018490048402850184019095528484526100c094369492936024939284019190819084018382808284375050604080516020601f89358b018035918201839004830284018301909452808352979a99988101979196509182019450925082915084018382808284375050604080516020601f89358b018035918201839004830284018301909452808352979a9998810197919650918201945092508291508401838280828437509497506106089650505050505050565b3480156102c057600080fd5b506100c0610a83565b3480156102d557600080fd5b506101be610a93565b3480156102ea57600080fd5b506102f3610aa3565b60408051918252519081900360200190f35b34801561031157600080fd5b50610326600160a060020a0360043516610aa9565b005b600280548290811061033657fe5b600091825260209091200154600160a060020a0316905081565b6060600060038360ff1681548110151561036657fe5b90600052602060002001600460038560ff1681548110151561038457fe5b9060005260206000200160405180828054600181600116156101000203166002900480156103e95780601f106103c75761010080835404028352918201916103e9565b820191906000526020600020905b8154815290600101906020018083116103d5575b50509283525050604080516020928190038301812054845460026101006001831615026000190190911604601f8101859004850283018501909352828252600160a060020a031692909184918301828280156104865780601f1061045b57610100808354040283529160200191610486565b820191906000526020600020905b81548152906001019060200180831161046957829003601f168201915b5050505050915091509150915091565b600154600160a060020a031681565b60008054600160a060020a031633146104bd57600080fd5b600054600160a060020a03838116911614156104d857600080fd5b600160a060020a03821615156104ed57600080fd5b6000805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0384811691821780845560405192939116917fa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb9190a3506001919050565b60008054600160a060020a0316331461056557600080fd5b60005460ff60a060020a90910416151582151514156105a8576040805160e560020a62461bcd028152602060048201526000602482015290519081900360640190fd5b6000805474ff0000000000000000000000000000000000000000191660a060020a841515908102919091178255604051909133917fae0f86d9801b0bd39a2ce25d9fd1f202f2fd22e80150be4a99adb0275a635d6c9190a3506001919050565b60008054600160a060020a0316331461062057600080fd5b60005460a060020a900460ff161561065c576040805160e560020a62461bcd028152602060048201526000602482015290519081900360640190fd5b6000600160a060020a03166004856040518082805190602001908083835b602083106106995780518252601f19909201916020918201910161067a565b51815160209384036101000a6000190180199092169116179052920194855250604051938490030190922054600160a060020a03169290921491506107e29050576005846040518082805190602001908083835b6020831061070c5780518252601f1990920191602091820191016106ed565b51815160209384036101000a600019018019909216911617905292019485525060405193849003810184208851909460049450899350918291908401908083835b6020831061076c5780518252601f19909201916020918201910161074d565b51815160001960209485036101000a01908116901991909116179052920194855250604051938490038101909320548454600181018655600095865293909420909201805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0390941693909317909255506108299050565b60038054600181018083556000929092528551610826917fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b01906020880190610bf5565b50505b6001546040517f2f329d47000000000000000000000000000000000000000000000000000000008152606060048201908152865160648301528651600160a060020a0390931692632f329d479234928992899289929182916024810191604482019160840190602089019080838360005b838110156108b257818101518382015260200161089a565b50505050905090810190601f1680156108df5780820380516001836020036101000a031916815260200191505b50848103835286518152865160209182019188019080838360005b838110156109125781810151838201526020016108fa565b50505050905090810190601f16801561093f5780820380516001836020036101000a031916815260200191505b50848103825285518152855160209182019187019080838360005b8381101561097257818101518382015260200161095a565b50505050905090810190601f16801561099f5780820380516001836020036101000a031916815260200191505b5096505050505050506020604051808303818588803b1580156109c157600080fd5b505af11580156109d5573d6000803e3d6000fd5b50505050506040513d60208110156109ec57600080fd5b505160405185516004918791819060208401908083835b60208310610a225780518252601f199092019160209182019101610a03565b51815160209384036101000a60001901801990921691161790529201948552506040519384900301909220805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0394909416939093179092555090949350505050565b600054600160a060020a03165b90565b60005460a060020a900460ff1690565b60035490565b600054600160a060020a03163314610ac057600080fd5b60005460a060020a900460ff161515610afd576040805160e560020a62461bcd028152602060048201526000602482015290519081900360640190fd5b600154600160a060020a0382811691161415610b89576040805160e560020a62461bcd02815260206004820152602481018290527f4e65772067616d6520666163746f72792061646472657373206d75737420626560448201527f20646966666572656e74207468616e2063757272656e7420616464726573732e606482015290519081900360840190fd5b600180546002805480840182556000919091527f405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ace018054600160a060020a0392831673ffffffffffffffffffffffffffffffffffffffff19918216179091558254169216919091179055565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f10610c3657805160ff1916838001178555610c63565b82800160010185558215610c63579182015b82811115610c63578251825591602001919060010190610c48565b50610c6f929150610c73565b5090565b610a9091905b80821115610c6f5760008155600101610c795600a165627a7a72305820a9a62ce397067bbb4a48f5cb767f3b165b54f3f562507060ab223bd7e580cf300029",
+  "sourceMap": "288:2743:9:-;;;781:111;8:9:-1;5:2;;;30:1;27;20:12;5:2;781:111:9;;;;;;;;;;;;;321:5;262:25:2;;-1:-1:-1;;;;;;;;;;;;262:25:2;;;277:10;262:25;454:21:3;;;;262:25:2;845:39:9;;-1:-1:-1;;;;;845:39:9;;;;;;;;;;;;;288:2743;;;;;;",
+  "deployedSourceMap": "288:2743:9:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;428:33;;8:9:-1;5:2;;;30:1;27;20:12;5:2;-1:-1;428:33:9;;;;;;;;;-1:-1:-1;;;;;428:33:9;;;;;;;;;;;;;;1361:183;;8:9:-1;5:2;;;30:1;27;20:12;5:2;-1:-1;1361:183:9;;;;;;;;;;;;;;;-1:-1:-1;;;;;1361:183:9;-1:-1:-1;;;;;1361:183:9;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;1361:183:9;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;388:33;;8:9:-1;5:2;;;30:1;27;20:12;5:2;388:33:9;;;;303:281:2;;8:9:-1;5:2;;;30:1;27;20:12;5:2;-1:-1;303:281:2;-1:-1:-1;;;;;303:281:2;;;;;;;;;;;;;;;;;;;;;;;491:227:3;;8:9:-1;5:2;;;30:1;27;20:12;5:2;-1:-1;491:227:3;;;;;;;1843:699:9;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;1843:699:9;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;1843:699:9;;;;-1:-1:-1;1843:699:9;-1:-1:-1;1843:699:9;;-1:-1:-1;1843:699:9;;;;;;;;-1:-1:-1;;1843:699:9;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;1843:699:9;;;;-1:-1:-1;1843:699:9;-1:-1:-1;1843:699:9;;-1:-1:-1;1843:699:9;;;;;;;;-1:-1:-1;1843:699:9;;-1:-1:-1;1843:699:9;;-1:-1:-1;;;;;;;1843:699:9;592:97:2;;8:9:-1;5:2;;;30:1;27;20:12;5:2;592:97:2;;;;726:89:3;;8:9:-1;5:2;;;30:1;27;20:12;5:2;726:89:3;;;;1007:110:9;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1007:110:9;;;;;;;;;;;;;;;;;;;;2694:334;;8:9:-1;5:2;;;30:1;27;20:12;5:2;-1:-1;2694:334:9;-1:-1:-1;;;;;2694:334:9;;;;;;;428:33;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;428:33:9;;-1:-1:-1;428:33:9;:::o;1361:183::-;1433:6;1441:7;1469:14;1484:5;1469:21;;;;;;;;;;;;;;;;;;;1492:20;1513:14;1528:5;1513:21;;;;;;;;;;;;;;;;;;;1492:43;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;1492:43:9;;;-1:-1:-1;;1492:43:9;;;;;;;;;;;;;1461:75;;;1492:43;;1461:75;;;;-1:-1:-1;;1461:75:9;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;1492:43:9;;;;1461:75;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1361:183;;;:::o;388:33::-;;;-1:-1:-1;;;;;388:33:9;;:::o;303:281:2:-;367:12;190;;-1:-1:-1;;;;;190:12:2;176:10;:26;168:35;;;;;;412:12;;-1:-1:-1;;;;;400:24:2;;;412:12;;400:24;;392:33;;;;;;-1:-1:-1;;;;;444:22:2;;;;436:31;;;;;;480:12;:23;;-1:-1:-1;;480:23:2;-1:-1:-1;;;;;480:23:2;;;;;;;;;519:35;;480:23;;531:12;;;519:35;;480:12;519:35;-1:-1:-1;572:4:2;303:281;;;:::o;491:227:3:-;552:12;190::2;;-1:-1:-1;;;;;190:12:2;176:10;:26;168:35;;;;;;585:6:3;;;-1:-1:-1;;;585:6:3;;;;:18;;;;;;;577:31;;;;;-1:-1:-1;;;;;577:31:3;;;;;;;;;;;;;;;;;;;;;;;619:6;:17;;-1:-1:-1;;619:17:3;-1:-1:-1;;;619:17:3;;;;;;;;;;;;652:34;;619:17;;665:10;;652:34;;619:6;652:34;-1:-1:-1;706:4:3;491:227;;;:::o;1843:699:9:-;1975:7;190:12:2;;-1:-1:-1;;;;;190:12:2;176:10;:26;168:35;;;;;;366:6:3;;-1:-1:-1;;;366:6:3;;;;365:7;357:20;;;;;-1:-1:-1;;;;;357:20:3;;;;;;;;;;;;;;;;;;;;;;;2048:1:9;-1:-1:-1;;;;;2005:45:9;:20;2026:9;2005:31;;;;;;;;;;;;;36:153:-1;66:2;58:11;;36:153;;176:10;;164:23;;-1:-1;;139:12;;;;98:2;89:12;;;;114;36:153;;;299:10;344;;263:2;259:12;;;254:3;250:22;-1:-1;;246:30;311:9;;295:26;;;340:21;;377:20;365:33;;2005:31:9;;;;;-1:-1:-1;2005:31:9;;;;;;;;;;;-1:-1:-1;;;;;2005:31:9;:45;;;;;-1:-1:-1;2001:253:9;;-1:-1:-1;2001:253:9;2104:17;2122:9;2104:28;;;;;;;;;;;;;36:153:-1;66:2;58:11;;36:153;;176:10;;164:23;;-1:-1;;139:12;;;;98:2;89:12;;;;114;36:153;;;299:10;344;;263:2;259:12;;;254:3;250:22;-1:-1;;246:30;311:9;;295:26;;;340:21;;377:20;365:33;;2104:28:9;;;;;-1:-1:-1;2104:28:9;;;;;;;;;;2138:31;;2104:28;;2138:20;;-1:-1:-1;2138:31:9;;-1:-1:-1;2104:28:9;;;2138:31;;;;;2104:28;2138:31;36:153:-1;66:2;58:11;;36:153;;176:10;;164:23;;-1:-1;;139:12;;;;98:2;89:12;;;;114;36:153;;;299:10;344;;-1:-1;;263:2;259:12;;;254:3;250:22;246:30;340:21;;;311:9;;295:26;;;;377:20;365:33;;2138:31:9;;;;;-1:-1:-1;2138:31:9;;;;;;;;;;;;27:10:-1;;274:1;23:18;;45:23;;-1:-1;2104:66:9;;;;;;;;;;;;-1:-1:-1;;2104:66:9;-1:-1:-1;;;;;2138:31:9;;;2104:66;;;;;;;-1:-1:-1;2001:253:9;;-1:-1:-1;2001:253:9;;2212:14;27:10:-1;;39:1;23:18;;45:23;;;-1:-1;2212:30:9;;;;;;;;;;;;;;;;:::i;:::-;;;2001:253;2392:18;;2379:155;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;2392:18:9;;;;2379:46;;2432:9;;2457;;2482:14;;2512:11;;2379:155;;;;;;;;;;;;;;;;;;;;;2392:18;8:100:-1;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;2379:155:9;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;2379:155:9;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;2379:155:9;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;2379:155:9;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;2379:155:9;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2379:155:9;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;2379:155:9;;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;2379:155:9;2345:31;;;;:20;;2366:9;;2345:31;;2379:155;2345:31;;;;;;36:153:-1;66:2;58:11;;36:153;;176:10;;164:23;;-1:-1;;139:12;;;;98:2;89:12;;;;114;36:153;;;299:10;344;;263:2;259:12;;;254:3;250:22;-1:-1;;246:30;311:9;;295:26;;;340:21;;377:20;365:33;;2345:31:9;;;;;-1:-1:-1;2345:31:9;;;;;;;;;;:189;;-1:-1:-1;;2345:189:9;-1:-1:-1;;;;;2345:189:9;;;;;;;;;;;-1:-1:-1;1843:699:9;;;-1:-1:-1;;;;1843:699:9:o;592:97:2:-;634:13;667:12;-1:-1:-1;;;;;667:12:2;592:97;;:::o;726:89:3:-;768:13;801:6;-1:-1:-1;;;801:6:3;;;;;726:89::o;1007:110:9:-;1088:14;:21;1007:110;:::o;2694:334::-;190:12:2;;-1:-1:-1;;;;;190:12:2;176:10;:26;168:35;;;;;;283:6:3;;-1:-1:-1;;;283:6:3;;;;275:19;;;;;;;-1:-1:-1;;;;;275:19:3;;;;;;;;;;;;;;;;;;;;;;;2826:18:9;;-1:-1:-1;;;;;2801:43:9;;;2826:18;;2801:43;;2793:120;;;;;-1:-1:-1;;;;;2793:120:9;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2948:18;;;2926:16;27:10:-1;;23:18;;;45:23;;-1:-1;2926:41:9;;;;;;;;-1:-1:-1;;;;;2948:18:9;;;-1:-1:-1;;2926:41:9;;;;;;;2978:42;;;;;;;;;;;2694:334::o;288:2743::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;288:2743:9;;;-1:-1:-1;288:2743:9;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;",
+  "source": "pragma solidity ^0.4.22;\r\n\r\nimport \"../implementations/Pausable.sol\";\r\nimport \"../interfaces/GameI.sol\";\r\nimport \"../interfaces/GameFactoryI.sol\";\r\nimport \"../../installed_contracts/zeppelin/contracts/math/SafeMath.sol\";\r\n\r\n/** @title Game manager contract that serves as a registry. */\r\ncontract GameManager is Pausable(false) {\r\n    using SafeMath for uint256;\r\n\r\n    // Variables\r\n    address public currentGameFactory;\r\n    address[] public oldGameFactories;\r\n    string[] deployedAssets;\r\n\r\n    // Mappings\r\n    mapping(string=>address) currentAssetContract;\r\n    mapping(string=>address[]) oldAssetContracts;\r\n    mapping(address=>address[]) playerGames;\r\n\r\n    /**\r\n    * @dev Contract constructor.\r\n    * @param gameFactoryAddress Address of the game factory.\r\n    */\r\n    constructor (address gameFactoryAddress) public\r\n    {\r\n        currentGameFactory = gameFactoryAddress;\r\n    }\r\n\r\n    /**\r\n    * @dev Returns the number of deployed games.\r\n    * @return Amount of current games.\r\n    */\r\n    function getDeployedAssetsCount() external view returns (uint) {\r\n        return deployedAssets.length;\r\n    }\r\n\r\n    /**\r\n    * @dev Returns the information of a game located at an specific index.\r\n    * @param index Index of the game to look for.\r\n    * @return Asset pair of the game.\r\n    * @return Address of the game's smart contract.\r\n    */\r\n    function getDeployedAssetContractAt(uint8 index) external view returns (string, address) {\r\n        return (deployedAssets[index], currentAssetContract[deployedAssets[index]]);\r\n    }\r\n\r\n    /** \r\n    * @dev Function used to create a new game based on the provided parameters.\r\n    * @param assetPair The assetPair of the game.\r\n    * @param assetPairAlias Alias of the assetPair used for display.\r\n    * @param description The description of the game to be desplayed.\r\n    */\r\n    function createNewGame(string assetPair, string assetPairAlias, string description) public payable fromOwner whenNotPaused returns (address) \r\n    {\r\n        if (currentAssetContract[assetPair] != address(0)) {\r\n            // Saving old contract.\r\n            oldAssetContracts[assetPair].push(currentAssetContract[assetPair]);\r\n        }\r\n        else {\r\n            deployedAssets.push(assetPair);\r\n        }\r\n\r\n        // Creating new contract for this asset and setting current variable.\r\n        currentAssetContract[assetPair] = GameFactoryI(currentGameFactory).createNewGame.value(msg.value)(\r\n            assetPair, \r\n            assetPairAlias, \r\n            description\r\n        );\r\n    }\r\n\r\n    /**\r\n    * @dev Function used to register a new game factory.\r\n    * @param newGameFactoryAddress Address of the new game factory.\r\n    */\r\n    function setGameFactory(address newGameFactoryAddress) public fromOwner whenPaused\r\n    {\r\n        require(newGameFactoryAddress != currentGameFactory, \"New game factory address must be different than current address.\");\r\n\r\n        oldGameFactories.push(currentGameFactory);\r\n        currentGameFactory = newGameFactoryAddress;\r\n    }\r\n}",
+  "sourcePath": "C:\\Data\\Junior\\Consensys Academy\\Final Project\\EtherBinary\\contracts\\logic\\GameManager.sol",
+  "ast": {
+    "absolutePath": "/C/Data/Junior/Consensys Academy/Final Project/EtherBinary/contracts/logic/GameManager.sol",
+    "exportedSymbols": {
+      "GameManager": [
+        3567
+      ]
+    },
+    "id": 3568,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3410,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".22"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:9"
+      },
+      {
+        "absolutePath": "/C/Data/Junior/Consensys Academy/Final Project/EtherBinary/contracts/implementations/Pausable.sol",
+        "file": "../implementations/Pausable.sol",
+        "id": 3411,
+        "nodeType": "ImportDirective",
+        "scope": 3568,
+        "sourceUnit": 1622,
+        "src": "28:41:9",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/C/Data/Junior/Consensys Academy/Final Project/EtherBinary/contracts/interfaces/GameI.sol",
+        "file": "../interfaces/GameI.sol",
+        "id": 3412,
+        "nodeType": "ImportDirective",
+        "scope": 3568,
+        "sourceUnit": 1792,
+        "src": "71:33:9",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/C/Data/Junior/Consensys Academy/Final Project/EtherBinary/contracts/interfaces/GameFactoryI.sol",
+        "file": "../interfaces/GameFactoryI.sol",
+        "id": 3413,
+        "nodeType": "ImportDirective",
+        "scope": 3568,
+        "sourceUnit": 1669,
+        "src": "106:40:9",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/C/Data/Junior/Consensys Academy/Final Project/EtherBinary/installed_contracts/zeppelin/contracts/math/SafeMath.sol",
+        "file": "../../installed_contracts/zeppelin/contracts/math/SafeMath.sol",
+        "id": 3414,
+        "nodeType": "ImportDirective",
+        "scope": 3568,
+        "sourceUnit": 9485,
+        "src": "148:72:9",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": [
+              {
+                "argumentTypes": null,
+                "hexValue": "66616c7365",
+                "id": 3416,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "kind": "bool",
+                "lValueRequested": false,
+                "nodeType": "Literal",
+                "src": "321:5:9",
+                "subdenomination": null,
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "value": "false"
+              }
+            ],
+            "baseName": {
+              "contractScope": null,
+              "id": 3415,
+              "name": "Pausable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1621,
+              "src": "312:8:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Pausable_$1621",
+                "typeString": "contract Pausable"
+              }
+            },
+            "id": 3417,
+            "nodeType": "InheritanceSpecifier",
+            "src": "312:15:9"
+          }
+        ],
+        "contractDependencies": [
+          1544,
+          1621,
+          1812,
+          1833
+        ],
+        "contractKind": "contract",
+        "documentation": "@title Game manager contract that serves as a registry. ",
+        "fullyImplemented": true,
+        "id": 3567,
+        "linearizedBaseContracts": [
+          3567,
+          1621,
+          1833,
+          1544,
+          1812
+        ],
+        "name": "GameManager",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "id": 3420,
+            "libraryName": {
+              "contractScope": null,
+              "id": 3418,
+              "name": "SafeMath",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 9484,
+              "src": "341:8:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_SafeMath_$9484",
+                "typeString": "library SafeMath"
+              }
+            },
+            "nodeType": "UsingForDirective",
+            "src": "335:27:9",
+            "typeName": {
+              "id": 3419,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "354:7:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            }
+          },
+          {
+            "constant": false,
+            "id": 3422,
+            "name": "currentGameFactory",
+            "nodeType": "VariableDeclaration",
+            "scope": 3567,
+            "src": "388:33:9",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 3421,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "388:7:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 3425,
+            "name": "oldGameFactories",
+            "nodeType": "VariableDeclaration",
+            "scope": 3567,
+            "src": "428:33:9",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_address_$dyn_storage",
+              "typeString": "address[]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 3423,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "428:7:9",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "id": 3424,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "428:9:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                "typeString": "address[]"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 3428,
+            "name": "deployedAssets",
+            "nodeType": "VariableDeclaration",
+            "scope": 3567,
+            "src": "468:23:9",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_string_storage_$dyn_storage",
+              "typeString": "string[]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 3426,
+                "name": "string",
+                "nodeType": "ElementaryTypeName",
+                "src": "468:6:9",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                }
+              },
+              "id": 3427,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "468:8:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_string_storage_$dyn_storage_ptr",
+                "typeString": "string[]"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 3432,
+            "name": "currentAssetContract",
+            "nodeType": "VariableDeclaration",
+            "scope": 3567,
+            "src": "517:45:9",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_string_memory_$_t_address_$",
+              "typeString": "mapping(string => address)"
+            },
+            "typeName": {
+              "id": 3431,
+              "keyType": {
+                "id": 3429,
+                "name": "string",
+                "nodeType": "ElementaryTypeName",
+                "src": "525:6:9",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "517:24:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_string_memory_$_t_address_$",
+                "typeString": "mapping(string => address)"
+              },
+              "valueType": {
+                "id": 3430,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "533:7:9",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 3437,
+            "name": "oldAssetContracts",
+            "nodeType": "VariableDeclaration",
+            "scope": 3567,
+            "src": "569:44:9",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_string_memory_$_t_array$_t_address_$dyn_storage_$",
+              "typeString": "mapping(string => address[])"
+            },
+            "typeName": {
+              "id": 3436,
+              "keyType": {
+                "id": 3433,
+                "name": "string",
+                "nodeType": "ElementaryTypeName",
+                "src": "577:6:9",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "569:26:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_string_memory_$_t_array$_t_address_$dyn_storage_$",
+                "typeString": "mapping(string => address[])"
+              },
+              "valueType": {
+                "baseType": {
+                  "id": 3434,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "585:7:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "id": 3435,
+                "length": null,
+                "nodeType": "ArrayTypeName",
+                "src": "585:9:9",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                  "typeString": "address[]"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 3442,
+            "name": "playerGames",
+            "nodeType": "VariableDeclaration",
+            "scope": 3567,
+            "src": "620:39:9",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_address_$dyn_storage_$",
+              "typeString": "mapping(address => address[])"
+            },
+            "typeName": {
+              "id": 3441,
+              "keyType": {
+                "id": 3438,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "628:7:9",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "620:27:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_address_$dyn_storage_$",
+                "typeString": "mapping(address => address[])"
+              },
+              "valueType": {
+                "baseType": {
+                  "id": 3439,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "637:7:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "id": 3440,
+                "length": null,
+                "nodeType": "ArrayTypeName",
+                "src": "637:9:9",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                  "typeString": "address[]"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 3451,
+              "nodeType": "Block",
+              "src": "834:58:9",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 3449,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 3447,
+                      "name": "currentGameFactory",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3422,
+                      "src": "845:18:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 3448,
+                      "name": "gameFactoryAddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3444,
+                      "src": "866:18:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "845:39:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 3450,
+                  "nodeType": "ExpressionStatement",
+                  "src": "845:39:9"
+                }
+              ]
+            },
+            "documentation": "@dev Contract constructor.\r\n@param gameFactoryAddress Address of the game factory.\r",
+            "id": 3452,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3445,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3444,
+                  "name": "gameFactoryAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3452,
+                  "src": "794:26:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3443,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "794:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "793:28:9"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3446,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "834:0:9"
+            },
+            "scope": 3567,
+            "src": "781:111:9",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 3460,
+              "nodeType": "Block",
+              "src": "1070:47:9",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "expression": {
+                      "argumentTypes": null,
+                      "id": 3457,
+                      "name": "deployedAssets",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3428,
+                      "src": "1088:14:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_string_storage_$dyn_storage",
+                        "typeString": "string storage ref[] storage ref"
+                      }
+                    },
+                    "id": 3458,
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "length",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": null,
+                    "src": "1088:21:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 3456,
+                  "id": 3459,
+                  "nodeType": "Return",
+                  "src": "1081:28:9"
+                }
+              ]
+            },
+            "documentation": "@dev Returns the number of deployed games.\r\n@return Amount of current games.\r",
+            "id": 3461,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getDeployedAssetsCount",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3453,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1038:2:9"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3456,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3455,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3461,
+                  "src": "1064:4:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3454,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1064:4:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1063:6:9"
+            },
+            "scope": 3567,
+            "src": "1007:110:9",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 3480,
+              "nodeType": "Block",
+              "src": "1450:94:9",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 3470,
+                          "name": "deployedAssets",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3428,
+                          "src": "1469:14:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_string_storage_$dyn_storage",
+                            "typeString": "string storage ref[] storage ref"
+                          }
+                        },
+                        "id": 3472,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 3471,
+                          "name": "index",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3463,
+                          "src": "1484:5:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint8",
+                            "typeString": "uint8"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "1469:21:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_storage",
+                          "typeString": "string storage ref"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 3473,
+                          "name": "currentAssetContract",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3432,
+                          "src": "1492:20:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_string_memory_$_t_address_$",
+                            "typeString": "mapping(string memory => address)"
+                          }
+                        },
+                        "id": 3477,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 3474,
+                            "name": "deployedAssets",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3428,
+                            "src": "1513:14:9",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_array$_t_string_storage_$dyn_storage",
+                              "typeString": "string storage ref[] storage ref"
+                            }
+                          },
+                          "id": 3476,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "id": 3475,
+                            "name": "index",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3463,
+                            "src": "1528:5:9",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint8",
+                              "typeString": "uint8"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "1513:21:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_storage",
+                            "typeString": "string storage ref"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "1492:43:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "id": 3478,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "1468:68:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$_t_string_storage_$_t_address_$",
+                      "typeString": "tuple(string storage ref,address)"
+                    }
+                  },
+                  "functionReturnParameters": 3469,
+                  "id": 3479,
+                  "nodeType": "Return",
+                  "src": "1461:75:9"
+                }
+              ]
+            },
+            "documentation": "@dev Returns the information of a game located at an specific index.\r\n@param index Index of the game to look for.\r\n@return Asset pair of the game.\r\n@return Address of the game's smart contract.\r",
+            "id": 3481,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getDeployedAssetContractAt",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3464,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3463,
+                  "name": "index",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3481,
+                  "src": "1397:11:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 3462,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1397:5:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1396:13:9"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3469,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3466,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3481,
+                  "src": "1433:6:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 3465,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1433:6:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3468,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3481,
+                  "src": "1441:7:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3467,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1441:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1432:17:9"
+            },
+            "scope": 3567,
+            "src": "1361:183:9",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 3538,
+              "nodeType": "Block",
+              "src": "1990:552:9",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    },
+                    "id": 3502,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 3496,
+                        "name": "currentAssetContract",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3432,
+                        "src": "2005:20:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_string_memory_$_t_address_$",
+                          "typeString": "mapping(string memory => address)"
+                        }
+                      },
+                      "id": 3498,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 3497,
+                        "name": "assetPair",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3483,
+                        "src": "2026:9:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "2005:31:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "!=",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "hexValue": "30",
+                          "id": 3500,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "2048:1:9",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          }
+                        ],
+                        "id": 3499,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "2040:7:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_address_$",
+                          "typeString": "type(address)"
+                        },
+                        "typeName": "address"
+                      },
+                      "id": 3501,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "2040:10:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "2005:45:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": {
+                    "id": 3519,
+                    "nodeType": "Block",
+                    "src": "2197:57:9",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 3516,
+                              "name": "assetPair",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 3483,
+                              "src": "2232:9:9",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_string_memory_ptr",
+                                "typeString": "string memory"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_string_memory_ptr",
+                                "typeString": "string memory"
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 3513,
+                              "name": "deployedAssets",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 3428,
+                              "src": "2212:14:9",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_string_storage_$dyn_storage",
+                                "typeString": "string storage ref[] storage ref"
+                              }
+                            },
+                            "id": 3515,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "push",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "2212:19:9",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_arraypush_nonpayable$_t_string_storage_$returns$_t_uint256_$",
+                              "typeString": "function (string storage ref) returns (uint256)"
+                            }
+                          },
+                          "id": 3517,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "2212:30:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "id": 3518,
+                        "nodeType": "ExpressionStatement",
+                        "src": "2212:30:9"
+                      }
+                    ]
+                  },
+                  "id": 3520,
+                  "nodeType": "IfStatement",
+                  "src": "2001:253:9",
+                  "trueBody": {
+                    "id": 3512,
+                    "nodeType": "Block",
+                    "src": "2052:130:9",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "baseExpression": {
+                                "argumentTypes": null,
+                                "id": 3507,
+                                "name": "currentAssetContract",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 3432,
+                                "src": "2138:20:9",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_mapping$_t_string_memory_$_t_address_$",
+                                  "typeString": "mapping(string memory => address)"
+                                }
+                              },
+                              "id": 3509,
+                              "indexExpression": {
+                                "argumentTypes": null,
+                                "id": 3508,
+                                "name": "assetPair",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 3483,
+                                "src": "2159:9:9",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "2138:31:9",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": null,
+                              "baseExpression": {
+                                "argumentTypes": null,
+                                "id": 3503,
+                                "name": "oldAssetContracts",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 3437,
+                                "src": "2104:17:9",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_mapping$_t_string_memory_$_t_array$_t_address_$dyn_storage_$",
+                                  "typeString": "mapping(string memory => address[] storage ref)"
+                                }
+                              },
+                              "id": 3505,
+                              "indexExpression": {
+                                "argumentTypes": null,
+                                "id": 3504,
+                                "name": "assetPair",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 3483,
+                                "src": "2122:9:9",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "2104:28:9",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                "typeString": "address[] storage ref"
+                              }
+                            },
+                            "id": 3506,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "push",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "2104:33:9",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_arraypush_nonpayable$_t_address_$returns$_t_uint256_$",
+                              "typeString": "function (address) returns (uint256)"
+                            }
+                          },
+                          "id": 3510,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "2104:66:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "id": 3511,
+                        "nodeType": "ExpressionStatement",
+                        "src": "2104:66:9"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 3536,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 3521,
+                        "name": "currentAssetContract",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3432,
+                        "src": "2345:20:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_string_memory_$_t_address_$",
+                          "typeString": "mapping(string memory => address)"
+                        }
+                      },
+                      "id": 3523,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 3522,
+                        "name": "assetPair",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3483,
+                        "src": "2366:9:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "2345:31:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 3532,
+                          "name": "assetPair",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3483,
+                          "src": "2457:9:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 3533,
+                          "name": "assetPairAlias",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3485,
+                          "src": "2482:14:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 3534,
+                          "name": "description",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3487,
+                          "src": "2512:11:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          },
+                          {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          },
+                          {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          }
+                        ],
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 3529,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 9499,
+                              "src": "2432:3:9",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 3530,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "value",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "2432:9:9",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "arguments": [
+                                {
+                                  "argumentTypes": null,
+                                  "id": 3525,
+                                  "name": "currentGameFactory",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 3422,
+                                  "src": "2392:18:9",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                }
+                              ],
+                              "expression": {
+                                "argumentTypes": [
+                                  {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                ],
+                                "id": 3524,
+                                "name": "GameFactoryI",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 1668,
+                                "src": "2379:12:9",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_type$_t_contract$_GameFactoryI_$1668_$",
+                                  "typeString": "type(contract GameFactoryI)"
+                                }
+                              },
+                              "id": 3526,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "kind": "typeConversion",
+                              "lValueRequested": false,
+                              "names": [],
+                              "nodeType": "FunctionCall",
+                              "src": "2379:32:9",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_GameFactoryI_$1668",
+                                "typeString": "contract GameFactoryI"
+                              }
+                            },
+                            "id": 3527,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "createNewGame",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 1634,
+                            "src": "2379:46:9",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_external_payable$_t_string_memory_ptr_$_t_string_memory_ptr_$_t_string_memory_ptr_$returns$_t_address_$",
+                              "typeString": "function (string memory,string memory,string memory) payable external returns (address)"
+                            }
+                          },
+                          "id": 3528,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "value",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "2379:52:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_setvalue_nonpayable$_t_uint256_$returns$_t_function_external_payable$_t_string_memory_ptr_$_t_string_memory_ptr_$_t_string_memory_ptr_$returns$_t_address_$value_$",
+                            "typeString": "function (uint256) returns (function (string memory,string memory,string memory) payable external returns (address))"
+                          }
+                        },
+                        "id": 3531,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "2379:63:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_external_payable$_t_string_memory_ptr_$_t_string_memory_ptr_$_t_string_memory_ptr_$returns$_t_address_$value",
+                          "typeString": "function (string memory,string memory,string memory) payable external returns (address)"
+                        }
+                      },
+                      "id": 3535,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "2379:155:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "2345:189:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 3537,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2345:189:9"
+                }
+              ]
+            },
+            "documentation": "@dev Function used to create a new game based on the provided parameters.\r\n@param assetPair The assetPair of the game.\r\n@param assetPairAlias Alias of the assetPair used for display.\r\n@param description The description of the game to be desplayed.\r",
+            "id": 3539,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 3490,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 3489,
+                  "name": "fromOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 1491,
+                  "src": "1942:9:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "1942:9:9"
+              },
+              {
+                "arguments": null,
+                "id": 3492,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 3491,
+                  "name": "whenNotPaused",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 1573,
+                  "src": "1952:13:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "1952:13:9"
+              }
+            ],
+            "name": "createNewGame",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3488,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3483,
+                  "name": "assetPair",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3539,
+                  "src": "1866:16:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 3482,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1866:6:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3485,
+                  "name": "assetPairAlias",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3539,
+                  "src": "1884:21:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 3484,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1884:6:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3487,
+                  "name": "description",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3539,
+                  "src": "1907:18:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 3486,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1907:6:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1865:61:9"
+            },
+            "payable": true,
+            "returnParameters": {
+              "id": 3495,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3494,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3539,
+                  "src": "1975:7:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3493,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1975:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1974:9:9"
+            },
+            "scope": 3567,
+            "src": "1843:699:9",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 3565,
+              "nodeType": "Block",
+              "src": "2782:246:9",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 3551,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "id": 3549,
+                          "name": "newGameFactoryAddress",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3541,
+                          "src": "2801:21:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "!=",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "id": 3550,
+                          "name": "currentGameFactory",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3422,
+                          "src": "2826:18:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "2801:43:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "4e65772067616d6520666163746f72792061646472657373206d75737420626520646966666572656e74207468616e2063757272656e7420616464726573732e",
+                        "id": 3552,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "2846:66:9",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_44bafc9b58f48a2870d575b4b09c6cef871901736afab982099018d3d274f79d",
+                          "typeString": "literal_string \"New game factory address must be different than current address.\""
+                        },
+                        "value": "New game factory address must be different than current address."
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_44bafc9b58f48a2870d575b4b09c6cef871901736afab982099018d3d274f79d",
+                          "typeString": "literal_string \"New game factory address must be different than current address.\""
+                        }
+                      ],
+                      "id": 3548,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        9502,
+                        9503
+                      ],
+                      "referencedDeclaration": 9503,
+                      "src": "2793:7:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 3553,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2793:120:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 3554,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2793:120:9"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 3558,
+                        "name": "currentGameFactory",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3422,
+                        "src": "2948:18:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 3555,
+                        "name": "oldGameFactories",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3425,
+                        "src": "2926:16:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                          "typeString": "address[] storage ref"
+                        }
+                      },
+                      "id": 3557,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "2926:21:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_address_$returns$_t_uint256_$",
+                        "typeString": "function (address) returns (uint256)"
+                      }
+                    },
+                    "id": 3559,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2926:41:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 3560,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2926:41:9"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 3563,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 3561,
+                      "name": "currentGameFactory",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3422,
+                      "src": "2978:18:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 3562,
+                      "name": "newGameFactoryAddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3541,
+                      "src": "2999:21:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "2978:42:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 3564,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2978:42:9"
+                }
+              ]
+            },
+            "documentation": "@dev Function used to register a new game factory.\r\n@param newGameFactoryAddress Address of the new game factory.\r",
+            "id": 3566,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 3544,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 3543,
+                  "name": "fromOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 1491,
+                  "src": "2756:9:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "2756:9:9"
+              },
+              {
+                "arguments": null,
+                "id": 3546,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 3545,
+                  "name": "whenPaused",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 1563,
+                  "src": "2766:10:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "2766:10:9"
+              }
+            ],
+            "name": "setGameFactory",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3542,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3541,
+                  "name": "newGameFactoryAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3566,
+                  "src": "2718:29:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3540,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2718:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2717:31:9"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3547,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2782:0:9"
+            },
+            "scope": 3567,
+            "src": "2694:334:9",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 3568,
+        "src": "288:2743:9"
+      }
+    ],
+    "src": "0:3031:9"
+  },
+  "legacyAST": {
+    "absolutePath": "/C/Data/Junior/Consensys Academy/Final Project/EtherBinary/contracts/logic/GameManager.sol",
+    "exportedSymbols": {
+      "GameManager": [
+        3567
+      ]
+    },
+    "id": 3568,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3410,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".22"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:9"
+      },
+      {
+        "absolutePath": "/C/Data/Junior/Consensys Academy/Final Project/EtherBinary/contracts/implementations/Pausable.sol",
+        "file": "../implementations/Pausable.sol",
+        "id": 3411,
+        "nodeType": "ImportDirective",
+        "scope": 3568,
+        "sourceUnit": 1622,
+        "src": "28:41:9",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/C/Data/Junior/Consensys Academy/Final Project/EtherBinary/contracts/interfaces/GameI.sol",
+        "file": "../interfaces/GameI.sol",
+        "id": 3412,
+        "nodeType": "ImportDirective",
+        "scope": 3568,
+        "sourceUnit": 1792,
+        "src": "71:33:9",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/C/Data/Junior/Consensys Academy/Final Project/EtherBinary/contracts/interfaces/GameFactoryI.sol",
+        "file": "../interfaces/GameFactoryI.sol",
+        "id": 3413,
+        "nodeType": "ImportDirective",
+        "scope": 3568,
+        "sourceUnit": 1669,
+        "src": "106:40:9",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/C/Data/Junior/Consensys Academy/Final Project/EtherBinary/installed_contracts/zeppelin/contracts/math/SafeMath.sol",
+        "file": "../../installed_contracts/zeppelin/contracts/math/SafeMath.sol",
+        "id": 3414,
+        "nodeType": "ImportDirective",
+        "scope": 3568,
+        "sourceUnit": 9485,
+        "src": "148:72:9",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": [
+              {
+                "argumentTypes": null,
+                "hexValue": "66616c7365",
+                "id": 3416,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "kind": "bool",
+                "lValueRequested": false,
+                "nodeType": "Literal",
+                "src": "321:5:9",
+                "subdenomination": null,
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "value": "false"
+              }
+            ],
+            "baseName": {
+              "contractScope": null,
+              "id": 3415,
+              "name": "Pausable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1621,
+              "src": "312:8:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Pausable_$1621",
+                "typeString": "contract Pausable"
+              }
+            },
+            "id": 3417,
+            "nodeType": "InheritanceSpecifier",
+            "src": "312:15:9"
+          }
+        ],
+        "contractDependencies": [
+          1544,
+          1621,
+          1812,
+          1833
+        ],
+        "contractKind": "contract",
+        "documentation": "@title Game manager contract that serves as a registry. ",
+        "fullyImplemented": true,
+        "id": 3567,
+        "linearizedBaseContracts": [
+          3567,
+          1621,
+          1833,
+          1544,
+          1812
+        ],
+        "name": "GameManager",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "id": 3420,
+            "libraryName": {
+              "contractScope": null,
+              "id": 3418,
+              "name": "SafeMath",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 9484,
+              "src": "341:8:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_SafeMath_$9484",
+                "typeString": "library SafeMath"
+              }
+            },
+            "nodeType": "UsingForDirective",
+            "src": "335:27:9",
+            "typeName": {
+              "id": 3419,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "354:7:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            }
+          },
+          {
+            "constant": false,
+            "id": 3422,
+            "name": "currentGameFactory",
+            "nodeType": "VariableDeclaration",
+            "scope": 3567,
+            "src": "388:33:9",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 3421,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "388:7:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 3425,
+            "name": "oldGameFactories",
+            "nodeType": "VariableDeclaration",
+            "scope": 3567,
+            "src": "428:33:9",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_address_$dyn_storage",
+              "typeString": "address[]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 3423,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "428:7:9",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "id": 3424,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "428:9:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                "typeString": "address[]"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 3428,
+            "name": "deployedAssets",
+            "nodeType": "VariableDeclaration",
+            "scope": 3567,
+            "src": "468:23:9",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_string_storage_$dyn_storage",
+              "typeString": "string[]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 3426,
+                "name": "string",
+                "nodeType": "ElementaryTypeName",
+                "src": "468:6:9",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                }
+              },
+              "id": 3427,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "468:8:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_string_storage_$dyn_storage_ptr",
+                "typeString": "string[]"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 3432,
+            "name": "currentAssetContract",
+            "nodeType": "VariableDeclaration",
+            "scope": 3567,
+            "src": "517:45:9",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_string_memory_$_t_address_$",
+              "typeString": "mapping(string => address)"
+            },
+            "typeName": {
+              "id": 3431,
+              "keyType": {
+                "id": 3429,
+                "name": "string",
+                "nodeType": "ElementaryTypeName",
+                "src": "525:6:9",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "517:24:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_string_memory_$_t_address_$",
+                "typeString": "mapping(string => address)"
+              },
+              "valueType": {
+                "id": 3430,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "533:7:9",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 3437,
+            "name": "oldAssetContracts",
+            "nodeType": "VariableDeclaration",
+            "scope": 3567,
+            "src": "569:44:9",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_string_memory_$_t_array$_t_address_$dyn_storage_$",
+              "typeString": "mapping(string => address[])"
+            },
+            "typeName": {
+              "id": 3436,
+              "keyType": {
+                "id": 3433,
+                "name": "string",
+                "nodeType": "ElementaryTypeName",
+                "src": "577:6:9",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "569:26:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_string_memory_$_t_array$_t_address_$dyn_storage_$",
+                "typeString": "mapping(string => address[])"
+              },
+              "valueType": {
+                "baseType": {
+                  "id": 3434,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "585:7:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "id": 3435,
+                "length": null,
+                "nodeType": "ArrayTypeName",
+                "src": "585:9:9",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                  "typeString": "address[]"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 3442,
+            "name": "playerGames",
+            "nodeType": "VariableDeclaration",
+            "scope": 3567,
+            "src": "620:39:9",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_address_$dyn_storage_$",
+              "typeString": "mapping(address => address[])"
+            },
+            "typeName": {
+              "id": 3441,
+              "keyType": {
+                "id": 3438,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "628:7:9",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "620:27:9",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_address_$dyn_storage_$",
+                "typeString": "mapping(address => address[])"
+              },
+              "valueType": {
+                "baseType": {
+                  "id": 3439,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "637:7:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "id": 3440,
+                "length": null,
+                "nodeType": "ArrayTypeName",
+                "src": "637:9:9",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                  "typeString": "address[]"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 3451,
+              "nodeType": "Block",
+              "src": "834:58:9",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 3449,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 3447,
+                      "name": "currentGameFactory",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3422,
+                      "src": "845:18:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 3448,
+                      "name": "gameFactoryAddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3444,
+                      "src": "866:18:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "845:39:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 3450,
+                  "nodeType": "ExpressionStatement",
+                  "src": "845:39:9"
+                }
+              ]
+            },
+            "documentation": "@dev Contract constructor.\r\n@param gameFactoryAddress Address of the game factory.\r",
+            "id": 3452,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3445,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3444,
+                  "name": "gameFactoryAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3452,
+                  "src": "794:26:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3443,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "794:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "793:28:9"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3446,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "834:0:9"
+            },
+            "scope": 3567,
+            "src": "781:111:9",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 3460,
+              "nodeType": "Block",
+              "src": "1070:47:9",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "expression": {
+                      "argumentTypes": null,
+                      "id": 3457,
+                      "name": "deployedAssets",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3428,
+                      "src": "1088:14:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_string_storage_$dyn_storage",
+                        "typeString": "string storage ref[] storage ref"
+                      }
+                    },
+                    "id": 3458,
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "length",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": null,
+                    "src": "1088:21:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 3456,
+                  "id": 3459,
+                  "nodeType": "Return",
+                  "src": "1081:28:9"
+                }
+              ]
+            },
+            "documentation": "@dev Returns the number of deployed games.\r\n@return Amount of current games.\r",
+            "id": 3461,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getDeployedAssetsCount",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3453,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1038:2:9"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3456,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3455,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3461,
+                  "src": "1064:4:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3454,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1064:4:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1063:6:9"
+            },
+            "scope": 3567,
+            "src": "1007:110:9",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 3480,
+              "nodeType": "Block",
+              "src": "1450:94:9",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 3470,
+                          "name": "deployedAssets",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3428,
+                          "src": "1469:14:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_string_storage_$dyn_storage",
+                            "typeString": "string storage ref[] storage ref"
+                          }
+                        },
+                        "id": 3472,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 3471,
+                          "name": "index",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3463,
+                          "src": "1484:5:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint8",
+                            "typeString": "uint8"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "1469:21:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_storage",
+                          "typeString": "string storage ref"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 3473,
+                          "name": "currentAssetContract",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3432,
+                          "src": "1492:20:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_string_memory_$_t_address_$",
+                            "typeString": "mapping(string memory => address)"
+                          }
+                        },
+                        "id": 3477,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 3474,
+                            "name": "deployedAssets",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3428,
+                            "src": "1513:14:9",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_array$_t_string_storage_$dyn_storage",
+                              "typeString": "string storage ref[] storage ref"
+                            }
+                          },
+                          "id": 3476,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "id": 3475,
+                            "name": "index",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3463,
+                            "src": "1528:5:9",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint8",
+                              "typeString": "uint8"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "1513:21:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_storage",
+                            "typeString": "string storage ref"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "1492:43:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "id": 3478,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "1468:68:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$_t_string_storage_$_t_address_$",
+                      "typeString": "tuple(string storage ref,address)"
+                    }
+                  },
+                  "functionReturnParameters": 3469,
+                  "id": 3479,
+                  "nodeType": "Return",
+                  "src": "1461:75:9"
+                }
+              ]
+            },
+            "documentation": "@dev Returns the information of a game located at an specific index.\r\n@param index Index of the game to look for.\r\n@return Asset pair of the game.\r\n@return Address of the game's smart contract.\r",
+            "id": 3481,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getDeployedAssetContractAt",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3464,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3463,
+                  "name": "index",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3481,
+                  "src": "1397:11:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 3462,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1397:5:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1396:13:9"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3469,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3466,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3481,
+                  "src": "1433:6:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 3465,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1433:6:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3468,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3481,
+                  "src": "1441:7:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3467,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1441:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1432:17:9"
+            },
+            "scope": 3567,
+            "src": "1361:183:9",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 3538,
+              "nodeType": "Block",
+              "src": "1990:552:9",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    },
+                    "id": 3502,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 3496,
+                        "name": "currentAssetContract",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3432,
+                        "src": "2005:20:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_string_memory_$_t_address_$",
+                          "typeString": "mapping(string memory => address)"
+                        }
+                      },
+                      "id": 3498,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 3497,
+                        "name": "assetPair",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3483,
+                        "src": "2026:9:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "2005:31:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "!=",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "hexValue": "30",
+                          "id": 3500,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "2048:1:9",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          }
+                        ],
+                        "id": 3499,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "2040:7:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_address_$",
+                          "typeString": "type(address)"
+                        },
+                        "typeName": "address"
+                      },
+                      "id": 3501,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "2040:10:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "2005:45:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": {
+                    "id": 3519,
+                    "nodeType": "Block",
+                    "src": "2197:57:9",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 3516,
+                              "name": "assetPair",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 3483,
+                              "src": "2232:9:9",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_string_memory_ptr",
+                                "typeString": "string memory"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_string_memory_ptr",
+                                "typeString": "string memory"
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 3513,
+                              "name": "deployedAssets",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 3428,
+                              "src": "2212:14:9",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_string_storage_$dyn_storage",
+                                "typeString": "string storage ref[] storage ref"
+                              }
+                            },
+                            "id": 3515,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "push",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "2212:19:9",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_arraypush_nonpayable$_t_string_storage_$returns$_t_uint256_$",
+                              "typeString": "function (string storage ref) returns (uint256)"
+                            }
+                          },
+                          "id": 3517,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "2212:30:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "id": 3518,
+                        "nodeType": "ExpressionStatement",
+                        "src": "2212:30:9"
+                      }
+                    ]
+                  },
+                  "id": 3520,
+                  "nodeType": "IfStatement",
+                  "src": "2001:253:9",
+                  "trueBody": {
+                    "id": 3512,
+                    "nodeType": "Block",
+                    "src": "2052:130:9",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "baseExpression": {
+                                "argumentTypes": null,
+                                "id": 3507,
+                                "name": "currentAssetContract",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 3432,
+                                "src": "2138:20:9",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_mapping$_t_string_memory_$_t_address_$",
+                                  "typeString": "mapping(string memory => address)"
+                                }
+                              },
+                              "id": 3509,
+                              "indexExpression": {
+                                "argumentTypes": null,
+                                "id": 3508,
+                                "name": "assetPair",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 3483,
+                                "src": "2159:9:9",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "2138:31:9",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": null,
+                              "baseExpression": {
+                                "argumentTypes": null,
+                                "id": 3503,
+                                "name": "oldAssetContracts",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 3437,
+                                "src": "2104:17:9",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_mapping$_t_string_memory_$_t_array$_t_address_$dyn_storage_$",
+                                  "typeString": "mapping(string memory => address[] storage ref)"
+                                }
+                              },
+                              "id": 3505,
+                              "indexExpression": {
+                                "argumentTypes": null,
+                                "id": 3504,
+                                "name": "assetPair",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 3483,
+                                "src": "2122:9:9",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "2104:28:9",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                "typeString": "address[] storage ref"
+                              }
+                            },
+                            "id": 3506,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "push",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "2104:33:9",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_arraypush_nonpayable$_t_address_$returns$_t_uint256_$",
+                              "typeString": "function (address) returns (uint256)"
+                            }
+                          },
+                          "id": 3510,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "2104:66:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "id": 3511,
+                        "nodeType": "ExpressionStatement",
+                        "src": "2104:66:9"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 3536,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 3521,
+                        "name": "currentAssetContract",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3432,
+                        "src": "2345:20:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_string_memory_$_t_address_$",
+                          "typeString": "mapping(string memory => address)"
+                        }
+                      },
+                      "id": 3523,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 3522,
+                        "name": "assetPair",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3483,
+                        "src": "2366:9:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "2345:31:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 3532,
+                          "name": "assetPair",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3483,
+                          "src": "2457:9:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 3533,
+                          "name": "assetPairAlias",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3485,
+                          "src": "2482:14:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 3534,
+                          "name": "description",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3487,
+                          "src": "2512:11:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          },
+                          {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          },
+                          {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          }
+                        ],
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 3529,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 9499,
+                              "src": "2432:3:9",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 3530,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "value",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "2432:9:9",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "arguments": [
+                                {
+                                  "argumentTypes": null,
+                                  "id": 3525,
+                                  "name": "currentGameFactory",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 3422,
+                                  "src": "2392:18:9",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                }
+                              ],
+                              "expression": {
+                                "argumentTypes": [
+                                  {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                ],
+                                "id": 3524,
+                                "name": "GameFactoryI",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 1668,
+                                "src": "2379:12:9",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_type$_t_contract$_GameFactoryI_$1668_$",
+                                  "typeString": "type(contract GameFactoryI)"
+                                }
+                              },
+                              "id": 3526,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "kind": "typeConversion",
+                              "lValueRequested": false,
+                              "names": [],
+                              "nodeType": "FunctionCall",
+                              "src": "2379:32:9",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_GameFactoryI_$1668",
+                                "typeString": "contract GameFactoryI"
+                              }
+                            },
+                            "id": 3527,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "createNewGame",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 1634,
+                            "src": "2379:46:9",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_external_payable$_t_string_memory_ptr_$_t_string_memory_ptr_$_t_string_memory_ptr_$returns$_t_address_$",
+                              "typeString": "function (string memory,string memory,string memory) payable external returns (address)"
+                            }
+                          },
+                          "id": 3528,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "value",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "2379:52:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_setvalue_nonpayable$_t_uint256_$returns$_t_function_external_payable$_t_string_memory_ptr_$_t_string_memory_ptr_$_t_string_memory_ptr_$returns$_t_address_$value_$",
+                            "typeString": "function (uint256) returns (function (string memory,string memory,string memory) payable external returns (address))"
+                          }
+                        },
+                        "id": 3531,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "2379:63:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_external_payable$_t_string_memory_ptr_$_t_string_memory_ptr_$_t_string_memory_ptr_$returns$_t_address_$value",
+                          "typeString": "function (string memory,string memory,string memory) payable external returns (address)"
+                        }
+                      },
+                      "id": 3535,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "2379:155:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "2345:189:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 3537,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2345:189:9"
+                }
+              ]
+            },
+            "documentation": "@dev Function used to create a new game based on the provided parameters.\r\n@param assetPair The assetPair of the game.\r\n@param assetPairAlias Alias of the assetPair used for display.\r\n@param description The description of the game to be desplayed.\r",
+            "id": 3539,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 3490,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 3489,
+                  "name": "fromOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 1491,
+                  "src": "1942:9:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "1942:9:9"
+              },
+              {
+                "arguments": null,
+                "id": 3492,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 3491,
+                  "name": "whenNotPaused",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 1573,
+                  "src": "1952:13:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "1952:13:9"
+              }
+            ],
+            "name": "createNewGame",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3488,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3483,
+                  "name": "assetPair",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3539,
+                  "src": "1866:16:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 3482,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1866:6:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3485,
+                  "name": "assetPairAlias",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3539,
+                  "src": "1884:21:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 3484,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1884:6:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3487,
+                  "name": "description",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3539,
+                  "src": "1907:18:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 3486,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1907:6:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1865:61:9"
+            },
+            "payable": true,
+            "returnParameters": {
+              "id": 3495,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3494,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3539,
+                  "src": "1975:7:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3493,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1975:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1974:9:9"
+            },
+            "scope": 3567,
+            "src": "1843:699:9",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 3565,
+              "nodeType": "Block",
+              "src": "2782:246:9",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 3551,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "id": 3549,
+                          "name": "newGameFactoryAddress",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3541,
+                          "src": "2801:21:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "!=",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "id": 3550,
+                          "name": "currentGameFactory",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3422,
+                          "src": "2826:18:9",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "2801:43:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "4e65772067616d6520666163746f72792061646472657373206d75737420626520646966666572656e74207468616e2063757272656e7420616464726573732e",
+                        "id": 3552,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "2846:66:9",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_44bafc9b58f48a2870d575b4b09c6cef871901736afab982099018d3d274f79d",
+                          "typeString": "literal_string \"New game factory address must be different than current address.\""
+                        },
+                        "value": "New game factory address must be different than current address."
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_44bafc9b58f48a2870d575b4b09c6cef871901736afab982099018d3d274f79d",
+                          "typeString": "literal_string \"New game factory address must be different than current address.\""
+                        }
+                      ],
+                      "id": 3548,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        9502,
+                        9503
+                      ],
+                      "referencedDeclaration": 9503,
+                      "src": "2793:7:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 3553,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2793:120:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 3554,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2793:120:9"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 3558,
+                        "name": "currentGameFactory",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3422,
+                        "src": "2948:18:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 3555,
+                        "name": "oldGameFactories",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3425,
+                        "src": "2926:16:9",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                          "typeString": "address[] storage ref"
+                        }
+                      },
+                      "id": 3557,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "2926:21:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_address_$returns$_t_uint256_$",
+                        "typeString": "function (address) returns (uint256)"
+                      }
+                    },
+                    "id": 3559,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2926:41:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 3560,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2926:41:9"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 3563,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 3561,
+                      "name": "currentGameFactory",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3422,
+                      "src": "2978:18:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 3562,
+                      "name": "newGameFactoryAddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3541,
+                      "src": "2999:21:9",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "2978:42:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 3564,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2978:42:9"
+                }
+              ]
+            },
+            "documentation": "@dev Function used to register a new game factory.\r\n@param newGameFactoryAddress Address of the new game factory.\r",
+            "id": 3566,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 3544,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 3543,
+                  "name": "fromOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 1491,
+                  "src": "2756:9:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "2756:9:9"
+              },
+              {
+                "arguments": null,
+                "id": 3546,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 3545,
+                  "name": "whenPaused",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 1563,
+                  "src": "2766:10:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "2766:10:9"
+              }
+            ],
+            "name": "setGameFactory",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3542,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3541,
+                  "name": "newGameFactoryAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3566,
+                  "src": "2718:29:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3540,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2718:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2717:31:9"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3547,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2782:0:9"
+            },
+            "scope": 3567,
+            "src": "2694:334:9",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 3568,
+        "src": "288:2743:9"
+      }
+    ],
+    "src": "0:3031:9"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {
+        "0xae0f86d9801b0bd39a2ce25d9fd1f202f2fd22e80150be4a99adb0275a635d6c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newPausedState",
+              "type": "bool"
+            }
+          ],
+          "name": "LogPausedSet",
+          "type": "event"
+        },
+        "0xa1d2149652d81eb35c360c115fc7ac594124cb1ea8a5a33e9a7f5768c62869fb": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "LogOwnerSet",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x091ab85f5f567c1207ff00facc0cb052feef033f",
+      "transactionHash": "0xee8aadb13b89d3d5392e2d621806c805832cb1f83868c0adf02ecc17f0fd2372"
+    }
+  },
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2018-08-28T04:16:45.145Z"
+}

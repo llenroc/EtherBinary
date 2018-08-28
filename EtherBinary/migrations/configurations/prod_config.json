@@ -1,0 +1,69 @@
+{
+    "Games": [
+        {
+            "AssetPair": "XXBTZUSD",
+            "AssetPairAlias": "BTC/USD",
+            "Description": "Bitcoin"
+        },
+        {
+            "AssetPair": "XETHZUSD",
+            "AssetPairAlias": "ETH/USD",
+            "Description": "Ethereum"
+        },
+        {
+            "AssetPair": "XLTCZUSD",
+            "AssetPairAlias": "LTC/USD",
+            "Description": "Litecoin"
+        },
+        {
+            "AssetPair": "XREPZUSD",
+            "AssetPairAlias": "REP/USD",
+            "Description": "Augur"
+        },
+        {
+            "AssetPair": "XXMRZUSD",
+            "AssetPairAlias": "XMR/USD",
+            "Description": "Monero"
+        },
+        {
+            "AssetPair": "XXRPZUSD",
+            "AssetPairAlias": "XRP/USD",
+            "Description": "Ripple"
+        },
+        {
+            "AssetPair": "XZECZUSD",
+            "AssetPairAlias": "ZEC/USD",
+            "Description": "Zcash"
+        },
+        {
+            "AssetPair": "BCHUSD",
+            "AssetPairAlias": "BCH/USD",
+            "Description": "Bitcoin Cash"
+        },
+        {
+            "AssetPair": "EOSUSD",
+            "AssetPairAlias": "EOS/USD",
+            "Description": "EOS"
+        },
+        {
+            "AssetPair": "DASHUSD",
+            "AssetPairAlias": "DASH/USD",
+            "Description": "Dash"
+        },
+        {
+            "AssetPair": "GNOUSD",
+            "AssetPairAlias": "GNO/USD",
+            "Description": "Gnosis"
+        },
+        {
+            "AssetPair": "XETCZUSD",
+            "AssetPairAlias": "ETC/USD",
+            "Description": "Ethereum Classic"
+        },
+        {
+            "AssetPair": "XXLMZUSD",
+            "AssetPairAlias": "XLM/USD",
+            "Description": "Stellar"
+        }
+    ]
+}
