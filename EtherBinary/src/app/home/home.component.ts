@@ -67,7 +67,7 @@ export class HomeComponent {
     }
     
     public toggleModal(modal, game) {
-        if (modal) {
+        if (modal && modal !== "") {
             this.modalGame = game;
             this.lgModal.show();
         } else {

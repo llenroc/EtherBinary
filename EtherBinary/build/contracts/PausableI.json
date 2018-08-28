@@ -57,19 +57,19 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.4.22;\r\n\r\n/** @title Interface that establishes the functions that a Pausable contract must implement. */\r\ninterface PausableI {\r\n    /**\r\n     * @dev Event emitted when a new paused state has been set.\r\n     * @param sender The account that ran the action.\r\n     * @param newPausedState The new, and current, paused state of the contract.\r\n     */\r\n    event LogPausedSet(address indexed sender, bool indexed newPausedState);\r\n\r\n    /** @dev Sets the new paused state for this contract.\r\n     * @param newState The new desired \"paused\" state of the contract.\r\n     * @return success Whether the action was successful.\r\n     */\r\n    function setPaused(bool newState) external returns(bool success);\r\n\r\n    /**\r\n     * @return Whether the contract is indeed paused.\r\n     */\r\n    function isPaused() external view returns(bool isIndeed);\r\n}",
-  "sourcePath": "C:\\Data\\Junior\\Consensys Academy\\Final Project\\EtherBinary\\contracts\\interfaces\\PausableI.sol",
+  "sourcePath": "C:\\Data\\Junior\\Development\\EtherBinary\\EtherBinary\\contracts\\interfaces\\PausableI.sol",
   "ast": {
-    "absolutePath": "/C/Data/Junior/Consensys Academy/Final Project/EtherBinary/contracts/interfaces/PausableI.sol",
+    "absolutePath": "/C/Data/Junior/Development/EtherBinary/EtherBinary/contracts/interfaces/PausableI.sol",
     "exportedSymbols": {
       "PausableI": [
-        1885
+        11266
       ]
     },
-    "id": 1886,
+    "id": 11267,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1866,
+        "id": 11247,
         "literals": [
           "solidity",
           "^",
@@ -77,7 +77,7 @@
           ".22"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:7"
+        "src": "0:24:19"
       },
       {
         "baseContracts": [],
@@ -85,9 +85,9 @@
         "contractKind": "interface",
         "documentation": "@title Interface that establishes the functions that a Pausable contract must implement. ",
         "fullyImplemented": false,
-        "id": 1885,
+        "id": 11266,
         "linearizedBaseContracts": [
-          1885
+          11266
         ],
         "name": "PausableI",
         "nodeType": "ContractDefinition",
@@ -95,21 +95,21 @@
           {
             "anonymous": false,
             "documentation": "@dev Event emitted when a new paused state has been set.\r\n@param sender The account that ran the action.\r\n@param newPausedState The new, and current, paused state of the contract.\r",
-            "id": 1872,
+            "id": 11253,
             "name": "LogPausedSet",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1871,
+              "id": 11252,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1868,
+                  "id": 11249,
                   "indexed": true,
                   "name": "sender",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1872,
-                  "src": "391:22:7",
+                  "scope": 11253,
+                  "src": "391:22:19",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -117,10 +117,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1867,
+                    "id": 11248,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "391:7:7",
+                    "src": "391:7:19",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -131,12 +131,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1870,
+                  "id": 11251,
                   "indexed": true,
                   "name": "newPausedState",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1872,
-                  "src": "415:27:7",
+                  "scope": 11253,
+                  "src": "415:27:19",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -144,10 +144,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1869,
+                    "id": 11250,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "415:4:7",
+                    "src": "415:4:19",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -157,14 +157,14 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "390:53:7"
+              "src": "390:53:19"
             },
-            "src": "372:72:7"
+            "src": "372:72:19"
           },
           {
             "body": null,
             "documentation": "@dev Sets the new paused state for this contract.\r\n@param newState The new desired \"paused\" state of the contract.\r\n@return success Whether the action was successful.\r",
-            "id": 1879,
+            "id": 11260,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -172,16 +172,16 @@
             "name": "setPaused",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1875,
+              "id": 11256,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1874,
+                  "id": 11255,
                   "name": "newState",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1879,
-                  "src": "670:13:7",
+                  "scope": 11260,
+                  "src": "670:13:19",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -189,10 +189,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1873,
+                    "id": 11254,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "670:4:7",
+                    "src": "670:4:19",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -202,20 +202,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "669:15:7"
+              "src": "669:15:19"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1878,
+              "id": 11259,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1877,
+                  "id": 11258,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1879,
-                  "src": "702:12:7",
+                  "scope": 11260,
+                  "src": "702:12:19",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -223,10 +223,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1876,
+                    "id": 11257,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "702:4:7",
+                    "src": "702:4:19",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -236,10 +236,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "701:14:7"
+              "src": "701:14:19"
             },
-            "scope": 1885,
-            "src": "651:65:7",
+            "scope": 11266,
+            "src": "651:65:19",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -247,7 +247,7 @@
           {
             "body": null,
             "documentation": "@return Whether the contract is indeed paused.\r",
-            "id": 1884,
+            "id": 11265,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -255,23 +255,23 @@
             "name": "isPaused",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1880,
+              "id": 11261,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "814:2:7"
+              "src": "814:2:19"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1883,
+              "id": 11264,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1882,
+                  "id": 11263,
                   "name": "isIndeed",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1884,
-                  "src": "839:13:7",
+                  "scope": 11265,
+                  "src": "839:13:19",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -279,10 +279,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1881,
+                    "id": 11262,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "839:4:7",
+                    "src": "839:4:19",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -292,33 +292,33 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "838:15:7"
+              "src": "838:15:19"
             },
-            "scope": 1885,
-            "src": "797:57:7",
+            "scope": 11266,
+            "src": "797:57:19",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 1886,
-        "src": "125:732:7"
+        "scope": 11267,
+        "src": "125:732:19"
       }
     ],
-    "src": "0:857:7"
+    "src": "0:857:19"
   },
   "legacyAST": {
-    "absolutePath": "/C/Data/Junior/Consensys Academy/Final Project/EtherBinary/contracts/interfaces/PausableI.sol",
+    "absolutePath": "/C/Data/Junior/Development/EtherBinary/EtherBinary/contracts/interfaces/PausableI.sol",
     "exportedSymbols": {
       "PausableI": [
-        1885
+        11266
       ]
     },
-    "id": 1886,
+    "id": 11267,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1866,
+        "id": 11247,
         "literals": [
           "solidity",
           "^",
@@ -326,7 +326,7 @@
           ".22"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:7"
+        "src": "0:24:19"
       },
       {
         "baseContracts": [],
@@ -334,9 +334,9 @@
         "contractKind": "interface",
         "documentation": "@title Interface that establishes the functions that a Pausable contract must implement. ",
         "fullyImplemented": false,
-        "id": 1885,
+        "id": 11266,
         "linearizedBaseContracts": [
-          1885
+          11266
         ],
         "name": "PausableI",
         "nodeType": "ContractDefinition",
@@ -344,21 +344,21 @@
           {
             "anonymous": false,
             "documentation": "@dev Event emitted when a new paused state has been set.\r\n@param sender The account that ran the action.\r\n@param newPausedState The new, and current, paused state of the contract.\r",
-            "id": 1872,
+            "id": 11253,
             "name": "LogPausedSet",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1871,
+              "id": 11252,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1868,
+                  "id": 11249,
                   "indexed": true,
                   "name": "sender",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1872,
-                  "src": "391:22:7",
+                  "scope": 11253,
+                  "src": "391:22:19",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -366,10 +366,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1867,
+                    "id": 11248,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "391:7:7",
+                    "src": "391:7:19",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -380,12 +380,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1870,
+                  "id": 11251,
                   "indexed": true,
                   "name": "newPausedState",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1872,
-                  "src": "415:27:7",
+                  "scope": 11253,
+                  "src": "415:27:19",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -393,10 +393,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1869,
+                    "id": 11250,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "415:4:7",
+                    "src": "415:4:19",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -406,14 +406,14 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "390:53:7"
+              "src": "390:53:19"
             },
-            "src": "372:72:7"
+            "src": "372:72:19"
           },
           {
             "body": null,
             "documentation": "@dev Sets the new paused state for this contract.\r\n@param newState The new desired \"paused\" state of the contract.\r\n@return success Whether the action was successful.\r",
-            "id": 1879,
+            "id": 11260,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -421,16 +421,16 @@
             "name": "setPaused",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1875,
+              "id": 11256,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1874,
+                  "id": 11255,
                   "name": "newState",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1879,
-                  "src": "670:13:7",
+                  "scope": 11260,
+                  "src": "670:13:19",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -438,10 +438,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1873,
+                    "id": 11254,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "670:4:7",
+                    "src": "670:4:19",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -451,20 +451,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "669:15:7"
+              "src": "669:15:19"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1878,
+              "id": 11259,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1877,
+                  "id": 11258,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1879,
-                  "src": "702:12:7",
+                  "scope": 11260,
+                  "src": "702:12:19",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -472,10 +472,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1876,
+                    "id": 11257,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "702:4:7",
+                    "src": "702:4:19",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -485,10 +485,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "701:14:7"
+              "src": "701:14:19"
             },
-            "scope": 1885,
-            "src": "651:65:7",
+            "scope": 11266,
+            "src": "651:65:19",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -496,7 +496,7 @@
           {
             "body": null,
             "documentation": "@return Whether the contract is indeed paused.\r",
-            "id": 1884,
+            "id": 11265,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -504,23 +504,23 @@
             "name": "isPaused",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1880,
+              "id": 11261,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "814:2:7"
+              "src": "814:2:19"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1883,
+              "id": 11264,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1882,
+                  "id": 11263,
                   "name": "isIndeed",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1884,
-                  "src": "839:13:7",
+                  "scope": 11265,
+                  "src": "839:13:19",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -528,10 +528,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1881,
+                    "id": 11262,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "839:4:7",
+                    "src": "839:4:19",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -541,20 +541,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "838:15:7"
+              "src": "838:15:19"
             },
-            "scope": 1885,
-            "src": "797:57:7",
+            "scope": 11266,
+            "src": "797:57:19",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 1886,
-        "src": "125:732:7"
+        "scope": 11267,
+        "src": "125:732:19"
       }
     ],
-    "src": "0:857:7"
+    "src": "0:857:19"
   },
   "compiler": {
     "name": "solc",
@@ -562,5 +562,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-08-28T04:16:34.177Z"
+  "updatedAt": "2018-08-28T10:12:10.144Z"
 }

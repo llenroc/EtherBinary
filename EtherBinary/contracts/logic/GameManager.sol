@@ -81,4 +81,13 @@ contract GameManager is Pausable(false) {
         oldGameFactories.push(currentGameFactory);
         currentGameFactory = newGameFactoryAddress;
     }
+
+    /**
+    * @dev Function used to return the current game factory.
+    * @return Address of the current game factory.
+    */
+    function getCurrentFactory() public view returns (address)
+    {
+        return currentGameFactory;
+    }
 }

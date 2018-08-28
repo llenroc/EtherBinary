@@ -3,14 +3,20 @@
 ### Crypto assets binary options powered by smart contracts!
 [![GitHub last commit](https://img.shields.io/github/last-commit/morpheums/EtherBinary.svg?style=plastic)]()
 
-## Requirements
+## Features
+- **Very easy** and intuitive game.
+- Uses **[Kraken API](https://www.kraken.com/help/api)** to retrive assets value.
+- **Completely managed**  by smart contracts so theres no manipulation.
+
+
+## Requirements:
 1. Install [Node & NPM](https://nodejs.org/en/)
 2. Install Angular CLI `npm install -g @angular/cli`
 3. Install Truffle `npm install -g truffle`
 4. Install [Ganache GUI](https://github.com/trufflesuite/ganache/releases)
 5. Install [Install Metamask Extension for Chrome](https://metamask.io/)
 
-## Getting Started
+## Installation steps:
 
 1. Clone the repository.
 
@@ -26,7 +32,7 @@
 5. On a terminal run `npm run bridge` to deploy the oraclize service to your local network .
 6. That will generate an Oraclize Address Resolver(OAR), open the file 'contracts/implementations/BaseGame.sol' and copy the generated address into the following function:
 
-```code
+```js
     function setAssetPairInformation()
         ...
 
@@ -37,8 +43,20 @@
     }
 ```
 
-7. Open a new terminal and run `truffle migrate --development` to deploy smart contracts to your local network.
+7. Open a new terminal and run `truffle migrate --network development` to deploy smart contracts to your local network.
 8. Open a new terminal and run `ng serve` to start the development server.
 9. Open Chrome web browser and navigate to `http://localhost:4200/`
 10. Open the Metamask extension and connect to `http://127.0.0.1:8545` to load local accounts.
 11. **Now you are ready to use the EtherBinary DAPP!**
+
+## Getting Started:
+
+1. Clone the repository.
+
+```code
+    git clone https://github.com/morpheums/EtherBinary.git
+```
+2. Navigate to the source code location.
+```code 
+    cd EtherBinary
+```

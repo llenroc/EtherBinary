@@ -27,7 +27,7 @@ module.exports = function(deployer, network, accounts) {
         
         // Creating each game contract based on the configuration files.
         GamesConfiguration.Games.forEach(game => {
-            return  manager.createNewGame(game.AssetPair, game.AssetPairAlias, game.Description, { from: accounts[0], gas:6721975, value: 1000000000000000000 });
+            return  manager.createNewGame(game.AssetPair, game.AssetPairAlias, game.Description, { from: '0xD3df5c9e4897A55a3568C05752AaBAf0777b048c', gas:6721975, value: 1000000000000000000 });
         });
     });
 };

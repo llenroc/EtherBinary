@@ -127,19 +127,19 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.4.22;\r\n\r\n/** @title Interface that establishes the functions that a Game Factory contract must implement. */\r\ninterface GameFactoryI {\r\n\r\n    /** \r\n    * @dev Function used to create a new game based on the provided parameters.\r\n    * @param assetPair The assetPair of the game.\r\n    * @param assetPairAlias Alias of the assetPair used for display.\r\n    * @param description The description of the game to be desplayed.\r\n    * @return The address of the deployed game.\r\n    */\r\n    function createNewGame(string assetPair, string assetPairAlias, string description) external payable returns (address);\r\n\r\n    // @dev  Allows the owner to destruct the contrat in case of an emergency.\r\n    function destructContract() external;\r\n\r\n    /** \r\n    * @dev Sets bets duration minutes.\r\n    * @param newBetsDurationMinutes  Specifies the time in minutes of the duration of the betting period.\r\n    */\r\n    function setBetsDurationMinutes(uint8 newBetsDurationMinutes) external;\r\n\r\n    /** \r\n    * @dev Sets results duration minutes.\r\n    * @param newGetResultsMinutes Specifies the time in minutes to get the match result after the betting period.\r\n    */\r\n    function setGetResultsMinutes(uint8 newGetResultsMinutes) external;\r\n\r\n   /** \r\n    * @dev Sets bets max tickets per player.\r\n    * @param newMaxTicketsPerPlayer Max number of tickets that a player can buy.\r\n    */\r\n    function setMaxTicketsPerPlayer(uint8 newMaxTicketsPerPlayer) external;\r\n\r\n   /** \r\n    * @dev Sets tickets price.\r\n    * @param newTicketPrice The price of a single ticket.\r\n    */\r\n    function setTicketPrice(uint newTicketPrice) external;\r\n\r\n   /** \r\n    * @dev Sets house edge.\r\n    * @param newHouseEdge House profit per ticket. \r\n    */\r\n    function setHouseEdge(uint newHouseEdge) external;\r\n\r\n   /** \r\n    * @dev Sets gas limit for Oraclize calls.\r\n    * @param newOraclizeGasLimit Gas amount to be used by the Oracle calls.\r\n    */\r\n    function setOraclizeGas(uint32 newOraclizeGasLimit) external;\r\n}",
-  "sourcePath": "C:\\Data\\Junior\\Consensys Academy\\Final Project\\EtherBinary\\contracts\\interfaces\\GameFactoryI.sol",
+  "sourcePath": "C:\\Data\\Junior\\Development\\EtherBinary\\EtherBinary\\contracts\\interfaces\\GameFactoryI.sol",
   "ast": {
-    "absolutePath": "/C/Data/Junior/Consensys Academy/Final Project/EtherBinary/contracts/interfaces/GameFactoryI.sol",
+    "absolutePath": "/C/Data/Junior/Development/EtherBinary/EtherBinary/contracts/interfaces/GameFactoryI.sol",
     "exportedSymbols": {
       "GameFactoryI": [
-        1718
+        11099
       ]
     },
-    "id": 1719,
+    "id": 11100,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1673,
+        "id": 11054,
         "literals": [
           "solidity",
           "^",
@@ -147,7 +147,7 @@
           ".22"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:4"
+        "src": "0:24:16"
       },
       {
         "baseContracts": [],
@@ -155,9 +155,9 @@
         "contractKind": "interface",
         "documentation": "@title Interface that establishes the functions that a Game Factory contract must implement. ",
         "fullyImplemented": false,
-        "id": 1718,
+        "id": 11099,
         "linearizedBaseContracts": [
-          1718
+          11099
         ],
         "name": "GameFactoryI",
         "nodeType": "ContractDefinition",
@@ -165,7 +165,7 @@
           {
             "body": null,
             "documentation": "@dev Function used to create a new game based on the provided parameters.\r\n@param assetPair The assetPair of the game.\r\n@param assetPairAlias Alias of the assetPair used for display.\r\n@param description The description of the game to be desplayed.\r\n@return The address of the deployed game.\r",
-            "id": 1684,
+            "id": 11065,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -173,16 +173,16 @@
             "name": "createNewGame",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1680,
+              "id": 11061,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1675,
+                  "id": 11056,
                   "name": "assetPair",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1684,
-                  "src": "524:16:4",
+                  "scope": 11065,
+                  "src": "524:16:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -190,10 +190,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1674,
+                    "id": 11055,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "524:6:4",
+                    "src": "524:6:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -204,11 +204,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1677,
+                  "id": 11058,
                   "name": "assetPairAlias",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1684,
-                  "src": "542:21:4",
+                  "scope": 11065,
+                  "src": "542:21:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -216,10 +216,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1676,
+                    "id": 11057,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "542:6:4",
+                    "src": "542:6:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -230,11 +230,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1679,
+                  "id": 11060,
                   "name": "description",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1684,
-                  "src": "565:18:4",
+                  "scope": 11065,
+                  "src": "565:18:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -242,10 +242,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1678,
+                    "id": 11059,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "565:6:4",
+                    "src": "565:6:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -255,20 +255,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "523:61:4"
+              "src": "523:61:16"
             },
             "payable": true,
             "returnParameters": {
-              "id": 1683,
+              "id": 11064,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1682,
+                  "id": 11063,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1684,
-                  "src": "611:7:4",
+                  "scope": 11065,
+                  "src": "611:7:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -276,10 +276,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1681,
+                    "id": 11062,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "611:7:4",
+                    "src": "611:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -289,10 +289,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "610:9:4"
+              "src": "610:9:16"
             },
-            "scope": 1718,
-            "src": "501:119:4",
+            "scope": 11099,
+            "src": "501:119:16",
             "stateMutability": "payable",
             "superFunction": null,
             "visibility": "external"
@@ -300,7 +300,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 1687,
+            "id": 11068,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -308,20 +308,20 @@
             "name": "destructContract",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1685,
+              "id": 11066,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "733:2:4"
+              "src": "733:2:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1686,
+              "id": 11067,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "744:0:4"
+              "src": "744:0:16"
             },
-            "scope": 1718,
-            "src": "708:37:4",
+            "scope": 11099,
+            "src": "708:37:16",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -329,7 +329,7 @@
           {
             "body": null,
             "documentation": "@dev Sets bets duration minutes.\r\n@param newBetsDurationMinutes  Specifies the time in minutes of the duration of the betting period.\r",
-            "id": 1692,
+            "id": 11073,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -337,16 +337,16 @@
             "name": "setBetsDurationMinutes",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1690,
+              "id": 11071,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1689,
+                  "id": 11070,
                   "name": "newBetsDurationMinutes",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1692,
-                  "src": "950:28:4",
+                  "scope": 11073,
+                  "src": "950:28:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -354,10 +354,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 1688,
+                    "id": 11069,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "950:5:4",
+                    "src": "950:5:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -367,17 +367,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "949:30:4"
+              "src": "949:30:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1691,
+              "id": 11072,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "988:0:4"
+              "src": "988:0:16"
             },
-            "scope": 1718,
-            "src": "918:71:4",
+            "scope": 11099,
+            "src": "918:71:16",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -385,7 +385,7 @@
           {
             "body": null,
             "documentation": "@dev Sets results duration minutes.\r\n@param newGetResultsMinutes Specifies the time in minutes to get the match result after the betting period.\r",
-            "id": 1697,
+            "id": 11078,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -393,16 +393,16 @@
             "name": "setGetResultsMinutes",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1695,
+              "id": 11076,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1694,
+                  "id": 11075,
                   "name": "newGetResultsMinutes",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1697,
-                  "src": "1203:26:4",
+                  "scope": 11078,
+                  "src": "1203:26:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -410,10 +410,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 1693,
+                    "id": 11074,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1203:5:4",
+                    "src": "1203:5:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -423,17 +423,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1202:28:4"
+              "src": "1202:28:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1696,
+              "id": 11077,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1239:0:4"
+              "src": "1239:0:16"
             },
-            "scope": 1718,
-            "src": "1173:67:4",
+            "scope": 11099,
+            "src": "1173:67:16",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -441,7 +441,7 @@
           {
             "body": null,
             "documentation": "@dev Sets bets max tickets per player.\r\n@param newMaxTicketsPerPlayer Max number of tickets that a player can buy.\r",
-            "id": 1702,
+            "id": 11083,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -449,16 +449,16 @@
             "name": "setMaxTicketsPerPlayer",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1700,
+              "id": 11081,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1699,
+                  "id": 11080,
                   "name": "newMaxTicketsPerPlayer",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1702,
-                  "src": "1425:28:4",
+                  "scope": 11083,
+                  "src": "1425:28:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -466,10 +466,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 1698,
+                    "id": 11079,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1425:5:4",
+                    "src": "1425:5:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -479,17 +479,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1424:30:4"
+              "src": "1424:30:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1701,
+              "id": 11082,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1463:0:4"
+              "src": "1463:0:16"
             },
-            "scope": 1718,
-            "src": "1393:71:4",
+            "scope": 11099,
+            "src": "1393:71:16",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -497,7 +497,7 @@
           {
             "body": null,
             "documentation": "@dev Sets tickets price.\r\n@param newTicketPrice The price of a single ticket.\r",
-            "id": 1707,
+            "id": 11088,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -505,16 +505,16 @@
             "name": "setTicketPrice",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1705,
+              "id": 11086,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1704,
+                  "id": 11085,
                   "name": "newTicketPrice",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1707,
-                  "src": "1604:19:4",
+                  "scope": 11088,
+                  "src": "1604:19:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -522,10 +522,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1703,
+                    "id": 11084,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1604:4:4",
+                    "src": "1604:4:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -535,17 +535,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1603:21:4"
+              "src": "1603:21:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1706,
+              "id": 11087,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1633:0:4"
+              "src": "1633:0:16"
             },
-            "scope": 1718,
-            "src": "1580:54:4",
+            "scope": 11099,
+            "src": "1580:54:16",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -553,7 +553,7 @@
           {
             "body": null,
             "documentation": "@dev Sets house edge.\r\n@param newHouseEdge House profit per ticket. \r",
-            "id": 1712,
+            "id": 11093,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -561,16 +561,16 @@
             "name": "setHouseEdge",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1710,
+              "id": 11091,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1709,
+                  "id": 11090,
                   "name": "newHouseEdge",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1712,
-                  "src": "1763:17:4",
+                  "scope": 11093,
+                  "src": "1763:17:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -578,10 +578,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1708,
+                    "id": 11089,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1763:4:4",
+                    "src": "1763:4:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -591,17 +591,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1762:19:4"
+              "src": "1762:19:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1711,
+              "id": 11092,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1790:0:4"
+              "src": "1790:0:16"
             },
-            "scope": 1718,
-            "src": "1741:50:4",
+            "scope": 11099,
+            "src": "1741:50:16",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -609,7 +609,7 @@
           {
             "body": null,
             "documentation": "@dev Sets gas limit for Oraclize calls.\r\n@param newOraclizeGasLimit Gas amount to be used by the Oracle calls.\r",
-            "id": 1717,
+            "id": 11098,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -617,16 +617,16 @@
             "name": "setOraclizeGas",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1715,
+              "id": 11096,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1714,
+                  "id": 11095,
                   "name": "newOraclizeGasLimit",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1717,
-                  "src": "1964:26:4",
+                  "scope": 11098,
+                  "src": "1964:26:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -634,10 +634,10 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 1713,
+                    "id": 11094,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1964:6:4",
+                    "src": "1964:6:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint32",
                       "typeString": "uint32"
@@ -647,40 +647,40 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1963:28:4"
+              "src": "1963:28:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1716,
+              "id": 11097,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2000:0:4"
+              "src": "2000:0:16"
             },
-            "scope": 1718,
-            "src": "1940:61:4",
+            "scope": 11099,
+            "src": "1940:61:16",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 1719,
-        "src": "129:1875:4"
+        "scope": 11100,
+        "src": "129:1875:16"
       }
     ],
-    "src": "0:2004:4"
+    "src": "0:2004:16"
   },
   "legacyAST": {
-    "absolutePath": "/C/Data/Junior/Consensys Academy/Final Project/EtherBinary/contracts/interfaces/GameFactoryI.sol",
+    "absolutePath": "/C/Data/Junior/Development/EtherBinary/EtherBinary/contracts/interfaces/GameFactoryI.sol",
     "exportedSymbols": {
       "GameFactoryI": [
-        1718
+        11099
       ]
     },
-    "id": 1719,
+    "id": 11100,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1673,
+        "id": 11054,
         "literals": [
           "solidity",
           "^",
@@ -688,7 +688,7 @@
           ".22"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:4"
+        "src": "0:24:16"
       },
       {
         "baseContracts": [],
@@ -696,9 +696,9 @@
         "contractKind": "interface",
         "documentation": "@title Interface that establishes the functions that a Game Factory contract must implement. ",
         "fullyImplemented": false,
-        "id": 1718,
+        "id": 11099,
         "linearizedBaseContracts": [
-          1718
+          11099
         ],
         "name": "GameFactoryI",
         "nodeType": "ContractDefinition",
@@ -706,7 +706,7 @@
           {
             "body": null,
             "documentation": "@dev Function used to create a new game based on the provided parameters.\r\n@param assetPair The assetPair of the game.\r\n@param assetPairAlias Alias of the assetPair used for display.\r\n@param description The description of the game to be desplayed.\r\n@return The address of the deployed game.\r",
-            "id": 1684,
+            "id": 11065,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -714,16 +714,16 @@
             "name": "createNewGame",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1680,
+              "id": 11061,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1675,
+                  "id": 11056,
                   "name": "assetPair",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1684,
-                  "src": "524:16:4",
+                  "scope": 11065,
+                  "src": "524:16:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -731,10 +731,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1674,
+                    "id": 11055,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "524:6:4",
+                    "src": "524:6:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -745,11 +745,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1677,
+                  "id": 11058,
                   "name": "assetPairAlias",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1684,
-                  "src": "542:21:4",
+                  "scope": 11065,
+                  "src": "542:21:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -757,10 +757,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1676,
+                    "id": 11057,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "542:6:4",
+                    "src": "542:6:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -771,11 +771,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1679,
+                  "id": 11060,
                   "name": "description",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1684,
-                  "src": "565:18:4",
+                  "scope": 11065,
+                  "src": "565:18:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -783,10 +783,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1678,
+                    "id": 11059,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "565:6:4",
+                    "src": "565:6:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -796,20 +796,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "523:61:4"
+              "src": "523:61:16"
             },
             "payable": true,
             "returnParameters": {
-              "id": 1683,
+              "id": 11064,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1682,
+                  "id": 11063,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1684,
-                  "src": "611:7:4",
+                  "scope": 11065,
+                  "src": "611:7:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -817,10 +817,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1681,
+                    "id": 11062,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "611:7:4",
+                    "src": "611:7:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -830,10 +830,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "610:9:4"
+              "src": "610:9:16"
             },
-            "scope": 1718,
-            "src": "501:119:4",
+            "scope": 11099,
+            "src": "501:119:16",
             "stateMutability": "payable",
             "superFunction": null,
             "visibility": "external"
@@ -841,7 +841,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 1687,
+            "id": 11068,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -849,20 +849,20 @@
             "name": "destructContract",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1685,
+              "id": 11066,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "733:2:4"
+              "src": "733:2:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1686,
+              "id": 11067,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "744:0:4"
+              "src": "744:0:16"
             },
-            "scope": 1718,
-            "src": "708:37:4",
+            "scope": 11099,
+            "src": "708:37:16",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -870,7 +870,7 @@
           {
             "body": null,
             "documentation": "@dev Sets bets duration minutes.\r\n@param newBetsDurationMinutes  Specifies the time in minutes of the duration of the betting period.\r",
-            "id": 1692,
+            "id": 11073,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -878,16 +878,16 @@
             "name": "setBetsDurationMinutes",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1690,
+              "id": 11071,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1689,
+                  "id": 11070,
                   "name": "newBetsDurationMinutes",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1692,
-                  "src": "950:28:4",
+                  "scope": 11073,
+                  "src": "950:28:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -895,10 +895,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 1688,
+                    "id": 11069,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "950:5:4",
+                    "src": "950:5:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -908,17 +908,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "949:30:4"
+              "src": "949:30:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1691,
+              "id": 11072,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "988:0:4"
+              "src": "988:0:16"
             },
-            "scope": 1718,
-            "src": "918:71:4",
+            "scope": 11099,
+            "src": "918:71:16",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -926,7 +926,7 @@
           {
             "body": null,
             "documentation": "@dev Sets results duration minutes.\r\n@param newGetResultsMinutes Specifies the time in minutes to get the match result after the betting period.\r",
-            "id": 1697,
+            "id": 11078,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -934,16 +934,16 @@
             "name": "setGetResultsMinutes",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1695,
+              "id": 11076,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1694,
+                  "id": 11075,
                   "name": "newGetResultsMinutes",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1697,
-                  "src": "1203:26:4",
+                  "scope": 11078,
+                  "src": "1203:26:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -951,10 +951,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 1693,
+                    "id": 11074,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1203:5:4",
+                    "src": "1203:5:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -964,17 +964,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1202:28:4"
+              "src": "1202:28:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1696,
+              "id": 11077,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1239:0:4"
+              "src": "1239:0:16"
             },
-            "scope": 1718,
-            "src": "1173:67:4",
+            "scope": 11099,
+            "src": "1173:67:16",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -982,7 +982,7 @@
           {
             "body": null,
             "documentation": "@dev Sets bets max tickets per player.\r\n@param newMaxTicketsPerPlayer Max number of tickets that a player can buy.\r",
-            "id": 1702,
+            "id": 11083,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -990,16 +990,16 @@
             "name": "setMaxTicketsPerPlayer",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1700,
+              "id": 11081,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1699,
+                  "id": 11080,
                   "name": "newMaxTicketsPerPlayer",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1702,
-                  "src": "1425:28:4",
+                  "scope": 11083,
+                  "src": "1425:28:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1007,10 +1007,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 1698,
+                    "id": 11079,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1425:5:4",
+                    "src": "1425:5:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -1020,17 +1020,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1424:30:4"
+              "src": "1424:30:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1701,
+              "id": 11082,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1463:0:4"
+              "src": "1463:0:16"
             },
-            "scope": 1718,
-            "src": "1393:71:4",
+            "scope": 11099,
+            "src": "1393:71:16",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -1038,7 +1038,7 @@
           {
             "body": null,
             "documentation": "@dev Sets tickets price.\r\n@param newTicketPrice The price of a single ticket.\r",
-            "id": 1707,
+            "id": 11088,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1046,16 +1046,16 @@
             "name": "setTicketPrice",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1705,
+              "id": 11086,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1704,
+                  "id": 11085,
                   "name": "newTicketPrice",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1707,
-                  "src": "1604:19:4",
+                  "scope": 11088,
+                  "src": "1604:19:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1063,10 +1063,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1703,
+                    "id": 11084,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1604:4:4",
+                    "src": "1604:4:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1076,17 +1076,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1603:21:4"
+              "src": "1603:21:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1706,
+              "id": 11087,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1633:0:4"
+              "src": "1633:0:16"
             },
-            "scope": 1718,
-            "src": "1580:54:4",
+            "scope": 11099,
+            "src": "1580:54:16",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -1094,7 +1094,7 @@
           {
             "body": null,
             "documentation": "@dev Sets house edge.\r\n@param newHouseEdge House profit per ticket. \r",
-            "id": 1712,
+            "id": 11093,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1102,16 +1102,16 @@
             "name": "setHouseEdge",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1710,
+              "id": 11091,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1709,
+                  "id": 11090,
                   "name": "newHouseEdge",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1712,
-                  "src": "1763:17:4",
+                  "scope": 11093,
+                  "src": "1763:17:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1119,10 +1119,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1708,
+                    "id": 11089,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1763:4:4",
+                    "src": "1763:4:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1132,17 +1132,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1762:19:4"
+              "src": "1762:19:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1711,
+              "id": 11092,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1790:0:4"
+              "src": "1790:0:16"
             },
-            "scope": 1718,
-            "src": "1741:50:4",
+            "scope": 11099,
+            "src": "1741:50:16",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -1150,7 +1150,7 @@
           {
             "body": null,
             "documentation": "@dev Sets gas limit for Oraclize calls.\r\n@param newOraclizeGasLimit Gas amount to be used by the Oracle calls.\r",
-            "id": 1717,
+            "id": 11098,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1158,16 +1158,16 @@
             "name": "setOraclizeGas",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1715,
+              "id": 11096,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1714,
+                  "id": 11095,
                   "name": "newOraclizeGasLimit",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1717,
-                  "src": "1964:26:4",
+                  "scope": 11098,
+                  "src": "1964:26:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1175,10 +1175,10 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 1713,
+                    "id": 11094,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1964:6:4",
+                    "src": "1964:6:16",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint32",
                       "typeString": "uint32"
@@ -1188,27 +1188,27 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1963:28:4"
+              "src": "1963:28:16"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1716,
+              "id": 11097,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2000:0:4"
+              "src": "2000:0:16"
             },
-            "scope": 1718,
-            "src": "1940:61:4",
+            "scope": 11099,
+            "src": "1940:61:16",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 1719,
-        "src": "129:1875:4"
+        "scope": 11100,
+        "src": "129:1875:16"
       }
     ],
-    "src": "0:2004:4"
+    "src": "0:2004:16"
   },
   "compiler": {
     "name": "solc",
@@ -1216,5 +1216,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-08-28T04:16:34.174Z"
+  "updatedAt": "2018-08-28T10:12:10.144Z"
 }

@@ -135,7 +135,7 @@
             <div class="modal-header">
                 <h4 *ngIf="modals.currentModal == 'myHistory'" class="modal-title">My Results (Last 10) - <strong>{{ modalGame.AssetPairAlias }} </strong></h4>
                 <h4 *ngIf="modals.currentModal == 'historic'" class="modal-title">Historic (Last 10) - <strong>{{ modalGame.AssetPairAlias }} </strong></h4>
-                <button type="button" class="close" aria-label="Close" (click)="toggleModal()">
+                <button type="button" class="close" aria-label="Close" (click)="toggleModal('', {})">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -210,7 +210,7 @@
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" (click)="toggleModal()">Close</button>
+                <button type="button" class="btn btn-secondary" (click)="toggleModal('', {})">Close</button>
             </div>
         </div>
     </div>

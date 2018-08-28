@@ -317,19 +317,19 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.4.22;\r\n\r\n/** @title Interface that establishes the functions that a Game contract must implement. */\r\ninterface GameI {\r\n\r\n    /** \r\n    * @dev Event emitted when a new match has started.\r\n    * @param assetPair The assetPair of the game.\r\n    * @param matchId Id of the started match.\r\n    * @param startTime The time in which the game started.\r\n    * @param initialPrice The inital price of the asset.\r\n    */\r\n    event LogMatchStarted(string assetPair, uint indexed matchId, uint startTime, uint initialPrice);\r\n\r\n    /** \r\n    * @dev Event emitted when a match betting period has finished.\r\n    * @param assetPair The assetPair of the game.\r\n    * @param matchId Id of the match.\r\n    * @param totalPool Match total pool.\r\n    * @param timestamp The time in which the event occured.\r\n    */\r\n    event LogBettingPeriodEnd(string assetPair, uint indexed matchId, uint totalPool, uint timestamp);\r\n\r\n    /** \r\n    * @dev Event emitted when a ticket has been bought.\r\n    * @param assetPair The assetPair of the game.\r\n    * @param matchId Id of the match.\r\n    * @param player The player who bought the ticket.\r\n    * @param ticketsBought The amount of tickets bought in this transaction.\r\n    * @param playerTotalTickets Total amount of tickets for this match.\r\n    * @param option Option the player bet to.\r\n    * @param optionTotalTickets Total pool of the option the player bet to.\r\n    * @param timestamp The time in which the event occured.\r\n    */\r\n    event LogTicketBought(\r\n        string assetPair, \r\n        uint indexed matchId, \r\n        address indexed player, \r\n        uint ticketsBought,\r\n        uint playerTotalTickets, \r\n        bool option, \r\n        uint optionTotalTickets,\r\n        uint timestamp\r\n    );\r\n\r\n   /** \r\n    * @dev Event emitted when a match has finished.\r\n    * @param assetPair The assetPair of the game.\r\n    * @param matchId Id of the match that has finished.\r\n    * @param startTime The start time of the match.\r\n    * @param endTime The end time of the match.\r\n    * @param initialPrice Initial price of the asset.\r\n    * @param endPrice End price of the asset.\r\n    * @param earningsByTicket Amount of ether won by ticket.\r\n    * @param winnerOption Option that winned the match.\r\n    */\r\n    event LogMatchFinished(\r\n        string assetPair, \r\n        uint indexed matchId, \r\n        uint startTime, \r\n        uint endTime, \r\n        uint initialPrice, \r\n        uint endPrice, \r\n        uint earningsByTicket, \r\n        bool winnerOption\r\n    );\r\n\r\n    /** \r\n    * @dev Event emitted when user withdraw earnings.\r\n    * @param assetPair The assetPair of the game.\r\n    * @param matchId Id of the associated match.\r\n    * @param player The player who withdraw earnings.\r\n    * @param amount The amount withdrawn.\r\n    * @param timestamp The time in which the event occured.\r\n    */\r\n    event LogEarningsWithdrawn(string assetPair, uint matchId, address indexed player, uint amount, uint timestamp);\r\n    \r\n    /** \r\n    * @dev Sets the information of the asset pair and sets the oraclize endpoint.\r\n    * @param _assetPair The assetPair of the game.\r\n    * @param _assetPairAlias Alias of the assetPair used for display.\r\n    * @param _description The description of the game used for display.\r\n    */\r\n    function setAssetPairInformation(string _assetPair, string _assetPairAlias, string _description) external;\r\n\r\n    /** \r\n    * @dev Set game variables and start game.\r\n    * @param _betsDurationMinutes Specifies the time in minutes of the duration of the betting period.\r\n    * @param _getResultsMinutes Specifies the time in minutes to get the match result after the betting period.\r\n    * @param _maxTicketsPerPlayer Max number of tickets that a player can buy.\r\n    * @param _ticketPrice The price of a single ticket.\r\n    * @param _houseEdge House profit per ticket. \r\n    * @param _oraclizeGasLimit Gas amount to be used by the Oracle calls.\r\n    */\r\n    function setGameVariablesAndStart(\r\n        uint8 _betsDurationMinutes, \r\n        uint8 _getResultsMinutes,\r\n        uint8 _maxTicketsPerPlayer,\r\n        uint _ticketPrice, \r\n        uint _houseEdge,\r\n        uint32 _oraclizeGasLimit\r\n    ) external;\r\n\r\n    /** \r\n    * @dev Returns the game relevant information. \r\n    * @return _assetPair The assetPair of the game.\r\n    * @return _assetPairAlias  Alias of the assetPair used for display.\r\n    * @return _description The description of the game used for display.\r\n    * @return _ticketPrice The price of a single ticket.\r\n    * @return _currentMatchId Id of the current running match. \r\n    * @return _maxTicketsPerPlayer Max number of tickets that a player can buy.\r\n    * @return _betsDurationMinutes Specifies the time in minutes of the duration of the betting period.\r\n    * @return _getResultsMinutes  Specifies the time in minutes to get the match result after the betting period.\r\n    */\r\n    function getGameInfo() external view returns (\r\n        string  _assetPair, \r\n        string  _assetPairAlias, \r\n        string  _description, \r\n        uint  _ticketPrice, \r\n        uint  _currentMatchId,\r\n        uint8  _maxTicketsPerPlayer,\r\n        uint8 _betsDurationMinutes,\r\n        uint8 _getResultsMinutes\r\n    );\r\n\r\n    /** \r\n    * @dev Payable function to buy tickets.\r\n    * @param option Option to bet to.\r\n    */\r\n    function buyTickets(bool option) external payable;\r\n\r\n    // @dev Function called by a player to withdraw all pending withdrawals.\r\n    function withdrawEarnings() external;\r\n\r\n    // @dev  Allows the owner to destruct the contrat in case of an emergency.\r\n    function destructContract() external;\r\n}",
-  "sourcePath": "C:\\Data\\Junior\\Consensys Academy\\Final Project\\EtherBinary\\contracts\\interfaces\\GameI.sol",
+  "sourcePath": "C:\\Data\\Junior\\Development\\EtherBinary\\EtherBinary\\contracts\\interfaces\\GameI.sol",
   "ast": {
-    "absolutePath": "/C/Data/Junior/Consensys Academy/Final Project/EtherBinary/contracts/interfaces/GameI.sol",
+    "absolutePath": "/C/Data/Junior/Development/EtherBinary/EtherBinary/contracts/interfaces/GameI.sol",
     "exportedSymbols": {
       "GameI": [
-        1843
+        11224
       ]
     },
-    "id": 1844,
+    "id": 11225,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1720,
+        "id": 11101,
         "literals": [
           "solidity",
           "^",
@@ -337,7 +337,7 @@
           ".22"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:5"
+        "src": "0:24:17"
       },
       {
         "baseContracts": [],
@@ -345,9 +345,9 @@
         "contractKind": "interface",
         "documentation": "@title Interface that establishes the functions that a Game contract must implement. ",
         "fullyImplemented": false,
-        "id": 1843,
+        "id": 11224,
         "linearizedBaseContracts": [
-          1843
+          11224
         ],
         "name": "GameI",
         "nodeType": "ContractDefinition",
@@ -355,21 +355,21 @@
           {
             "anonymous": false,
             "documentation": "@dev Event emitted when a new match has started.\r\n@param assetPair The assetPair of the game.\r\n@param matchId Id of the started match.\r\n@param startTime The time in which the game started.\r\n@param initialPrice The inital price of the asset.\r",
-            "id": 1730,
+            "id": 11111,
             "name": "LogMatchStarted",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1729,
+              "id": 11110,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1722,
+                  "id": 11103,
                   "indexed": false,
                   "name": "assetPair",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1730,
-                  "src": "458:16:5",
+                  "scope": 11111,
+                  "src": "458:16:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -377,10 +377,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1721,
+                    "id": 11102,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "458:6:5",
+                    "src": "458:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -391,12 +391,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1724,
+                  "id": 11105,
                   "indexed": true,
                   "name": "matchId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1730,
-                  "src": "476:20:5",
+                  "scope": 11111,
+                  "src": "476:20:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -404,10 +404,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1723,
+                    "id": 11104,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "476:4:5",
+                    "src": "476:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -418,12 +418,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1726,
+                  "id": 11107,
                   "indexed": false,
                   "name": "startTime",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1730,
-                  "src": "498:14:5",
+                  "scope": 11111,
+                  "src": "498:14:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -431,10 +431,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1725,
+                    "id": 11106,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "498:4:5",
+                    "src": "498:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -445,12 +445,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1728,
+                  "id": 11109,
                   "indexed": false,
                   "name": "initialPrice",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1730,
-                  "src": "514:17:5",
+                  "scope": 11111,
+                  "src": "514:17:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -458,10 +458,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1727,
+                    "id": 11108,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "514:4:5",
+                    "src": "514:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -471,28 +471,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "457:75:5"
+              "src": "457:75:17"
             },
-            "src": "436:97:5"
+            "src": "436:97:17"
           },
           {
             "anonymous": false,
             "documentation": "@dev Event emitted when a match betting period has finished.\r\n@param assetPair The assetPair of the game.\r\n@param matchId Id of the match.\r\n@param totalPool Match total pool.\r\n@param timestamp The time in which the event occured.\r",
-            "id": 1740,
+            "id": 11121,
             "name": "LogBettingPeriodEnd",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1739,
+              "id": 11120,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1732,
+                  "id": 11113,
                   "indexed": false,
                   "name": "assetPair",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1740,
-                  "src": "846:16:5",
+                  "scope": 11121,
+                  "src": "846:16:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -500,10 +500,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1731,
+                    "id": 11112,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "846:6:5",
+                    "src": "846:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -514,12 +514,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1734,
+                  "id": 11115,
                   "indexed": true,
                   "name": "matchId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1740,
-                  "src": "864:20:5",
+                  "scope": 11121,
+                  "src": "864:20:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -527,10 +527,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1733,
+                    "id": 11114,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "864:4:5",
+                    "src": "864:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -541,12 +541,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1736,
+                  "id": 11117,
                   "indexed": false,
                   "name": "totalPool",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1740,
-                  "src": "886:14:5",
+                  "scope": 11121,
+                  "src": "886:14:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -554,10 +554,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1735,
+                    "id": 11116,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "886:4:5",
+                    "src": "886:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -568,12 +568,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1738,
+                  "id": 11119,
                   "indexed": false,
                   "name": "timestamp",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1740,
-                  "src": "902:14:5",
+                  "scope": 11121,
+                  "src": "902:14:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -581,10 +581,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1737,
+                    "id": 11118,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "902:4:5",
+                    "src": "902:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -594,28 +594,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "845:72:5"
+              "src": "845:72:17"
             },
-            "src": "820:98:5"
+            "src": "820:98:17"
           },
           {
             "anonymous": false,
             "documentation": "@dev Event emitted when a ticket has been bought.\r\n@param assetPair The assetPair of the game.\r\n@param matchId Id of the match.\r\n@param player The player who bought the ticket.\r\n@param ticketsBought The amount of tickets bought in this transaction.\r\n@param playerTotalTickets Total amount of tickets for this match.\r\n@param option Option the player bet to.\r\n@param optionTotalTickets Total pool of the option the player bet to.\r\n@param timestamp The time in which the event occured.\r",
-            "id": 1758,
+            "id": 11139,
             "name": "LogTicketBought",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1757,
+              "id": 11138,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1742,
+                  "id": 11123,
                   "indexed": false,
                   "name": "assetPair",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1514:16:5",
+                  "scope": 11139,
+                  "src": "1514:16:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -623,10 +623,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1741,
+                    "id": 11122,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1514:6:5",
+                    "src": "1514:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -637,12 +637,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1744,
+                  "id": 11125,
                   "indexed": true,
                   "name": "matchId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1542:20:5",
+                  "scope": 11139,
+                  "src": "1542:20:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -650,10 +650,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1743,
+                    "id": 11124,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1542:4:5",
+                    "src": "1542:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -664,12 +664,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1746,
+                  "id": 11127,
                   "indexed": true,
                   "name": "player",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1574:22:5",
+                  "scope": 11139,
+                  "src": "1574:22:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -677,10 +677,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1745,
+                    "id": 11126,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1574:7:5",
+                    "src": "1574:7:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -691,12 +691,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1748,
+                  "id": 11129,
                   "indexed": false,
                   "name": "ticketsBought",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1608:18:5",
+                  "scope": 11139,
+                  "src": "1608:18:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -704,10 +704,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1747,
+                    "id": 11128,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1608:4:5",
+                    "src": "1608:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -718,12 +718,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1750,
+                  "id": 11131,
                   "indexed": false,
                   "name": "playerTotalTickets",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1637:23:5",
+                  "scope": 11139,
+                  "src": "1637:23:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -731,10 +731,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1749,
+                    "id": 11130,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1637:4:5",
+                    "src": "1637:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -745,12 +745,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1752,
+                  "id": 11133,
                   "indexed": false,
                   "name": "option",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1672:11:5",
+                  "scope": 11139,
+                  "src": "1672:11:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -758,10 +758,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1751,
+                    "id": 11132,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1672:4:5",
+                    "src": "1672:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -772,12 +772,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1754,
+                  "id": 11135,
                   "indexed": false,
                   "name": "optionTotalTickets",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1695:23:5",
+                  "scope": 11139,
+                  "src": "1695:23:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -785,10 +785,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1753,
+                    "id": 11134,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1695:4:5",
+                    "src": "1695:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -799,12 +799,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1756,
+                  "id": 11137,
                   "indexed": false,
                   "name": "timestamp",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1729:14:5",
+                  "scope": 11139,
+                  "src": "1729:14:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -812,10 +812,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1755,
+                    "id": 11136,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1729:4:5",
+                    "src": "1729:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -825,28 +825,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1503:247:5"
+              "src": "1503:247:17"
             },
-            "src": "1482:269:5"
+            "src": "1482:269:17"
           },
           {
             "anonymous": false,
             "documentation": "@dev Event emitted when a match has finished.\r\n@param assetPair The assetPair of the game.\r\n@param matchId Id of the match that has finished.\r\n@param startTime The start time of the match.\r\n@param endTime The end time of the match.\r\n@param initialPrice Initial price of the asset.\r\n@param endPrice End price of the asset.\r\n@param earningsByTicket Amount of ether won by ticket.\r\n@param winnerOption Option that winned the match.\r",
-            "id": 1776,
+            "id": 11157,
             "name": "LogMatchFinished",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1775,
+              "id": 11156,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1760,
+                  "id": 11141,
                   "indexed": false,
                   "name": "assetPair",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1776,
-                  "src": "2293:16:5",
+                  "scope": 11157,
+                  "src": "2293:16:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -854,10 +854,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1759,
+                    "id": 11140,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2293:6:5",
+                    "src": "2293:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -868,12 +868,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1762,
+                  "id": 11143,
                   "indexed": true,
                   "name": "matchId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1776,
-                  "src": "2321:20:5",
+                  "scope": 11157,
+                  "src": "2321:20:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -881,10 +881,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1761,
+                    "id": 11142,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2321:4:5",
+                    "src": "2321:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -895,12 +895,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1764,
+                  "id": 11145,
                   "indexed": false,
                   "name": "startTime",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1776,
-                  "src": "2353:14:5",
+                  "scope": 11157,
+                  "src": "2353:14:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -908,10 +908,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1763,
+                    "id": 11144,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2353:4:5",
+                    "src": "2353:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -922,12 +922,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1766,
+                  "id": 11147,
                   "indexed": false,
                   "name": "endTime",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1776,
-                  "src": "2379:12:5",
+                  "scope": 11157,
+                  "src": "2379:12:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -935,10 +935,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1765,
+                    "id": 11146,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2379:4:5",
+                    "src": "2379:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -949,12 +949,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1768,
+                  "id": 11149,
                   "indexed": false,
                   "name": "initialPrice",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1776,
-                  "src": "2403:17:5",
+                  "scope": 11157,
+                  "src": "2403:17:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -962,10 +962,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1767,
+                    "id": 11148,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2403:4:5",
+                    "src": "2403:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -976,12 +976,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1770,
+                  "id": 11151,
                   "indexed": false,
                   "name": "endPrice",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1776,
-                  "src": "2432:13:5",
+                  "scope": 11157,
+                  "src": "2432:13:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -989,10 +989,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1769,
+                    "id": 11150,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2432:4:5",
+                    "src": "2432:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1003,12 +1003,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1772,
+                  "id": 11153,
                   "indexed": false,
                   "name": "earningsByTicket",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1776,
-                  "src": "2457:21:5",
+                  "scope": 11157,
+                  "src": "2457:21:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1016,10 +1016,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1771,
+                    "id": 11152,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2457:4:5",
+                    "src": "2457:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1030,12 +1030,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1774,
+                  "id": 11155,
                   "indexed": false,
                   "name": "winnerOption",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1776,
-                  "src": "2490:17:5",
+                  "scope": 11157,
+                  "src": "2490:17:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1043,10 +1043,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1773,
+                    "id": 11154,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2490:4:5",
+                    "src": "2490:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1056,28 +1056,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2282:232:5"
+              "src": "2282:232:17"
             },
-            "src": "2260:255:5"
+            "src": "2260:255:17"
           },
           {
             "anonymous": false,
             "documentation": "@dev Event emitted when user withdraw earnings.\r\n@param assetPair The assetPair of the game.\r\n@param matchId Id of the associated match.\r\n@param player The player who withdraw earnings.\r\n@param amount The amount withdrawn.\r\n@param timestamp The time in which the event occured.\r",
-            "id": 1788,
+            "id": 11169,
             "name": "LogEarningsWithdrawn",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1787,
+              "id": 11168,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1778,
+                  "id": 11159,
                   "indexed": false,
                   "name": "assetPair",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1788,
-                  "src": "2883:16:5",
+                  "scope": 11169,
+                  "src": "2883:16:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1085,10 +1085,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1777,
+                    "id": 11158,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2883:6:5",
+                    "src": "2883:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1099,12 +1099,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1780,
+                  "id": 11161,
                   "indexed": false,
                   "name": "matchId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1788,
-                  "src": "2901:12:5",
+                  "scope": 11169,
+                  "src": "2901:12:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1112,10 +1112,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1779,
+                    "id": 11160,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2901:4:5",
+                    "src": "2901:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1126,12 +1126,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1782,
+                  "id": 11163,
                   "indexed": true,
                   "name": "player",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1788,
-                  "src": "2915:22:5",
+                  "scope": 11169,
+                  "src": "2915:22:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1139,10 +1139,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1781,
+                    "id": 11162,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2915:7:5",
+                    "src": "2915:7:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1153,12 +1153,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1784,
+                  "id": 11165,
                   "indexed": false,
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1788,
-                  "src": "2939:11:5",
+                  "scope": 11169,
+                  "src": "2939:11:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1166,10 +1166,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1783,
+                    "id": 11164,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2939:4:5",
+                    "src": "2939:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1180,12 +1180,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1786,
+                  "id": 11167,
                   "indexed": false,
                   "name": "timestamp",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1788,
-                  "src": "2952:14:5",
+                  "scope": 11169,
+                  "src": "2952:14:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1193,10 +1193,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1785,
+                    "id": 11166,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2952:4:5",
+                    "src": "2952:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1206,14 +1206,14 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2882:85:5"
+              "src": "2882:85:17"
             },
-            "src": "2856:112:5"
+            "src": "2856:112:17"
           },
           {
             "body": null,
             "documentation": "@dev Sets the information of the asset pair and sets the oraclize endpoint.\r\n@param _assetPair The assetPair of the game.\r\n@param _assetPairAlias Alias of the assetPair used for display.\r\n@param _description The description of the game used for display.\r",
-            "id": 1797,
+            "id": 11178,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1221,16 +1221,16 @@
             "name": "setAssetPairInformation",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1795,
+              "id": 11176,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1790,
+                  "id": 11171,
                   "name": "_assetPair",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1797,
-                  "src": "3310:17:5",
+                  "scope": 11178,
+                  "src": "3310:17:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1238,10 +1238,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1789,
+                    "id": 11170,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3310:6:5",
+                    "src": "3310:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1252,11 +1252,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1792,
+                  "id": 11173,
                   "name": "_assetPairAlias",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1797,
-                  "src": "3329:22:5",
+                  "scope": 11178,
+                  "src": "3329:22:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1264,10 +1264,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1791,
+                    "id": 11172,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3329:6:5",
+                    "src": "3329:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1278,11 +1278,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1794,
+                  "id": 11175,
                   "name": "_description",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1797,
-                  "src": "3353:19:5",
+                  "scope": 11178,
+                  "src": "3353:19:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1290,10 +1290,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1793,
+                    "id": 11174,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3353:6:5",
+                    "src": "3353:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1303,17 +1303,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3309:64:5"
+              "src": "3309:64:17"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1796,
+              "id": 11177,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "3382:0:5"
+              "src": "3382:0:17"
             },
-            "scope": 1843,
-            "src": "3277:106:5",
+            "scope": 11224,
+            "src": "3277:106:17",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -1321,7 +1321,7 @@
           {
             "body": null,
             "documentation": "@dev Set game variables and start game.\r\n@param _betsDurationMinutes Specifies the time in minutes of the duration of the betting period.\r\n@param _getResultsMinutes Specifies the time in minutes to get the match result after the betting period.\r\n@param _maxTicketsPerPlayer Max number of tickets that a player can buy.\r\n@param _ticketPrice The price of a single ticket.\r\n@param _houseEdge House profit per ticket. \r\n@param _oraclizeGasLimit Gas amount to be used by the Oracle calls.\r",
-            "id": 1812,
+            "id": 11193,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1329,16 +1329,16 @@
             "name": "setGameVariablesAndStart",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1810,
+              "id": 11191,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1799,
+                  "id": 11180,
                   "name": "_betsDurationMinutes",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1812,
-                  "src": "3980:26:5",
+                  "scope": 11193,
+                  "src": "3980:26:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1346,10 +1346,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 1798,
+                    "id": 11179,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3980:5:5",
+                    "src": "3980:5:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -1360,11 +1360,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1801,
+                  "id": 11182,
                   "name": "_getResultsMinutes",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1812,
-                  "src": "4018:24:5",
+                  "scope": 11193,
+                  "src": "4018:24:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1372,10 +1372,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 1800,
+                    "id": 11181,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4018:5:5",
+                    "src": "4018:5:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -1386,11 +1386,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1803,
+                  "id": 11184,
                   "name": "_maxTicketsPerPlayer",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1812,
-                  "src": "4053:26:5",
+                  "scope": 11193,
+                  "src": "4053:26:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1398,10 +1398,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 1802,
+                    "id": 11183,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4053:5:5",
+                    "src": "4053:5:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -1412,11 +1412,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1805,
+                  "id": 11186,
                   "name": "_ticketPrice",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1812,
-                  "src": "4090:17:5",
+                  "scope": 11193,
+                  "src": "4090:17:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1424,10 +1424,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1804,
+                    "id": 11185,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4090:4:5",
+                    "src": "4090:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1438,11 +1438,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1807,
+                  "id": 11188,
                   "name": "_houseEdge",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1812,
-                  "src": "4119:15:5",
+                  "scope": 11193,
+                  "src": "4119:15:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1450,10 +1450,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1806,
+                    "id": 11187,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4119:4:5",
+                    "src": "4119:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1464,11 +1464,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1809,
+                  "id": 11190,
                   "name": "_oraclizeGasLimit",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1812,
-                  "src": "4145:24:5",
+                  "scope": 11193,
+                  "src": "4145:24:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1476,10 +1476,10 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 1808,
+                    "id": 11189,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4145:6:5",
+                    "src": "4145:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint32",
                       "typeString": "uint32"
@@ -1489,17 +1489,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3969:207:5"
+              "src": "3969:207:17"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1811,
+              "id": 11192,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "4185:0:5"
+              "src": "4185:0:17"
             },
-            "scope": 1843,
-            "src": "3936:250:5",
+            "scope": 11224,
+            "src": "3936:250:17",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -1507,7 +1507,7 @@
           {
             "body": null,
             "documentation": "@dev Returns the game relevant information. \r\n@return _assetPair The assetPair of the game.\r\n@return _assetPairAlias  Alias of the assetPair used for display.\r\n@return _description The description of the game used for display.\r\n@return _ticketPrice The price of a single ticket.\r\n@return _currentMatchId Id of the current running match. \r\n@return _maxTicketsPerPlayer Max number of tickets that a player can buy.\r\n@return _betsDurationMinutes Specifies the time in minutes of the duration of the betting period.\r\n@return _getResultsMinutes  Specifies the time in minutes to get the match result after the betting period.\r",
-            "id": 1831,
+            "id": 11212,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -1515,23 +1515,23 @@
             "name": "getGameInfo",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1813,
+              "id": 11194,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "4908:2:5"
+              "src": "4908:2:17"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1830,
+              "id": 11211,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1815,
+                  "id": 11196,
                   "name": "_assetPair",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1831,
-                  "src": "4944:18:5",
+                  "scope": 11212,
+                  "src": "4944:18:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1539,10 +1539,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1814,
+                    "id": 11195,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4944:6:5",
+                    "src": "4944:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1553,11 +1553,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1817,
+                  "id": 11198,
                   "name": "_assetPairAlias",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1831,
-                  "src": "4974:23:5",
+                  "scope": 11212,
+                  "src": "4974:23:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1565,10 +1565,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1816,
+                    "id": 11197,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4974:6:5",
+                    "src": "4974:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1579,11 +1579,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1819,
+                  "id": 11200,
                   "name": "_description",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1831,
-                  "src": "5009:20:5",
+                  "scope": 11212,
+                  "src": "5009:20:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1591,10 +1591,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1818,
+                    "id": 11199,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5009:6:5",
+                    "src": "5009:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1605,11 +1605,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1821,
+                  "id": 11202,
                   "name": "_ticketPrice",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1831,
-                  "src": "5041:18:5",
+                  "scope": 11212,
+                  "src": "5041:18:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1617,10 +1617,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1820,
+                    "id": 11201,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5041:4:5",
+                    "src": "5041:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1631,11 +1631,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1823,
+                  "id": 11204,
                   "name": "_currentMatchId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1831,
-                  "src": "5071:21:5",
+                  "scope": 11212,
+                  "src": "5071:21:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1643,10 +1643,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1822,
+                    "id": 11203,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5071:4:5",
+                    "src": "5071:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1657,11 +1657,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1825,
+                  "id": 11206,
                   "name": "_maxTicketsPerPlayer",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1831,
-                  "src": "5103:27:5",
+                  "scope": 11212,
+                  "src": "5103:27:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1669,10 +1669,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 1824,
+                    "id": 11205,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5103:5:5",
+                    "src": "5103:5:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -1683,11 +1683,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1827,
+                  "id": 11208,
                   "name": "_betsDurationMinutes",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1831,
-                  "src": "5141:26:5",
+                  "scope": 11212,
+                  "src": "5141:26:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1695,10 +1695,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 1826,
+                    "id": 11207,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5141:5:5",
+                    "src": "5141:5:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -1709,11 +1709,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1829,
+                  "id": 11210,
                   "name": "_getResultsMinutes",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1831,
-                  "src": "5178:24:5",
+                  "scope": 11212,
+                  "src": "5178:24:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1721,10 +1721,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 1828,
+                    "id": 11209,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5178:5:5",
+                    "src": "5178:5:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -1734,10 +1734,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "4933:276:5"
+              "src": "4933:276:17"
             },
-            "scope": 1843,
-            "src": "4888:322:5",
+            "scope": 11224,
+            "src": "4888:322:17",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
@@ -1745,7 +1745,7 @@
           {
             "body": null,
             "documentation": "@dev Payable function to buy tickets.\r\n@param option Option to bet to.\r",
-            "id": 1836,
+            "id": 11217,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1753,16 +1753,16 @@
             "name": "buyTickets",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1834,
+              "id": 11215,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1833,
+                  "id": 11214,
                   "name": "option",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1836,
-                  "src": "5340:11:5",
+                  "scope": 11217,
+                  "src": "5340:11:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1770,10 +1770,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1832,
+                    "id": 11213,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5340:4:5",
+                    "src": "5340:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1783,17 +1783,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "5339:13:5"
+              "src": "5339:13:17"
             },
             "payable": true,
             "returnParameters": {
-              "id": 1835,
+              "id": 11216,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "5369:0:5"
+              "src": "5369:0:17"
             },
-            "scope": 1843,
-            "src": "5320:50:5",
+            "scope": 11224,
+            "src": "5320:50:17",
             "stateMutability": "payable",
             "superFunction": null,
             "visibility": "external"
@@ -1801,7 +1801,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 1839,
+            "id": 11220,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1809,20 +1809,20 @@
             "name": "withdrawEarnings",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1837,
+              "id": 11218,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "5481:2:5"
+              "src": "5481:2:17"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1838,
+              "id": 11219,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "5492:0:5"
+              "src": "5492:0:17"
             },
-            "scope": 1843,
-            "src": "5456:37:5",
+            "scope": 11224,
+            "src": "5456:37:17",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -1830,7 +1830,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 1842,
+            "id": 11223,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1838,43 +1838,43 @@
             "name": "destructContract",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1840,
+              "id": 11221,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "5606:2:5"
+              "src": "5606:2:17"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1841,
+              "id": 11222,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "5617:0:5"
+              "src": "5617:0:17"
             },
-            "scope": 1843,
-            "src": "5581:37:5",
+            "scope": 11224,
+            "src": "5581:37:17",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 1844,
-        "src": "121:5500:5"
+        "scope": 11225,
+        "src": "121:5500:17"
       }
     ],
-    "src": "0:5621:5"
+    "src": "0:5621:17"
   },
   "legacyAST": {
-    "absolutePath": "/C/Data/Junior/Consensys Academy/Final Project/EtherBinary/contracts/interfaces/GameI.sol",
+    "absolutePath": "/C/Data/Junior/Development/EtherBinary/EtherBinary/contracts/interfaces/GameI.sol",
     "exportedSymbols": {
       "GameI": [
-        1843
+        11224
       ]
     },
-    "id": 1844,
+    "id": 11225,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1720,
+        "id": 11101,
         "literals": [
           "solidity",
           "^",
@@ -1882,7 +1882,7 @@
           ".22"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:5"
+        "src": "0:24:17"
       },
       {
         "baseContracts": [],
@@ -1890,9 +1890,9 @@
         "contractKind": "interface",
         "documentation": "@title Interface that establishes the functions that a Game contract must implement. ",
         "fullyImplemented": false,
-        "id": 1843,
+        "id": 11224,
         "linearizedBaseContracts": [
-          1843
+          11224
         ],
         "name": "GameI",
         "nodeType": "ContractDefinition",
@@ -1900,21 +1900,21 @@
           {
             "anonymous": false,
             "documentation": "@dev Event emitted when a new match has started.\r\n@param assetPair The assetPair of the game.\r\n@param matchId Id of the started match.\r\n@param startTime The time in which the game started.\r\n@param initialPrice The inital price of the asset.\r",
-            "id": 1730,
+            "id": 11111,
             "name": "LogMatchStarted",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1729,
+              "id": 11110,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1722,
+                  "id": 11103,
                   "indexed": false,
                   "name": "assetPair",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1730,
-                  "src": "458:16:5",
+                  "scope": 11111,
+                  "src": "458:16:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1922,10 +1922,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1721,
+                    "id": 11102,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "458:6:5",
+                    "src": "458:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1936,12 +1936,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1724,
+                  "id": 11105,
                   "indexed": true,
                   "name": "matchId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1730,
-                  "src": "476:20:5",
+                  "scope": 11111,
+                  "src": "476:20:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1949,10 +1949,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1723,
+                    "id": 11104,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "476:4:5",
+                    "src": "476:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1963,12 +1963,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1726,
+                  "id": 11107,
                   "indexed": false,
                   "name": "startTime",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1730,
-                  "src": "498:14:5",
+                  "scope": 11111,
+                  "src": "498:14:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1976,10 +1976,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1725,
+                    "id": 11106,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "498:4:5",
+                    "src": "498:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1990,12 +1990,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1728,
+                  "id": 11109,
                   "indexed": false,
                   "name": "initialPrice",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1730,
-                  "src": "514:17:5",
+                  "scope": 11111,
+                  "src": "514:17:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2003,10 +2003,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1727,
+                    "id": 11108,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "514:4:5",
+                    "src": "514:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2016,28 +2016,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "457:75:5"
+              "src": "457:75:17"
             },
-            "src": "436:97:5"
+            "src": "436:97:17"
           },
           {
             "anonymous": false,
             "documentation": "@dev Event emitted when a match betting period has finished.\r\n@param assetPair The assetPair of the game.\r\n@param matchId Id of the match.\r\n@param totalPool Match total pool.\r\n@param timestamp The time in which the event occured.\r",
-            "id": 1740,
+            "id": 11121,
             "name": "LogBettingPeriodEnd",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1739,
+              "id": 11120,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1732,
+                  "id": 11113,
                   "indexed": false,
                   "name": "assetPair",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1740,
-                  "src": "846:16:5",
+                  "scope": 11121,
+                  "src": "846:16:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2045,10 +2045,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1731,
+                    "id": 11112,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "846:6:5",
+                    "src": "846:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -2059,12 +2059,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1734,
+                  "id": 11115,
                   "indexed": true,
                   "name": "matchId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1740,
-                  "src": "864:20:5",
+                  "scope": 11121,
+                  "src": "864:20:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2072,10 +2072,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1733,
+                    "id": 11114,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "864:4:5",
+                    "src": "864:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2086,12 +2086,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1736,
+                  "id": 11117,
                   "indexed": false,
                   "name": "totalPool",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1740,
-                  "src": "886:14:5",
+                  "scope": 11121,
+                  "src": "886:14:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2099,10 +2099,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1735,
+                    "id": 11116,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "886:4:5",
+                    "src": "886:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2113,12 +2113,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1738,
+                  "id": 11119,
                   "indexed": false,
                   "name": "timestamp",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1740,
-                  "src": "902:14:5",
+                  "scope": 11121,
+                  "src": "902:14:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2126,10 +2126,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1737,
+                    "id": 11118,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "902:4:5",
+                    "src": "902:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2139,28 +2139,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "845:72:5"
+              "src": "845:72:17"
             },
-            "src": "820:98:5"
+            "src": "820:98:17"
           },
           {
             "anonymous": false,
             "documentation": "@dev Event emitted when a ticket has been bought.\r\n@param assetPair The assetPair of the game.\r\n@param matchId Id of the match.\r\n@param player The player who bought the ticket.\r\n@param ticketsBought The amount of tickets bought in this transaction.\r\n@param playerTotalTickets Total amount of tickets for this match.\r\n@param option Option the player bet to.\r\n@param optionTotalTickets Total pool of the option the player bet to.\r\n@param timestamp The time in which the event occured.\r",
-            "id": 1758,
+            "id": 11139,
             "name": "LogTicketBought",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1757,
+              "id": 11138,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1742,
+                  "id": 11123,
                   "indexed": false,
                   "name": "assetPair",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1514:16:5",
+                  "scope": 11139,
+                  "src": "1514:16:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2168,10 +2168,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1741,
+                    "id": 11122,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1514:6:5",
+                    "src": "1514:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -2182,12 +2182,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1744,
+                  "id": 11125,
                   "indexed": true,
                   "name": "matchId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1542:20:5",
+                  "scope": 11139,
+                  "src": "1542:20:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2195,10 +2195,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1743,
+                    "id": 11124,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1542:4:5",
+                    "src": "1542:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2209,12 +2209,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1746,
+                  "id": 11127,
                   "indexed": true,
                   "name": "player",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1574:22:5",
+                  "scope": 11139,
+                  "src": "1574:22:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2222,10 +2222,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1745,
+                    "id": 11126,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1574:7:5",
+                    "src": "1574:7:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -2236,12 +2236,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1748,
+                  "id": 11129,
                   "indexed": false,
                   "name": "ticketsBought",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1608:18:5",
+                  "scope": 11139,
+                  "src": "1608:18:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2249,10 +2249,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1747,
+                    "id": 11128,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1608:4:5",
+                    "src": "1608:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2263,12 +2263,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1750,
+                  "id": 11131,
                   "indexed": false,
                   "name": "playerTotalTickets",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1637:23:5",
+                  "scope": 11139,
+                  "src": "1637:23:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2276,10 +2276,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1749,
+                    "id": 11130,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1637:4:5",
+                    "src": "1637:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2290,12 +2290,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1752,
+                  "id": 11133,
                   "indexed": false,
                   "name": "option",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1672:11:5",
+                  "scope": 11139,
+                  "src": "1672:11:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2303,10 +2303,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1751,
+                    "id": 11132,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1672:4:5",
+                    "src": "1672:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -2317,12 +2317,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1754,
+                  "id": 11135,
                   "indexed": false,
                   "name": "optionTotalTickets",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1695:23:5",
+                  "scope": 11139,
+                  "src": "1695:23:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2330,10 +2330,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1753,
+                    "id": 11134,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1695:4:5",
+                    "src": "1695:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2344,12 +2344,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1756,
+                  "id": 11137,
                   "indexed": false,
                   "name": "timestamp",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1758,
-                  "src": "1729:14:5",
+                  "scope": 11139,
+                  "src": "1729:14:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2357,10 +2357,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1755,
+                    "id": 11136,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1729:4:5",
+                    "src": "1729:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2370,28 +2370,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1503:247:5"
+              "src": "1503:247:17"
             },
-            "src": "1482:269:5"
+            "src": "1482:269:17"
           },
           {
             "anonymous": false,
             "documentation": "@dev Event emitted when a match has finished.\r\n@param assetPair The assetPair of the game.\r\n@param matchId Id of the match that has finished.\r\n@param startTime The start time of the match.\r\n@param endTime The end time of the match.\r\n@param initialPrice Initial price of the asset.\r\n@param endPrice End price of the asset.\r\n@param earningsByTicket Amount of ether won by ticket.\r\n@param winnerOption Option that winned the match.\r",
-            "id": 1776,
+            "id": 11157,
             "name": "LogMatchFinished",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1775,
+              "id": 11156,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1760,
+                  "id": 11141,
                   "indexed": false,
                   "name": "assetPair",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1776,
-                  "src": "2293:16:5",
+                  "scope": 11157,
+                  "src": "2293:16:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2399,10 +2399,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1759,
+                    "id": 11140,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2293:6:5",
+                    "src": "2293:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -2413,12 +2413,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1762,
+                  "id": 11143,
                   "indexed": true,
                   "name": "matchId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1776,
-                  "src": "2321:20:5",
+                  "scope": 11157,
+                  "src": "2321:20:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2426,10 +2426,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1761,
+                    "id": 11142,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2321:4:5",
+                    "src": "2321:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2440,12 +2440,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1764,
+                  "id": 11145,
                   "indexed": false,
                   "name": "startTime",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1776,
-                  "src": "2353:14:5",
+                  "scope": 11157,
+                  "src": "2353:14:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2453,10 +2453,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1763,
+                    "id": 11144,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2353:4:5",
+                    "src": "2353:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2467,12 +2467,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1766,
+                  "id": 11147,
                   "indexed": false,
                   "name": "endTime",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1776,
-                  "src": "2379:12:5",
+                  "scope": 11157,
+                  "src": "2379:12:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2480,10 +2480,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1765,
+                    "id": 11146,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2379:4:5",
+                    "src": "2379:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2494,12 +2494,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1768,
+                  "id": 11149,
                   "indexed": false,
                   "name": "initialPrice",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1776,
-                  "src": "2403:17:5",
+                  "scope": 11157,
+                  "src": "2403:17:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2507,10 +2507,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1767,
+                    "id": 11148,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2403:4:5",
+                    "src": "2403:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2521,12 +2521,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1770,
+                  "id": 11151,
                   "indexed": false,
                   "name": "endPrice",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1776,
-                  "src": "2432:13:5",
+                  "scope": 11157,
+                  "src": "2432:13:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2534,10 +2534,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1769,
+                    "id": 11150,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2432:4:5",
+                    "src": "2432:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2548,12 +2548,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1772,
+                  "id": 11153,
                   "indexed": false,
                   "name": "earningsByTicket",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1776,
-                  "src": "2457:21:5",
+                  "scope": 11157,
+                  "src": "2457:21:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2561,10 +2561,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1771,
+                    "id": 11152,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2457:4:5",
+                    "src": "2457:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2575,12 +2575,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1774,
+                  "id": 11155,
                   "indexed": false,
                   "name": "winnerOption",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1776,
-                  "src": "2490:17:5",
+                  "scope": 11157,
+                  "src": "2490:17:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2588,10 +2588,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1773,
+                    "id": 11154,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2490:4:5",
+                    "src": "2490:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -2601,28 +2601,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2282:232:5"
+              "src": "2282:232:17"
             },
-            "src": "2260:255:5"
+            "src": "2260:255:17"
           },
           {
             "anonymous": false,
             "documentation": "@dev Event emitted when user withdraw earnings.\r\n@param assetPair The assetPair of the game.\r\n@param matchId Id of the associated match.\r\n@param player The player who withdraw earnings.\r\n@param amount The amount withdrawn.\r\n@param timestamp The time in which the event occured.\r",
-            "id": 1788,
+            "id": 11169,
             "name": "LogEarningsWithdrawn",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1787,
+              "id": 11168,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1778,
+                  "id": 11159,
                   "indexed": false,
                   "name": "assetPair",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1788,
-                  "src": "2883:16:5",
+                  "scope": 11169,
+                  "src": "2883:16:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2630,10 +2630,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1777,
+                    "id": 11158,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2883:6:5",
+                    "src": "2883:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -2644,12 +2644,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1780,
+                  "id": 11161,
                   "indexed": false,
                   "name": "matchId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1788,
-                  "src": "2901:12:5",
+                  "scope": 11169,
+                  "src": "2901:12:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2657,10 +2657,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1779,
+                    "id": 11160,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2901:4:5",
+                    "src": "2901:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2671,12 +2671,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1782,
+                  "id": 11163,
                   "indexed": true,
                   "name": "player",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1788,
-                  "src": "2915:22:5",
+                  "scope": 11169,
+                  "src": "2915:22:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2684,10 +2684,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1781,
+                    "id": 11162,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2915:7:5",
+                    "src": "2915:7:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -2698,12 +2698,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1784,
+                  "id": 11165,
                   "indexed": false,
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1788,
-                  "src": "2939:11:5",
+                  "scope": 11169,
+                  "src": "2939:11:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2711,10 +2711,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1783,
+                    "id": 11164,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2939:4:5",
+                    "src": "2939:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2725,12 +2725,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1786,
+                  "id": 11167,
                   "indexed": false,
                   "name": "timestamp",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1788,
-                  "src": "2952:14:5",
+                  "scope": 11169,
+                  "src": "2952:14:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2738,10 +2738,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1785,
+                    "id": 11166,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2952:4:5",
+                    "src": "2952:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2751,14 +2751,14 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2882:85:5"
+              "src": "2882:85:17"
             },
-            "src": "2856:112:5"
+            "src": "2856:112:17"
           },
           {
             "body": null,
             "documentation": "@dev Sets the information of the asset pair and sets the oraclize endpoint.\r\n@param _assetPair The assetPair of the game.\r\n@param _assetPairAlias Alias of the assetPair used for display.\r\n@param _description The description of the game used for display.\r",
-            "id": 1797,
+            "id": 11178,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -2766,16 +2766,16 @@
             "name": "setAssetPairInformation",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1795,
+              "id": 11176,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1790,
+                  "id": 11171,
                   "name": "_assetPair",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1797,
-                  "src": "3310:17:5",
+                  "scope": 11178,
+                  "src": "3310:17:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2783,10 +2783,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1789,
+                    "id": 11170,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3310:6:5",
+                    "src": "3310:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -2797,11 +2797,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1792,
+                  "id": 11173,
                   "name": "_assetPairAlias",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1797,
-                  "src": "3329:22:5",
+                  "scope": 11178,
+                  "src": "3329:22:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2809,10 +2809,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1791,
+                    "id": 11172,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3329:6:5",
+                    "src": "3329:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -2823,11 +2823,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1794,
+                  "id": 11175,
                   "name": "_description",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1797,
-                  "src": "3353:19:5",
+                  "scope": 11178,
+                  "src": "3353:19:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2835,10 +2835,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1793,
+                    "id": 11174,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3353:6:5",
+                    "src": "3353:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -2848,17 +2848,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3309:64:5"
+              "src": "3309:64:17"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1796,
+              "id": 11177,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "3382:0:5"
+              "src": "3382:0:17"
             },
-            "scope": 1843,
-            "src": "3277:106:5",
+            "scope": 11224,
+            "src": "3277:106:17",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -2866,7 +2866,7 @@
           {
             "body": null,
             "documentation": "@dev Set game variables and start game.\r\n@param _betsDurationMinutes Specifies the time in minutes of the duration of the betting period.\r\n@param _getResultsMinutes Specifies the time in minutes to get the match result after the betting period.\r\n@param _maxTicketsPerPlayer Max number of tickets that a player can buy.\r\n@param _ticketPrice The price of a single ticket.\r\n@param _houseEdge House profit per ticket. \r\n@param _oraclizeGasLimit Gas amount to be used by the Oracle calls.\r",
-            "id": 1812,
+            "id": 11193,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -2874,16 +2874,16 @@
             "name": "setGameVariablesAndStart",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1810,
+              "id": 11191,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1799,
+                  "id": 11180,
                   "name": "_betsDurationMinutes",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1812,
-                  "src": "3980:26:5",
+                  "scope": 11193,
+                  "src": "3980:26:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2891,10 +2891,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 1798,
+                    "id": 11179,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "3980:5:5",
+                    "src": "3980:5:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -2905,11 +2905,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1801,
+                  "id": 11182,
                   "name": "_getResultsMinutes",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1812,
-                  "src": "4018:24:5",
+                  "scope": 11193,
+                  "src": "4018:24:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2917,10 +2917,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 1800,
+                    "id": 11181,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4018:5:5",
+                    "src": "4018:5:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -2931,11 +2931,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1803,
+                  "id": 11184,
                   "name": "_maxTicketsPerPlayer",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1812,
-                  "src": "4053:26:5",
+                  "scope": 11193,
+                  "src": "4053:26:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2943,10 +2943,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 1802,
+                    "id": 11183,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4053:5:5",
+                    "src": "4053:5:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -2957,11 +2957,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1805,
+                  "id": 11186,
                   "name": "_ticketPrice",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1812,
-                  "src": "4090:17:5",
+                  "scope": 11193,
+                  "src": "4090:17:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2969,10 +2969,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1804,
+                    "id": 11185,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4090:4:5",
+                    "src": "4090:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2983,11 +2983,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1807,
+                  "id": 11188,
                   "name": "_houseEdge",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1812,
-                  "src": "4119:15:5",
+                  "scope": 11193,
+                  "src": "4119:15:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2995,10 +2995,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1806,
+                    "id": 11187,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4119:4:5",
+                    "src": "4119:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -3009,11 +3009,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1809,
+                  "id": 11190,
                   "name": "_oraclizeGasLimit",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1812,
-                  "src": "4145:24:5",
+                  "scope": 11193,
+                  "src": "4145:24:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3021,10 +3021,10 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 1808,
+                    "id": 11189,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4145:6:5",
+                    "src": "4145:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint32",
                       "typeString": "uint32"
@@ -3034,17 +3034,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "3969:207:5"
+              "src": "3969:207:17"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1811,
+              "id": 11192,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "4185:0:5"
+              "src": "4185:0:17"
             },
-            "scope": 1843,
-            "src": "3936:250:5",
+            "scope": 11224,
+            "src": "3936:250:17",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -3052,7 +3052,7 @@
           {
             "body": null,
             "documentation": "@dev Returns the game relevant information. \r\n@return _assetPair The assetPair of the game.\r\n@return _assetPairAlias  Alias of the assetPair used for display.\r\n@return _description The description of the game used for display.\r\n@return _ticketPrice The price of a single ticket.\r\n@return _currentMatchId Id of the current running match. \r\n@return _maxTicketsPerPlayer Max number of tickets that a player can buy.\r\n@return _betsDurationMinutes Specifies the time in minutes of the duration of the betting period.\r\n@return _getResultsMinutes  Specifies the time in minutes to get the match result after the betting period.\r",
-            "id": 1831,
+            "id": 11212,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -3060,23 +3060,23 @@
             "name": "getGameInfo",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1813,
+              "id": 11194,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "4908:2:5"
+              "src": "4908:2:17"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1830,
+              "id": 11211,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1815,
+                  "id": 11196,
                   "name": "_assetPair",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1831,
-                  "src": "4944:18:5",
+                  "scope": 11212,
+                  "src": "4944:18:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3084,10 +3084,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1814,
+                    "id": 11195,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4944:6:5",
+                    "src": "4944:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -3098,11 +3098,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1817,
+                  "id": 11198,
                   "name": "_assetPairAlias",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1831,
-                  "src": "4974:23:5",
+                  "scope": 11212,
+                  "src": "4974:23:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3110,10 +3110,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1816,
+                    "id": 11197,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "4974:6:5",
+                    "src": "4974:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -3124,11 +3124,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1819,
+                  "id": 11200,
                   "name": "_description",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1831,
-                  "src": "5009:20:5",
+                  "scope": 11212,
+                  "src": "5009:20:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3136,10 +3136,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1818,
+                    "id": 11199,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5009:6:5",
+                    "src": "5009:6:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -3150,11 +3150,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1821,
+                  "id": 11202,
                   "name": "_ticketPrice",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1831,
-                  "src": "5041:18:5",
+                  "scope": 11212,
+                  "src": "5041:18:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3162,10 +3162,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1820,
+                    "id": 11201,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5041:4:5",
+                    "src": "5041:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -3176,11 +3176,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1823,
+                  "id": 11204,
                   "name": "_currentMatchId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1831,
-                  "src": "5071:21:5",
+                  "scope": 11212,
+                  "src": "5071:21:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3188,10 +3188,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1822,
+                    "id": 11203,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5071:4:5",
+                    "src": "5071:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -3202,11 +3202,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1825,
+                  "id": 11206,
                   "name": "_maxTicketsPerPlayer",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1831,
-                  "src": "5103:27:5",
+                  "scope": 11212,
+                  "src": "5103:27:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3214,10 +3214,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 1824,
+                    "id": 11205,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5103:5:5",
+                    "src": "5103:5:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -3228,11 +3228,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1827,
+                  "id": 11208,
                   "name": "_betsDurationMinutes",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1831,
-                  "src": "5141:26:5",
+                  "scope": 11212,
+                  "src": "5141:26:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3240,10 +3240,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 1826,
+                    "id": 11207,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5141:5:5",
+                    "src": "5141:5:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -3254,11 +3254,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1829,
+                  "id": 11210,
                   "name": "_getResultsMinutes",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1831,
-                  "src": "5178:24:5",
+                  "scope": 11212,
+                  "src": "5178:24:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3266,10 +3266,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 1828,
+                    "id": 11209,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5178:5:5",
+                    "src": "5178:5:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -3279,10 +3279,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "4933:276:5"
+              "src": "4933:276:17"
             },
-            "scope": 1843,
-            "src": "4888:322:5",
+            "scope": 11224,
+            "src": "4888:322:17",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
@@ -3290,7 +3290,7 @@
           {
             "body": null,
             "documentation": "@dev Payable function to buy tickets.\r\n@param option Option to bet to.\r",
-            "id": 1836,
+            "id": 11217,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -3298,16 +3298,16 @@
             "name": "buyTickets",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1834,
+              "id": 11215,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1833,
+                  "id": 11214,
                   "name": "option",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1836,
-                  "src": "5340:11:5",
+                  "scope": 11217,
+                  "src": "5340:11:17",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3315,10 +3315,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1832,
+                    "id": 11213,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5340:4:5",
+                    "src": "5340:4:17",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -3328,17 +3328,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "5339:13:5"
+              "src": "5339:13:17"
             },
             "payable": true,
             "returnParameters": {
-              "id": 1835,
+              "id": 11216,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "5369:0:5"
+              "src": "5369:0:17"
             },
-            "scope": 1843,
-            "src": "5320:50:5",
+            "scope": 11224,
+            "src": "5320:50:17",
             "stateMutability": "payable",
             "superFunction": null,
             "visibility": "external"
@@ -3346,7 +3346,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 1839,
+            "id": 11220,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -3354,20 +3354,20 @@
             "name": "withdrawEarnings",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1837,
+              "id": 11218,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "5481:2:5"
+              "src": "5481:2:17"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1838,
+              "id": 11219,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "5492:0:5"
+              "src": "5492:0:17"
             },
-            "scope": 1843,
-            "src": "5456:37:5",
+            "scope": 11224,
+            "src": "5456:37:17",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -3375,7 +3375,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 1842,
+            "id": 11223,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -3383,30 +3383,30 @@
             "name": "destructContract",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1840,
+              "id": 11221,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "5606:2:5"
+              "src": "5606:2:17"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1841,
+              "id": 11222,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "5617:0:5"
+              "src": "5617:0:17"
             },
-            "scope": 1843,
-            "src": "5581:37:5",
+            "scope": 11224,
+            "src": "5581:37:17",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 1844,
-        "src": "121:5500:5"
+        "scope": 11225,
+        "src": "121:5500:17"
       }
     ],
-    "src": "0:5621:5"
+    "src": "0:5621:17"
   },
   "compiler": {
     "name": "solc",
@@ -3414,5 +3414,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-08-28T04:16:34.176Z"
+  "updatedAt": "2018-08-28T10:12:10.146Z"
 }
