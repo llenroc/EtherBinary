@@ -1,0 +1,5 @@
+{"defaultnode":"http://localhost:8545","instance":"oracle_instance_20180825T201949.json","gas":3700000,"confirmation":12,"disable-deterministic-oar":false,"loglevel":"info","non-interactive":false,"enable-stats":false,"no-hints":false,"gasprice":20000000000,"logFilePath":"./bridge.log","confirmations":12,"defaultGas":3700000,"level":"debug","message":"parsed options","timestamp":"2018-08-26T00:22:09.207Z"}
+{"level":"info","message":"you are running ethereum-bridge - version: 0.6.1","timestamp":"2018-08-26T00:22:09.212Z"}
+{"level":"info","message":"saving logs to: ./bridge.log","timestamp":"2018-08-26T00:22:09.213Z"}
+["oracle_instance_20180823T171911.json","oracle_instance_20180823T214141.json","oracle_instance_20180824T110023.json","oracle_instance_20180825T121757.json","oracle_instance_20180825T145544.json"]
+{"level":"error","message":"oracle_instance_20180825T201949.json not found in ./config/instance/","timestamp":"2018-08-26T00:22:09.214Z"}

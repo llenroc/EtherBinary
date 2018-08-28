@@ -1,5 +1,5 @@
 var HDWalletProvider = require("truffle-hdwallet-provider");
-var mnemonic = "rose address blood aisle soul fold device service cinnamon island dial actress";
+var mnemonic = "@Mymnemonic";
 
 module.exports = {
     solc: {
@@ -16,7 +16,7 @@ module.exports = {
         },
         rinkeby: {
             provider: function() {
-                return new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/58ee693c6a614003b268faac6f302ddc")
+                return new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/@ApiKey")
             },
             network_id: 4  // Rinkeby network id
         }
