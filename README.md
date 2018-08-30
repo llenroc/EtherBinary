@@ -51,7 +51,9 @@
 
 ## Testnet:
 
-You can also interact with the Smart Contract already deployed to **Rinkeby** test network @:
+You interact with the DAPP already deployed to IPFS @ [EtherBinary](https://gateway.ipfs.io/ipns/QmVwxQjxEU3KYmadchCzUq2vP3Mr9MmXudgMeMzXKCEJ4J/) or interecat with Smart Contract deployed to the **Rinkeby** test network @:
 ```code
-    0xd7cf14b3526042c09d09b5750350f02832631b76
+    0x36a845c2e217b59b03fb2c9bbdfaca6ad105a1d9
 ```
+
+
